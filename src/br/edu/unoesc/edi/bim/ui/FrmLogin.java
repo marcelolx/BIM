@@ -40,7 +40,7 @@ public class FrmLogin extends JFrame {
 	public static FrmLogin frmLogin;
 
 	public static void main(String[] args) {
-		FrmLogin frmLogin = new FrmLogin();
+		frmLogin = new FrmLogin();
 		frmLogin.setVisible(true);
 	}
 
@@ -48,6 +48,7 @@ public class FrmLogin extends JFrame {
 
 		lookAndFeel();
 
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setFocusable(false);
 		setResizable(false);
 		setTitle("BIM - Body In Movement");
@@ -144,6 +145,7 @@ public class FrmLogin extends JFrame {
 						if ((users.get(i).getUserName().equals(user))
 								&& (users.get(i).getUserPass().equals(pass))) {
 							new FrmMain().setVisible(true);
+							frmLogin.dispose();
 							break;
 						}
 					}
@@ -151,7 +153,7 @@ public class FrmLogin extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				
 			}
 		});
 	}
