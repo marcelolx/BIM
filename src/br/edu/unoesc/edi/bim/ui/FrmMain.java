@@ -32,7 +32,7 @@ public class FrmMain extends JFrame {
 		setForeground(Color.WHITE);
 		setFont(new Font("Base 02", Font.PLAIN, 12));
 		setTitle("BIM - Body In Moviment");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmMain.class.getResource("/images/logo.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmMain.class.getResource("/images/bim_logo_32x22.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, maxBounds.width, maxBounds.height);
 		contentPane = new JPanel();
@@ -63,15 +63,20 @@ public class FrmMain extends JFrame {
 		btnAjuda.setBounds(1150, 5, 115, 35);
 		panelNorth.add(btnAjuda);
 		
-		JButton btnNewButton = new JButton("Sincronizar");
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Synchronize-48.png")));
-		btnNewButton.setBounds(1039, 5, 121, 35);
-		panelNorth.add(btnNewButton);
+		JButton btnsincronizar = new JButton("Sincronizar");
+		btnsincronizar.setContentAreaFilled(false);
+		btnsincronizar.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Synchronize-48.png")));
+		btnsincronizar.setBounds(1039, 5, 121, 35);
+		panelNorth.add(btnsincronizar);
 		
 		JLabel lblUserIcon = new JLabel("");
 		lblUserIcon.setIcon(new ImageIcon(FrmMain.class.getResource("/images/userLog.png")));
 		lblUserIcon.setBounds(997, 5, 46, 35);
 		panelNorth.add(lblUserIcon);
+		
+		JLabel lbllogomain = new JLabel("");
+		lbllogomain.setIcon(new ImageIcon(FrmMain.class.getResource("/images/bim_logo_64x44.png")));
+		lbllogomain.setBounds(10, 5, 72, 41);
+		panelNorth.add(lbllogomain);
 	}
 }

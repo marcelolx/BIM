@@ -52,7 +52,7 @@ public class FrmLogin extends JFrame {
 		setFocusable(false);
 		setResizable(false);
 		setTitle("BIM - Body In Movement");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLogin.class.getResource("/images/logo.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmLogin.class.getResource("/images/bim_logo_32x22.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 250);
 
