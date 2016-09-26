@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -93,7 +94,6 @@ public class FrmLogin extends JFrame {
 		ConfigPanel.add(lblLogin);
 
 		JButton btnEntrar = new JButton("ENTRAR");
-		btnEntrar.setBorderPainted(false);
 		btnEntrar.setFocusTraversalPolicyProvider(true);
 		btnEntrar.setFocusCycleRoot(true);
 		btnEntrar.setFocusable(false);
@@ -102,7 +102,7 @@ public class FrmLogin extends JFrame {
 		btnEntrar.setMnemonic('E');
 		btnEntrar.setBounds(123, 96, 200, 34);
 		btnEntrar.setBackground(SystemColor.textHighlight);
-		btnEntrar.setForeground(SystemColor.text);
+		btnEntrar.setForeground(Color.WHITE);
 
 		ConfigPanel.add(btnEntrar);
 
@@ -144,9 +144,11 @@ public class FrmLogin extends JFrame {
 					for (int i = 0; i < users.size(); i++) {
 						if ((users.get(i).getUserName().equals(user))
 								&& (users.get(i).getUserPass().equals(pass))) {
-							new FrmMain().setVisible(true);
+							new FrmMain(user).setVisible(true);
 							frmLogin.dispose();
 							break;
+						}else{
+							JOptionPane.showMessageDialog(null, "Inválid user/password.");
 						}
 					}
 				} catch (SQLException e) {

@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.edu.unoesc.edi.bim.db.dao.DAOManager;
+
 public class FrmMain extends JFrame {
 
 	/**
@@ -25,7 +27,7 @@ public class FrmMain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FrmMain() {
+	public FrmMain(String userName) {
 		//pega o tamanho máximo disponível para tela do programa
 		Rectangle maxBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		setResizable(false);
@@ -47,7 +49,7 @@ public class FrmMain extends JFrame {
 		contentPane.add(panelNorth);
 		panelNorth.setLayout(null);
 		
-		JLabel lblUsernamehere = new JLabel("UserNameHere");
+		JLabel lblUsernamehere = new JLabel(userName);
 		lblUsernamehere.setBounds(915, 15, 72, 14);
 		panelNorth.add(lblUsernamehere);
 		
