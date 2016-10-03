@@ -50,6 +50,7 @@ public class FrmLogin extends JFrame {
 		lookAndFeel();
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setLocationRelativeTo(null);
 		setFocusable(false);
 		setResizable(false);
 		setTitle("BIM - Body In Movement");

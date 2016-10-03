@@ -13,8 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import br.edu.unoesc.edi.bim.db.dao.DAOManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class FrmMain extends JFrame {
 
@@ -23,6 +24,13 @@ public class FrmMain extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JButton btnAlunoPanel;
+	private JButton btnRelatorio;
+	private JButton btnProcedimentos;
+	private JButton btnMetodologias;
+	private JLabel lblTeste ;
+	private boolean open = false;
+	private JPanel panelAlunos;
 
 	/**
 	 * Create the frame.
@@ -80,5 +88,75 @@ public class FrmMain extends JFrame {
 		lbllogomain.setIcon(new ImageIcon(FrmMain.class.getResource("/images/bim_logo_64x44.png")));
 		lbllogomain.setBounds(10, 5, 72, 41);
 		panelNorth.add(lbllogomain);
+		
+		JPanel panelLateral = new JPanel();
+		panelLateral.setBounds(0, 44, 230, 655);
+		contentPane.add(panelLateral);
+		panelLateral.setLayout(null);
+		
+		//panel para listar alunos, adicionar alunos/grupos de alunos
+		panelAlunos = new JPanel();
+		panelAlunos.setBounds(10, 56, 210, 370);
+		panelAlunos.setBackground(new Color(35,164,240));
+		panelAlunos.setLayout(null);
+		
+		btnAlunoPanel = new JButton("Alunos");
+		btnAlunoPanel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!open){
+					open = true;
+					btnRelatorio.setBounds(10, 431, 210, 44);
+					btnProcedimentos.setBounds(10, 486, 210, 44);
+					btnMetodologias.setBounds(10, 541, 210, 44);
+					lblTeste.setBounds(10, 595, 210, 44);
+					panelLateral.add(panelAlunos);
+				}else{
+					open = false;
+					btnRelatorio.setBounds(10, 66, 210, 44);
+					btnProcedimentos.setBounds(10, 121, 210, 44);
+					btnMetodologias.setBounds(10, 176, 210, 44);
+					lblTeste.setBounds(10, 225, 210, 44);
+					panelLateral.remove(panelAlunos);
+					panelLateral.repaint();
+					panelLateral.revalidate();
+				}
+				
+				
+			}
+		});
+		btnAlunoPanel.setForeground(Color.BLACK);
+		btnAlunoPanel.setBackground(new Color(52,152,219));
+		btnAlunoPanel.setBounds(10, 11, 210, 44);
+		panelLateral.add(btnAlunoPanel);
+		
+		btnRelatorio = new JButton("Relat\u00F3rios");
+		btnRelatorio.setForeground(Color.BLACK);
+		btnRelatorio.setBackground(new Color(52,152,219));
+		btnRelatorio.setBounds(10, 66, 210, 44);
+		panelLateral.add(btnRelatorio);
+		
+		btnProcedimentos = new JButton("Procedimentos");
+		btnProcedimentos.setOpaque(false);
+		btnProcedimentos.setForeground(Color.BLACK);
+		btnProcedimentos.setBackground(new Color(52,152,219));
+		btnProcedimentos.setBounds(10, 121, 210, 44);
+		panelLateral.add(btnProcedimentos);
+		
+		btnMetodologias = new JButton("M\u00E9todologias");
+		btnMetodologias.setOpaque(false);
+		btnMetodologias.setForeground(Color.BLACK);
+		btnMetodologias.setBackground(new Color(52,152,219));
+		btnMetodologias.setBounds(10, 176, 210, 44);
+		panelLateral.add(btnMetodologias);
+		
+		lblTeste= new JLabel("Teste\r\n");
+		lblTeste.setForeground(Color.WHITE);
+		lblTeste.setOpaque(true);
+		lblTeste.setBackground(new Color(35,164,240));
+		lblTeste.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTeste.setLabelFor(panelLateral);
+		lblTeste.setBounds(10, 225, 210, 44);
+		panelLateral.add(lblTeste);
+		
 	}
 }
