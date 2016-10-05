@@ -27,6 +27,8 @@ import javax.swing.border.EtchedBorder;
 
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Users;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 /***
  * @author Jonathan Cestari / Marcelo Lauxen Form da tela de login para usuários
@@ -122,6 +124,7 @@ public class FrmLogin extends JFrame {
 		lblLembrarme.setForeground(Color.WHITE);
 		lblLembrarme.setBounds(31, 97, 78, 34);
 		ConfigPanel.add(lblLembrarme);
+		ConfigPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtUserField, passwordField, btnEntrar, chckbxLembrarme}));
 
 		JLabel lblEntrarNoSistema = new JLabel("ENTRAR NO SISTEMA");
 		lblEntrarNoSistema.setFont(new Font("BankGothic Lt BT", Font.PLAIN, 22));

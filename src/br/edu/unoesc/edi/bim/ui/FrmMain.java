@@ -13,9 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
 
 public class FrmMain extends JFrame {
 
@@ -24,21 +24,21 @@ public class FrmMain extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton btnAlunoPanel;
-	private JButton btnRelatorio;
-	private JButton btnProcedures;
-	private JButton btnMetodologias;
-	private JLabel lblTeste ;
-	private JPanel panelLeftSideStudents;//panel for list students groups
-	private JPanel leftSidePanel;//side Panel to group groups of students
+	private JLabel btnStudents;
+	private JLabel btnReports;
+	private JLabel btnProcedures;
+	private JLabel btnMethodologies;
+	private JPanel panelLeftSideStudents;// panel for list students groups
+	private JPanel leftSidePanel;// side Panel to group groups of students
 	private JPanel panelLeftSideReports;
 	private JPanel panelLeftSideProcedures;
+	private JPanel panelLeftSideMethodologies;
 
 	/**
 	 * Create the frame.
 	 */
 	public FrmMain(String userName) {
-		//pega o tamanho máximo disponível para tela do programa
+		// pega o tamanho máximo disponível para tela do programa
 		Rectangle maxBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		setResizable(false);
 		setForeground(Color.WHITE);
@@ -51,48 +51,48 @@ public class FrmMain extends JFrame {
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JPanel panelNorth = new JPanel();
 		panelNorth.setLocale(new Locale("pt", "BR"));
 		panelNorth.setBackground(Color.WHITE);
 		panelNorth.setBounds(0, 0, 1362, 46);
 		contentPane.add(panelNorth);
 		panelNorth.setLayout(null);
-		
+
 		JLabel lblUsernamehere = new JLabel(userName);
 		lblUsernamehere.setBounds(915, 15, 72, 14);
 		panelNorth.add(lblUsernamehere);
-		
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.setBounds(1257, 5, 105, 35);
 		btnSair.setContentAreaFilled(false);
 		btnSair.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Cancel Filled-50.png")));
 		panelNorth.add(btnSair);
-		
+
 		JButton btnAjuda = new JButton("Ajuda");
 		btnAjuda.setContentAreaFilled(false);
 		btnAjuda.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Help Filled-50.png")));
 		btnAjuda.setBounds(1150, 5, 115, 35);
 		panelNorth.add(btnAjuda);
-		
+
 		JButton btnsincronizar = new JButton("Sincronizar");
 		btnsincronizar.setContentAreaFilled(false);
 		btnsincronizar.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Synchronize-48.png")));
 		btnsincronizar.setBounds(1039, 5, 121, 35);
 		panelNorth.add(btnsincronizar);
-		
+
 		JLabel lblUserIcon = new JLabel("");
 		lblUserIcon.setIcon(new ImageIcon(FrmMain.class.getResource("/images/userLog.png")));
 		lblUserIcon.setBounds(997, 5, 46, 35);
 		panelNorth.add(lblUserIcon);
-		
+
 		JLabel lbllogomain = new JLabel("");
 		lbllogomain.setIcon(new ImageIcon(FrmMain.class.getResource("/images/bim_logo_64x44.png")));
 		lbllogomain.setBounds(10, 5, 72, 41);
 		panelNorth.add(lbllogomain);
-		
+
 		//
-		// All side Panels below // 
+		// All side Panels below //
 		//
 		leftSidePanel = new JPanel();
 		leftSidePanel.setBorder(null);
@@ -100,151 +100,177 @@ public class FrmMain extends JFrame {
 		leftSidePanel.setBackground(Color.white);
 		contentPane.add(leftSidePanel);
 		leftSidePanel.setLayout(null);
-		
-		//panel para listar alunos, adicionar alunos/grupos de alunos
+
+		// panel para listar alunos, adicionar alunos/grupos de alunos
 		panelLeftSideStudents = new JPanel();
 		panelLeftSideStudents.setBounds(10, 56, 210, 370);
-		panelLeftSideStudents.setBackground(new Color(35,164,240));
+		panelLeftSideStudents.setBackground(new Color(35, 164, 240));
 		panelLeftSideStudents.setLayout(null);
 		panelLeftSideStudents.setVisible(false);
-		
-		//panel of reports
+
+		// panel of reports
 		panelLeftSideReports = new JPanel();
 		panelLeftSideReports.setBounds(10, 111, 210, 370);
-		panelLeftSideReports.setBackground(new Color(35,164,240));
+		panelLeftSideReports.setBackground(new Color(35, 164, 240));
 		panelLeftSideReports.setLayout(null);
 		panelLeftSideReports.setVisible(false);
-		
-		//panel of procedures
+
+		// panel of procedures
 		panelLeftSideProcedures = new JPanel();
 		panelLeftSideProcedures.setBounds(10, 166, 210, 370);
-		panelLeftSideProcedures.setBackground(new Color(35,164,240));
+		panelLeftSideProcedures.setBackground(new Color(35, 164, 240));
 		panelLeftSideProcedures.setLayout(null);
 		panelLeftSideProcedures.setVisible(false);
-		
-		
-		btnAlunoPanel = new JButton("Alunos");
-		btnAlunoPanel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!panelLeftSideStudents.isVisible()){
-					if(panelLeftSideReports.isVisible()){
+
+		// panel of Methodologies
+		panelLeftSideMethodologies = new JPanel();
+		panelLeftSideMethodologies.setBounds(10, 221, 210, 370);
+		panelLeftSideMethodologies.setBackground(new Color(35, 164, 240));
+		panelLeftSideMethodologies.setLayout(null);
+		panelLeftSideMethodologies.setVisible(false);
+
+		btnStudents = new JLabel("Alunos");
+		btnStudents.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (!panelLeftSideStudents.isVisible()) {
+					if ((panelLeftSideReports.isVisible()) || (panelLeftSideProcedures.isVisible())
+							|| (panelLeftSideMethodologies.isVisible())) {
 						setVisibilityReportsPanelFalse();
+						setVisibilityProceduresPanelFalse();
+						setVisibilityMethodologiesPanelFalse();
 					}
-					btnRelatorio.setBounds(10, 431, 210, 44);
+					btnReports.setBounds(10, 431, 210, 44);
 					btnProcedures.setBounds(10, 486, 210, 44);
-					btnMetodologias.setBounds(10, 541, 210, 44);
-					lblTeste.setBounds(10, 595, 210, 44);
+					btnMethodologies.setBounds(10, 541, 210, 44);
 					panelLeftSideStudents.setVisible(true);
 					leftSidePanel.add(panelLeftSideStudents);
-				}else{
+				} else {
 					setVisibilityStudentsPanelFalse();
 				}
-				
-				
 			}
 		});
-		btnAlunoPanel.setForeground(Color.BLACK);
-		btnAlunoPanel.setBackground(new Color(52,152,219));
-		btnAlunoPanel.setBounds(10, 11, 210, 44);
-		leftSidePanel.add(btnAlunoPanel);
-		
-		btnRelatorio = new JButton("Relat\u00F3rios");
-		btnRelatorio.addActionListener(new ActionListener() {
-			
+		btnStudents.setForeground(Color.white);
+		btnStudents.setOpaque(true);
+		btnStudents.setBackground(new Color(35, 164, 240));
+		btnStudents.setHorizontalAlignment(SwingConstants.CENTER);
+		btnStudents.setLabelFor(leftSidePanel);
+		btnStudents.setBounds(10, 11, 210, 44);
+		leftSidePanel.add(btnStudents);
+
+		btnReports = new JLabel("Relat\u00F3rios");
+		btnReports.addMouseListener(new MouseAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(!panelLeftSideReports.isVisible()){
-					if((panelLeftSideStudents.isVisible()) || (panelLeftSideProcedures.isVisible())){
+			public void mouseClicked(MouseEvent arg0) {
+				if (!panelLeftSideReports.isVisible()) {
+					if ((panelLeftSideStudents.isVisible()) || (panelLeftSideProcedures.isVisible())
+							|| (panelLeftSideMethodologies.isVisible())) {
 						setVisibilityProceduresPanelFalse();
 						setVisibilityStudentsPanelFalse();
+						setVisibilityMethodologiesPanelFalse();
 					}
 					btnProcedures.setBounds(10, 486, 210, 44);
-					btnMetodologias.setBounds(10, 541, 210, 44);
-					lblTeste.setBounds(10, 595, 210, 44);
+					btnMethodologies.setBounds(10, 541, 210, 44);
 					panelLeftSideReports.setVisible(true);
 					leftSidePanel.add(panelLeftSideReports);
-				}else{
+				} else {
 					setVisibilityReportsPanelFalse();
 				}
-				
 			}
 		});
-		btnRelatorio.setForeground(Color.BLACK);
-		btnRelatorio.setBackground(new Color(52,152,219));
-		btnRelatorio.setBounds(10, 66, 210, 44);
-		leftSidePanel.add(btnRelatorio);
-		
-		btnProcedures = new JButton("Procedimentos");
-		btnProcedures.addActionListener(new ActionListener() {
-			
+		btnReports.setForeground(Color.white);
+		btnReports.setOpaque(true);
+		btnReports.setBackground(new Color(35, 164, 240));
+		btnReports.setHorizontalAlignment(SwingConstants.CENTER);
+		btnReports.setLabelFor(leftSidePanel);
+		btnReports.setBounds(10, 66, 210, 44);
+		leftSidePanel.add(btnReports);
+
+		btnProcedures = new JLabel("Procedimentos");
+		btnProcedures.addMouseListener(new MouseAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if(!panelLeftSideProcedures.isVisible()){
-					if((panelLeftSideReports.isVisible()) || 
-							(panelLeftSideStudents.isVisible())){
+			public void mouseClicked(MouseEvent arg0){
+				if (!panelLeftSideProcedures.isVisible()) {
+					if ((panelLeftSideReports.isVisible()) || (panelLeftSideStudents.isVisible())
+							|| (panelLeftSideMethodologies.isVisible())) {
 						setVisibilityReportsPanelFalse();
 						setVisibilityStudentsPanelFalse();
+						setVisibilityMethodologiesPanelFalse();
 					}
-					btnMetodologias.setBounds(10, 541, 210, 44);
-					lblTeste.setBounds(10, 595, 210, 44);
+					btnMethodologies.setBounds(10, 541, 210, 44);
 					panelLeftSideProcedures.setVisible(true);
 					leftSidePanel.add(panelLeftSideProcedures);
-				}else{
+				} else {
 					setVisibilityProceduresPanelFalse();
 				}
-				
 			}
 		});
-		btnProcedures.setOpaque(false);
-		btnProcedures.setForeground(Color.BLACK);
-		btnProcedures.setBackground(new Color(52,152,219));
+		btnProcedures.setOpaque(true);
+		btnProcedures.setForeground(Color.white);
+		btnProcedures.setBackground(new Color(35, 164, 240));
+		btnProcedures.setHorizontalAlignment(SwingConstants.CENTER);
+		btnProcedures.setLabelFor(leftSidePanel);
 		btnProcedures.setBounds(10, 121, 210, 44);
 		leftSidePanel.add(btnProcedures);
-		
-		btnMetodologias = new JButton("M\u00E9todologias");
-		btnMetodologias.setOpaque(false);
-		btnMetodologias.setForeground(Color.BLACK);
-		btnMetodologias.setBackground(new Color(52,152,219));
-		btnMetodologias.setBounds(10, 176, 210, 44);
-		leftSidePanel.add(btnMetodologias);
-		
-		lblTeste= new JLabel("Teste\r\n");
-		lblTeste.setForeground(Color.WHITE);
-		lblTeste.setOpaque(true);
-		lblTeste.setBackground(new Color(35,164,240));
-		lblTeste.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTeste.setLabelFor(leftSidePanel);
-		lblTeste.setBounds(10, 225, 210, 44);
-		leftSidePanel.add(lblTeste);
-		
+
+		btnMethodologies = new JLabel("M\u00E9todologias");
+		btnMethodologies.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0){
+				if (!panelLeftSideMethodologies.isVisible()) {
+					if ((panelLeftSideStudents.isVisible()) || (panelLeftSideReports.isVisible())
+							|| (panelLeftSideProcedures.isVisible())) {
+						setVisibilityStudentsPanelFalse();
+						setVisibilityReportsPanelFalse();
+						setVisibilityProceduresPanelFalse();
+					}
+					panelLeftSideMethodologies.setVisible(true);
+					leftSidePanel.add(panelLeftSideMethodologies);
+				} else {
+					setVisibilityMethodologiesPanelFalse();
+				}
+			}
+		});
+		btnMethodologies.setOpaque(true);
+		btnMethodologies.setForeground(Color.white);
+		btnMethodologies.setBackground(new Color(35, 164, 240));
+		btnMethodologies.setHorizontalAlignment(SwingConstants.CENTER);
+		btnMethodologies.setLabelFor(leftSidePanel);
+		btnMethodologies.setBounds(10, 176, 210, 44);
+		leftSidePanel.add(btnMethodologies);
+
 	}
-	
-	private void setVisibilityStudentsPanelFalse(){
-		btnRelatorio.setBounds(10, 66, 210, 44);
+
+	private void setVisibilityStudentsPanelFalse() {
+		btnReports.setBounds(10, 66, 210, 44);
 		btnProcedures.setBounds(10, 121, 210, 44);
-		btnMetodologias.setBounds(10, 176, 210, 44);
-		lblTeste.setBounds(10, 225, 210, 44);
+		btnMethodologies.setBounds(10, 176, 210, 44);
 		panelLeftSideStudents.setVisible(false);
 		leftSidePanel.remove(panelLeftSideStudents);
 		leftSidePanel.repaint();
 		leftSidePanel.revalidate();
 	}
-	
-	private void setVisibilityReportsPanelFalse(){
+
+	private void setVisibilityReportsPanelFalse() {
 		btnProcedures.setBounds(10, 121, 210, 44);
-		btnMetodologias.setBounds(10, 176, 210, 44);
-		lblTeste.setBounds(10, 225, 210, 44);
+		btnMethodologies.setBounds(10, 176, 210, 44);
 		panelLeftSideReports.setVisible(false);
 		leftSidePanel.remove(panelLeftSideReports);
 		leftSidePanel.repaint();
 		leftSidePanel.revalidate();
 	}
-	
-	private void setVisibilityProceduresPanelFalse(){
-		btnMetodologias.setBounds(10, 176, 210, 44);
-		lblTeste.setBounds(10, 225, 210, 44);
+
+	private void setVisibilityProceduresPanelFalse() {
+		btnMethodologies.setBounds(10, 176, 210, 44);
 		panelLeftSideProcedures.setVisible(false);
 		leftSidePanel.remove(panelLeftSideProcedures);
+		leftSidePanel.repaint();
+		leftSidePanel.revalidate();
+	}
+
+	private void setVisibilityMethodologiesPanelFalse() {
+		panelLeftSideMethodologies.setVisible(false);
+		leftSidePanel.remove(panelLeftSideMethodologies);
 		leftSidePanel.repaint();
 		leftSidePanel.revalidate();
 	}
