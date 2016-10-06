@@ -67,7 +67,7 @@ public class FrmLogin extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel ConfigPanel = new JPanel();
-		ConfigPanel.setBackground(new Color(0, 0, 0, 50));
+		ConfigPanel.setBackground(new Color(30, 144, 255, 100));
 		ConfigPanel.setBounds(33, 63, 330, 140);
 		ConfigPanel.setForeground(SystemColor.textHighlight);
 		ConfigPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
@@ -78,7 +78,7 @@ public class FrmLogin extends JFrame {
 		JTextField txtUserField = new JTextField();
 		txtUserField.setText("admin");
 		txtUserField.setMargin(new Insets(2, 5, 2, 2));
-		txtUserField.setBackground(SystemColor.control);
+		txtUserField.setBackground(Color.WHITE);
 		txtUserField.setForeground(new Color(0, 0, 51));
 		txtUserField.setBounds(123, 11, 200, 32);
 		txtUserField.setColumns(10);
@@ -88,7 +88,7 @@ public class FrmLogin extends JFrame {
 		passwordField.setText("admin");
 		passwordField.setMargin(new Insets(2, 5, 2, 2));
 		passwordField.setForeground(new Color(0, 0, 51));
-		passwordField.setBackground(SystemColor.control);
+		passwordField.setBackground(Color.WHITE);
 		passwordField.setBounds(123, 54, 200, 31);
 		ConfigPanel.add(passwordField);
 
@@ -107,7 +107,7 @@ public class FrmLogin extends JFrame {
 		btnEntrar.setMnemonic('E');
 		btnEntrar.setBounds(123, 96, 200, 34);
 		btnEntrar.setBackground(SystemColor.textHighlight);
-		btnEntrar.setForeground(Color.WHITE);
+		btnEntrar.setForeground(Color.BLACK);
 
 		ConfigPanel.add(btnEntrar);
 
@@ -118,7 +118,7 @@ public class FrmLogin extends JFrame {
 		ConfigPanel.add(lblSenha);
 
 		JCheckBox chckbxLembrarme = new JCheckBox("");
-		chckbxLembrarme.setBackground(new Color(192, 192, 192));
+		chckbxLembrarme.setBackground(new Color(30, 144, 255));
 		chckbxLembrarme.setBounds(10, 98, 21, 33);
 		ConfigPanel.add(chckbxLembrarme);
 
@@ -136,7 +136,7 @@ public class FrmLogin extends JFrame {
 		contentPane.add(lblEntrarNoSistema);
 
 		JLabel lblEntrarSistema = new JLabel("");
-		lblEntrarSistema.setIcon(new ImageIcon(FrmLogin.class.getResource("/images/16981.jpg")));
+		lblEntrarSistema.setIcon(new ImageIcon(FrmLogin.class.getResource("/images/bim_logo_414x285.png")));
 		lblEntrarSistema.setBounds(0, 0, 394, 221);
 		contentPane.add(lblEntrarSistema);
 
