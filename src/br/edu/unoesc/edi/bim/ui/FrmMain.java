@@ -43,7 +43,7 @@ public class FrmMain extends JFrame {
 		setResizable(false);
 		setForeground(Color.WHITE);
 		setFont(new Font("Base 02", Font.PLAIN, 12));
-		setTitle("BIM - Body In Moviment");
+		setTitle("BIM - Body In Movement");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmMain.class.getResource("/images/bim_logo_32x22.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, maxBounds.width, maxBounds.height);
@@ -55,16 +55,16 @@ public class FrmMain extends JFrame {
 		JPanel panelNorth = new JPanel();
 		panelNorth.setLocale(new Locale("pt", "BR"));
 		panelNorth.setBackground(Color.WHITE);
-		panelNorth.setBounds(0, 0, 1362, 46);
+		panelNorth.setBounds(0, 0, maxBounds.width, 46);
 		contentPane.add(panelNorth);
 		panelNorth.setLayout(null);
 
 		JLabel lblUsernamehere = new JLabel(userName);
-		lblUsernamehere.setBounds(915, 15, 72, 14);
+		lblUsernamehere.setBounds(maxBounds.width-454, 15, 72, 14);
 		panelNorth.add(lblUsernamehere);
 
 		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(1257, 5, 105, 35);
+		btnSair.setBounds(maxBounds.width-115, 5, 105, 35);
 		btnSair.setContentAreaFilled(false);
 		btnSair.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Cancel Filled-50.png")));
 		panelNorth.add(btnSair);
@@ -72,18 +72,18 @@ public class FrmMain extends JFrame {
 		JButton btnAjuda = new JButton("Ajuda");
 		btnAjuda.setContentAreaFilled(false);
 		btnAjuda.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Help Filled-50.png")));
-		btnAjuda.setBounds(1150, 5, 115, 35);
+		btnAjuda.setBounds(maxBounds.width-222, 5, 115, 35);
 		panelNorth.add(btnAjuda);
 
 		JButton btnsincronizar = new JButton("Sincronizar");
 		btnsincronizar.setContentAreaFilled(false);
 		btnsincronizar.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Synchronize-48.png")));
-		btnsincronizar.setBounds(1039, 5, 121, 35);
+		btnsincronizar.setBounds(maxBounds.width-340, 5, 121, 35);
 		panelNorth.add(btnsincronizar);
 
 		JLabel lblUserIcon = new JLabel("");
 		lblUserIcon.setIcon(new ImageIcon(FrmMain.class.getResource("/images/userLog.png")));
-		lblUserIcon.setBounds(997, 5, 46, 35);
+		lblUserIcon.setBounds(maxBounds.width-386, 5, 46, 35);
 		panelNorth.add(lblUserIcon);
 
 		JLabel lbllogomain = new JLabel("");
@@ -96,7 +96,7 @@ public class FrmMain extends JFrame {
 		//
 		leftSidePanel = new JPanel();
 		leftSidePanel.setBorder(null);
-		leftSidePanel.setBounds(0, 48, 230, 651);
+		leftSidePanel.setBounds(0, 48, 230, maxBounds.height);
 		leftSidePanel.setBackground(Color.white);
 		contentPane.add(leftSidePanel);
 		leftSidePanel.setLayout(null);
@@ -145,6 +145,8 @@ public class FrmMain extends JFrame {
 					btnMethodologies.setBounds(10, 541, 210, 44);
 					panelLeftSideStudents.setVisible(true);
 					leftSidePanel.add(panelLeftSideStudents);
+					leftSidePanel.repaint();
+					leftSidePanel.revalidate();
 				} else {
 					setVisibilityStudentsPanelFalse();
 				}
@@ -173,6 +175,8 @@ public class FrmMain extends JFrame {
 					btnMethodologies.setBounds(10, 541, 210, 44);
 					panelLeftSideReports.setVisible(true);
 					leftSidePanel.add(panelLeftSideReports);
+					leftSidePanel.repaint();
+					leftSidePanel.repaint();
 				} else {
 					setVisibilityReportsPanelFalse();
 				}
@@ -200,6 +204,8 @@ public class FrmMain extends JFrame {
 					btnMethodologies.setBounds(10, 541, 210, 44);
 					panelLeftSideProcedures.setVisible(true);
 					leftSidePanel.add(panelLeftSideProcedures);
+					leftSidePanel.repaint();
+					leftSidePanel.revalidate();
 				} else {
 					setVisibilityProceduresPanelFalse();
 				}
@@ -215,7 +221,7 @@ public class FrmMain extends JFrame {
 
 		btnMethodologies = new JLabel("M\u00E9todologias");
 		btnMethodologies.addMouseListener(new MouseAdapter() {
-			@Override
+			@Override 
 			public void mouseClicked(MouseEvent arg0){
 				if (!panelLeftSideMethodologies.isVisible()) {
 					if ((panelLeftSideStudents.isVisible()) || (panelLeftSideReports.isVisible())
@@ -224,8 +230,11 @@ public class FrmMain extends JFrame {
 						setVisibilityReportsPanelFalse();
 						setVisibilityProceduresPanelFalse();
 					}
+					btnMethodologies.setBounds(10, 176, 210, 44);
 					panelLeftSideMethodologies.setVisible(true);
 					leftSidePanel.add(panelLeftSideMethodologies);
+					leftSidePanel.repaint();
+					leftSidePanel.revalidate();
 				} else {
 					setVisibilityMethodologiesPanelFalse();
 				}

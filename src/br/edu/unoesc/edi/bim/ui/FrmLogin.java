@@ -76,6 +76,7 @@ public class FrmLogin extends JFrame {
 		contentPane.add(ConfigPanel);
 
 		JTextField txtUserField = new JTextField();
+		txtUserField.setText("admin");
 		txtUserField.setMargin(new Insets(2, 5, 2, 2));
 		txtUserField.setBackground(SystemColor.control);
 		txtUserField.setForeground(new Color(0, 0, 51));
@@ -84,6 +85,7 @@ public class FrmLogin extends JFrame {
 		ConfigPanel.add(txtUserField);
 
 		JPasswordField passwordField = new JPasswordField();
+		passwordField.setText("admin");
 		passwordField.setMargin(new Insets(2, 5, 2, 2));
 		passwordField.setForeground(new Color(0, 0, 51));
 		passwordField.setBackground(SystemColor.control);
