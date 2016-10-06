@@ -16,6 +16,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
+import javax.swing.JTabbedPane;
+import javax.swing.border.TitledBorder;
+import java.awt.SystemColor;
 
 public class FrmMain extends JFrame {
 
@@ -46,13 +49,15 @@ public class FrmMain extends JFrame {
 		setTitle("BIM - Body In Movement");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmMain.class.getResource("/images/bim_logo_32x22.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, maxBounds.width, maxBounds.height);
+		setBounds(0, 0, maxBounds.width, maxBounds.height-5);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JPanel panelNorth = new JPanel();
+		panelNorth.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelNorth.setLocale(new Locale("pt", "BR"));
 		panelNorth.setBackground(Color.WHITE);
 		panelNorth.setBounds(0, 0, maxBounds.width, 46);
@@ -95,7 +100,7 @@ public class FrmMain extends JFrame {
 		// All side Panels below //
 		//
 		leftSidePanel = new JPanel();
-		leftSidePanel.setBorder(null);
+		leftSidePanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		leftSidePanel.setBounds(0, 48, 230, maxBounds.height);
 		leftSidePanel.setBackground(Color.white);
 		contentPane.add(leftSidePanel);
@@ -247,6 +252,11 @@ public class FrmMain extends JFrame {
 		btnMethodologies.setLabelFor(leftSidePanel);
 		btnMethodologies.setBounds(10, 176, 210, 44);
 		leftSidePanel.add(btnMethodologies);
+		
+		JTabbedPane tabbedPrincipal = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPrincipal.setBackground(Color.WHITE);
+		tabbedPrincipal.setBounds(232, 48, maxBounds.width-238, maxBounds.height-56);
+		contentPane.add(tabbedPrincipal);
 
 	}
 
