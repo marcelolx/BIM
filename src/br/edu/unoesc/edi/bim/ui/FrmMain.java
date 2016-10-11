@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Locale;
 
 import javax.swing.ImageIcon;
@@ -12,13 +14,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.event.MouseEvent;
-import javax.swing.SwingConstants;
-import java.awt.event.MouseAdapter;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.SystemColor;
+
+import br.edu.unoesc.edi.bim.components.ButtonTabComponent;
 
 public class FrmMain extends JFrame {
 
@@ -49,7 +50,7 @@ public class FrmMain extends JFrame {
 		setTitle("BIM - Body In Movement");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmMain.class.getResource("/images/bim_logo_32x22.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, maxBounds.width, maxBounds.height-5);
+		setBounds(0, 0, maxBounds.width, maxBounds.height - 5);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -65,11 +66,11 @@ public class FrmMain extends JFrame {
 		panelNorth.setLayout(null);
 
 		JLabel lblUsernamehere = new JLabel(userName);
-		lblUsernamehere.setBounds(maxBounds.width-454, 26, 72, 14);
+		lblUsernamehere.setBounds(maxBounds.width - 454, 26, 72, 14);
 		panelNorth.add(lblUsernamehere);
 
 		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(maxBounds.width-115, 11, 105, 35);
+		btnSair.setBounds(maxBounds.width - 115, 11, 105, 35);
 		btnSair.setContentAreaFilled(false);
 		btnSair.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Cancel Filled-50.png")));
 		panelNorth.add(btnSair);
@@ -77,18 +78,18 @@ public class FrmMain extends JFrame {
 		JButton btnAjuda = new JButton("Ajuda");
 		btnAjuda.setContentAreaFilled(false);
 		btnAjuda.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Help Filled-50.png")));
-		btnAjuda.setBounds(maxBounds.width-222, 11, 115, 35);
+		btnAjuda.setBounds(maxBounds.width - 222, 11, 115, 35);
 		panelNorth.add(btnAjuda);
 
 		JButton btnsincronizar = new JButton("Sincronizar");
 		btnsincronizar.setContentAreaFilled(false);
 		btnsincronizar.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Synchronize-48.png")));
-		btnsincronizar.setBounds(maxBounds.width-340, 11, 121, 35);
+		btnsincronizar.setBounds(maxBounds.width - 340, 11, 121, 35);
 		panelNorth.add(btnsincronizar);
 
 		JLabel lblUserIcon = new JLabel("");
 		lblUserIcon.setIcon(new ImageIcon(FrmMain.class.getResource("/images/userLog.png")));
-		lblUserIcon.setBounds(maxBounds.width-386, 11, 46, 35);
+		lblUserIcon.setBounds(maxBounds.width - 386, 11, 46, 35);
 		panelNorth.add(lblUserIcon);
 
 		JLabel lbllogomain = new JLabel("");
@@ -101,7 +102,7 @@ public class FrmMain extends JFrame {
 		//
 		leftSidePanel = new JPanel();
 		leftSidePanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		leftSidePanel.setBounds(0, 57, 230, maxBounds.height-93);
+		leftSidePanel.setBounds(0, 57, 230, maxBounds.height - 93);
 		leftSidePanel.setBackground(Color.white);
 		contentPane.add(leftSidePanel);
 		leftSidePanel.setLayout(null);
@@ -198,7 +199,7 @@ public class FrmMain extends JFrame {
 		btnProcedures = new JLabel("Procedimentos");
 		btnProcedures.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0){
+			public void mouseClicked(MouseEvent arg0) {
 				if (!panelLeftSideProcedures.isVisible()) {
 					if ((panelLeftSideReports.isVisible()) || (panelLeftSideStudents.isVisible())
 							|| (panelLeftSideMethodologies.isVisible())) {
@@ -226,8 +227,8 @@ public class FrmMain extends JFrame {
 
 		btnMethodologies = new JLabel("M\u00E9todologias");
 		btnMethodologies.addMouseListener(new MouseAdapter() {
-			@Override 
-			public void mouseClicked(MouseEvent arg0){
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
 				if (!panelLeftSideMethodologies.isVisible()) {
 					if ((panelLeftSideStudents.isVisible()) || (panelLeftSideReports.isVisible())
 							|| (panelLeftSideProcedures.isVisible())) {
@@ -252,12 +253,28 @@ public class FrmMain extends JFrame {
 		btnMethodologies.setLabelFor(leftSidePanel);
 		btnMethodologies.setBounds(10, 176, 210, 44);
 		leftSidePanel.add(btnMethodologies);
-		
+
 		JTabbedPane tabbedPrincipal = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPrincipal.setBackground(Color.WHITE);
-		tabbedPrincipal.setBounds(232, 57, maxBounds.width-238, maxBounds.height-78);
+		tabbedPrincipal.setBounds(232, 57, maxBounds.width - 238, maxBounds.height - 78);
 		contentPane.add(tabbedPrincipal);
 
+		
+		JTabbedPane tabbedPane2 = new JTabbedPane(JTabbedPane.TOP);
+		ButtonTabComponent panel = new ButtonTabComponent(tabbedPane2);
+		tabbedPrincipal.addTab("New tab", panel);
+
+		/*ButtonTabComponent tabbedPane2 = new ButtonTabComponent(tabbedPrincipal);
+		tabbedPrincipal.addTab("Test tab", tabbedPane2);
+
+		ButtonTabComponent tabbedPane3 = new ButtonTabComponent(tabbedPrincipal);
+		tabbedPrincipal.addTab("Test tab", tabbedPane3);
+
+		ButtonTabComponent tabbedPane4 = new ButtonTabComponent(tabbedPrincipal);
+		tabbedPrincipal.addTab("Test tab", tabbedPane4);*/
+
+		tabbedPrincipal.repaint();
+		tabbedPrincipal.revalidate();
 	}
 
 	private void setVisibilityStudentsPanelFalse() {
