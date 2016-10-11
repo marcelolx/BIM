@@ -29,6 +29,8 @@ import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Users;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 /***
  * @author Jonathan Cestari / Marcelo Lauxen Form da tela de login para usuários
@@ -67,7 +69,7 @@ public class FrmLogin extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel ConfigPanel = new JPanel();
-		ConfigPanel.setBackground(new Color(30, 144, 255, 100));
+		ConfigPanel.setBackground(new Color(0, 0, 0, 225));
 		ConfigPanel.setBounds(33, 63, 330, 140);
 		ConfigPanel.setForeground(SystemColor.textHighlight);
 		ConfigPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
@@ -76,18 +78,20 @@ public class FrmLogin extends JFrame {
 		contentPane.add(ConfigPanel);
 
 		JTextField txtUserField = new JTextField();
+		txtUserField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtUserField.setText("admin");
 		txtUserField.setMargin(new Insets(2, 5, 2, 2));
 		txtUserField.setBackground(Color.WHITE);
-		txtUserField.setForeground(new Color(0, 0, 51));
+		txtUserField.setForeground(Color.BLACK);
 		txtUserField.setBounds(123, 11, 200, 32);
 		txtUserField.setColumns(10);
 		ConfigPanel.add(txtUserField);
 
 		JPasswordField passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		passwordField.setText("admin");
 		passwordField.setMargin(new Insets(2, 5, 2, 2));
-		passwordField.setForeground(new Color(0, 0, 51));
+		passwordField.setForeground(Color.BLACK);
 		passwordField.setBackground(Color.WHITE);
 		passwordField.setBounds(123, 54, 200, 31);
 		ConfigPanel.add(passwordField);
@@ -97,6 +101,12 @@ public class FrmLogin extends JFrame {
 		lblLogin.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
 		lblLogin.setBounds(10, 12, 99, 29);
 		ConfigPanel.add(lblLogin);
+		
+		JLabel lblLogin2 = new JLabel("USU\u00C1RIO");
+		lblLogin2.setForeground(Color.BLACK);
+		lblLogin2.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
+		lblLogin2.setBounds(11, 13, 99, 29);
+		ConfigPanel.add(lblLogin2);
 
 		JButton btnEntrar = new JButton("ENTRAR");
 		btnEntrar.setFocusTraversalPolicyProvider(true);
@@ -116,11 +126,20 @@ public class FrmLogin extends JFrame {
 		lblSenha.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
 		lblSenha.setBounds(10, 54, 99, 28);
 		ConfigPanel.add(lblSenha);
+		
+		JLabel lblSenha2 = new JLabel("SENHA");
+		lblSenha2.setForeground(Color.BLACK);
+		lblSenha2.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
+		lblSenha2.setBounds(11, 55, 99, 28);
+		ConfigPanel.add(lblSenha2);
 
 		JCheckBox chckbxLembrarme = new JCheckBox("");
-		chckbxLembrarme.setBackground(new Color(30, 144, 255));
+		chckbxLembrarme.setHideActionText(true);
+		chckbxLembrarme.setBackground(new Color(30, 30, 30));
 		chckbxLembrarme.setBounds(10, 98, 21, 33);
 		ConfigPanel.add(chckbxLembrarme);
+		chckbxLembrarme.repaint();
+		chckbxLembrarme.revalidate();
 
 		JLabel lblLembrarme = new JLabel("Lembrar-me");
 		lblLembrarme.setForeground(Color.WHITE);
@@ -128,17 +147,35 @@ public class FrmLogin extends JFrame {
 		ConfigPanel.add(lblLembrarme);
 		ConfigPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtUserField, passwordField, btnEntrar, chckbxLembrarme}));
 
-		JLabel lblEntrarNoSistema = new JLabel("ENTRAR NO SISTEMA");
+		JLabel lblEntrarNoSistema = new JLabel("BIM - BODY IN MOVEMENT");
+		lblEntrarNoSistema.setForeground(Color.BLACK);
 		lblEntrarNoSistema.setFont(new Font("BankGothic Lt BT", Font.PLAIN, 22));
 		lblEntrarNoSistema.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblEntrarNoSistema.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEntrarNoSistema.setBounds(36, 23, 327, 29);
 		contentPane.add(lblEntrarNoSistema);
+		
+		JLabel lblEntrarNoSistema2 = new JLabel("BIM - BODY IN MOVEMENT");
+		lblEntrarNoSistema2.setForeground(Color.WHITE);
+		lblEntrarNoSistema2.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblEntrarNoSistema2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEntrarNoSistema2.setFont(new Font("BankGothic Lt BT", Font.PLAIN, 22));
+		lblEntrarNoSistema2.setBounds(38, 25, 327, 29);
+		contentPane.add(lblEntrarNoSistema2);
+		
+		JPanel Transparency = new JPanel();
+		Transparency.setBackground(new Color(255, 255, 255, 100));
+		Transparency.setForeground(Color.WHITE);
+		Transparency.setBounds(0, 0, 394, 221);
+		contentPane.add(Transparency);
 
 		JLabel lblEntrarSistema = new JLabel("");
 		lblEntrarSistema.setIcon(new ImageIcon(FrmLogin.class.getResource("/images/bim_logo_414x285.png")));
 		lblEntrarSistema.setBounds(0, 0, 394, 221);
 		contentPane.add(lblEntrarSistema);
+		
+		contentPane.repaint();
+		contentPane.revalidate();
 
 		btnEntrar.addActionListener(new ActionListener() {
 
