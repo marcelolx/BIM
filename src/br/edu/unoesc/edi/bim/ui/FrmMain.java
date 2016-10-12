@@ -16,10 +16,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import br.edu.unoesc.edi.bim.components.ButtonTabComponent;
+import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
+import javax.swing.JSeparator;
+import java.awt.ComponentOrientation;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Point;
 
 public class FrmMain extends JFrame {
 
@@ -254,27 +260,8 @@ public class FrmMain extends JFrame {
 		btnMethodologies.setBounds(10, 176, 210, 44);
 		leftSidePanel.add(btnMethodologies);
 
-		JTabbedPane tabbedPrincipal = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPrincipal.setBackground(Color.WHITE);
-		tabbedPrincipal.setBounds(232, 57, maxBounds.width - 238, maxBounds.height - 78);
-		contentPane.add(tabbedPrincipal);
-
-		
-		JTabbedPane tabbedPane2 = new JTabbedPane(JTabbedPane.TOP);
-		ButtonTabComponent panel = new ButtonTabComponent(tabbedPane2);
-		tabbedPrincipal.addTab("New tab", panel);
-
-		/*ButtonTabComponent tabbedPane2 = new ButtonTabComponent(tabbedPrincipal);
-		tabbedPrincipal.addTab("Test tab", tabbedPane2);
-
-		ButtonTabComponent tabbedPane3 = new ButtonTabComponent(tabbedPrincipal);
-		tabbedPrincipal.addTab("Test tab", tabbedPane3);
-
-		ButtonTabComponent tabbedPane4 = new ButtonTabComponent(tabbedPrincipal);
-		tabbedPrincipal.addTab("Test tab", tabbedPane4);*/
-
-		tabbedPrincipal.repaint();
-		tabbedPrincipal.revalidate();
+		//adiciona jtabbedpane com botão de fechar
+		contentPane.add(new CloseableTabbedPane().makeUI(maxBounds));
 	}
 
 	private void setVisibilityStudentsPanelFalse() {

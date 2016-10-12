@@ -1,77 +1,41 @@
+/**
+ * 
+ */
 package br.edu.unoesc.edi.bim.components;
 
 import java.awt.AWTEvent;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLayer;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
 import javax.swing.plaf.LayerUI;
 
-public class CloseableTabbedPaneTest {
-	public JComponent makeUI() {
-		UIManager.put("TabbedPane.tabInsets", new Insets(2, 2, 2, 50));
-		final JTabbedPane tabbedPane = new JTabbedPane();
-		tabbedPane.addTab("aaaaaaaaaaaaaaaa", new JPanel());
-		tabbedPane.addTab("bbbbbbbb", new JPanel());
-		tabbedPane.addTab("ccc", new JPanel());
-
-		JPanel p = new JPanel(new BorderLayout());
-		p.add(new JLayer<JTabbedPane>(tabbedPane, new CloseableTabbedPaneLayerUI()));
-		p.add(new JButton(new AbstractAction("add tab") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				tabbedPane.addTab("test", new JPanel());
-			}
-		}), BorderLayout.SOUTH);
-		return p;
-	}
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				createAndShowGUI();
-			}
-		});
-	}
-
-	public static void createAndShowGUI() {
-		JFrame f = new JFrame();
-		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		f.getContentPane().add(new CloseableTabbedPaneTest().makeUI());
-		f.setSize(320, 240);
-		f.setLocationRelativeTo(null);
-		f.setVisible(true);
-	}
-}
-
-class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
+/**
+ * @author Marcelo
+ *
+ */
+public class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
 	private final JPanel p = new JPanel();
 	private final Point pt = new Point(-100, -100);
-	private final JButton button = new JButton("x") {
+	private final JButton button = new JButton() {
+
 		@Override
 		public Dimension getPreferredSize() {
 			return new Dimension(16, 16);
 		}
 	};
+	
 
 	public CloseableTabbedPaneLayerUI() {
 		super();
@@ -80,6 +44,7 @@ class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
 		button.setRolloverEnabled(false);
+		button.setIcon(new ImageIcon(CloseableTabbedPane.class.getResource("/images/Delete-16.png")));
 	}
 
 	@Override
@@ -118,7 +83,7 @@ class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
 			pt.setLocation(e.getPoint());
 			JTabbedPane tabbedPane = (JTabbedPane) l.getView();
 			int index = tabbedPane.indexAtLocation(pt.x, pt.y);
-			if (index >= 0) {
+			if (index >= 1) {
 				Rectangle rect = tabbedPane.getBoundsAt(index);
 				Dimension d = button.getPreferredSize();
 				int x = rect.x + rect.width - d.width - 2;
