@@ -16,7 +16,11 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import br.edu.unoesc.edi.bim.ui.TabAluno;
-
+/**
+ * 
+ * @author Marcelo
+ *
+ */
 public class CloseableTabbedPane {
 	public JComponent makeUI(Rectangle maxBounds) {
 		UIManager.put("TabbedPane.tabInsets", new Insets(2, 2, 2, 50));

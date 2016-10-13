@@ -10,7 +10,11 @@ import javax.swing.JTabbedPane;
 import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
 import br.edu.unoesc.edi.bim.components.JImage;
 import br.edu.unoesc.edi.bim.components.JSearchField;
-
+/**
+ * 
+ * @author Marcelo
+ *
+ */
 public class TabAluno {
 	public static void tabAluno(JTabbedPane mainPane){
 		JPanel pane = new JPanel();
