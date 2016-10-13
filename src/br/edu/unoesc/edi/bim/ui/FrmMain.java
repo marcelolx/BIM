@@ -4,8 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Locale;
@@ -15,7 +18,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
@@ -101,6 +106,10 @@ public class FrmMain extends JFrame {
 		lbllogomain.setBounds(10, 5, 72, 41);
 		panelNorth.add(lbllogomain);
 
+		UIManager.put("TabbedPane.tabInsets", new Insets(2, 2, 2, 50));
+		final JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane.setBounds(232, 57, maxBounds.width - 238, maxBounds.height - 78);
+		
 		//
 		// All side Panels below //
 		//
@@ -128,12 +137,27 @@ public class FrmMain extends JFrame {
 		panelLeftSideStudents.add(listGroupsOfStudentsPanel);
 		
 		JButton btnAddStudents = new JButton();
+		btnAddStudents.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TabCadastraAluno.tabCadastraAluno(tabbedPane);
+			}
+		});
 		btnAddStudents.setContentAreaFilled(false);
 		btnAddStudents.setIcon(new ImageIcon(FrmMain.class.getResource("/images/addSingleStudent-icon.png")));
 		btnAddStudents.setBounds(2, panelLeftSideStudents.getHeight()-62, (panelLeftSideStudents.getWidth()/2)-4, 60);
 		panelLeftSideStudents.add(btnAddStudents);
 		
 		JButton btnCreateNewGroup = new JButton();
+		btnCreateNewGroup.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//TODO
+				TabTeste.tabAluno(tabbedPane);
+			}
+		});
 		btnCreateNewGroup.setContentAreaFilled(false);
 		btnCreateNewGroup.setIcon(new ImageIcon(FrmMain.class.getResource("/images/addNewGroupOfStudens-icon.png")));
 		btnCreateNewGroup.setBounds((panelLeftSideStudents.getWidth()/2)+2, panelLeftSideStudents.getHeight()-62, (panelLeftSideStudents.getWidth()/2)-4, 60);
@@ -288,7 +312,8 @@ public class FrmMain extends JFrame {
 		leftSidePanel.add(btnMethodologies);
 
 		//adiciona jtabbedpane com botão de fechar
-		contentPane.add(new CloseableTabbedPane().makeUI(maxBounds));
+		contentPane.add(new CloseableTabbedPane().makeUI(maxBounds, tabbedPane));
+		TabAluno.tabAluno(tabbedPane);
 	}
 
 	private void setVisibilityStudentsPanelFalse() {

@@ -17,8 +17,8 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  * @author Marcelo
  *
  */
-public class TabAluno {
-	
+public class TabTeste {
+	//TODO
 	public static void tabAluno(JTabbedPane mainPane){
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
@@ -52,6 +52,7 @@ public class TabAluno {
 		pane.add(northTabbedPane);
 		pane.add(centralTabbedPane);
 		
-		mainPane.addTab("Alunos", pane);
+		pane.setVisible(true);
+		mainPane.addTab("Adicionar Grupo", pane);
 	}
 }

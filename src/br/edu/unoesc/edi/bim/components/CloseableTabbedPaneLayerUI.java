@@ -26,9 +26,18 @@ import javax.swing.plaf.LayerUI;
  *
  */
 public class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel p = new JPanel();
 	private final Point pt = new Point(-100, -100);
 	private final JButton button = new JButton() {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
 		@Override
 		public Dimension getPreferredSize() {
