@@ -141,7 +141,7 @@ public class FrmMain extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TabCadastraAluno.tabCadastraAluno(tabbedPane);
+				TabSingUpStudent.init(tabbedPane);
 			}
 		});
 		btnAddStudents.setContentAreaFilled(false);
@@ -313,7 +313,7 @@ public class FrmMain extends JFrame {
 
 		//adiciona jtabbedpane com botão de fechar
 		contentPane.add(new CloseableTabbedPane().makeUI(maxBounds, tabbedPane));
-		TabAluno.tabAluno(tabbedPane);
+		TabStudent.init(tabbedPane);
 	}
 
 	private void setVisibilityStudentsPanelFalse() {

@@ -17,9 +17,9 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  * @author Marcelo
  *
  */
-public class TabAluno {
+public class TabStudent {
 	
-	public static void tabAluno(JTabbedPane mainPane){
+	public static void init(JTabbedPane mainPane){
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
 		pane.setBackground(Color.white);

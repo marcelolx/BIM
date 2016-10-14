@@ -34,12 +34,12 @@ public class Teste {
     p.add(new JLayer<JTabbedPane>(tabbedPane, new CloseableTabbedPaneLayerUI()));
     p.add(new JButton(new AbstractAction("add tab") {
       @Override public void actionPerformed(ActionEvent e) {
-        TabAluno.tabAluno(tabbedPane);
-        TabCadastraAluno.tabCadastraAluno(tabbedPane);
+        TabStudent.init(tabbedPane);
+        TabSingUpStudent.init(tabbedPane);
       }
     }), BorderLayout.SOUTH);
     
-    TabAluno.tabAluno(tabbedPane);
+    TabStudent.init(tabbedPane);
     return p;
   }
   public static void main(String[] args) {
