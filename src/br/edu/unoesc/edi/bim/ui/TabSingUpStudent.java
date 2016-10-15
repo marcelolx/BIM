@@ -28,11 +28,11 @@ public class TabSingUpStudent {
 		pane.setLayout(null);
 		pane.setBackground(Color.white);
 		
-		JPanel northTabbedPane = new JPanel();
-		northTabbedPane.setLayout(null);
-		northTabbedPane.setBounds(1, 0, mainPane.getWidth()-9, 50);
-		northTabbedPane.setBackground(Color.white);
-		northTabbedPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		JPanel northPane = new JPanel();
+		northPane.setLayout(null);
+		northPane.setBounds(1, 0, mainPane.getWidth()-9, 50);
+		northPane.setBackground(Color.white);
+		northPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		JLabel lblCadastroNorth = new JLabel("Cadastro de Aluno");
 		lblCadastroNorth.setFont(new Font("Base 02", Font.PLAIN, 22));
@@ -40,7 +40,7 @@ public class TabSingUpStudent {
 		lblCadastroNorth.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastroNorth.setBounds(1, 1, mainPane.getWidth()-11, 40);
 		lblCadastroNorth.setVisible(true);
-		northTabbedPane.add(lblCadastroNorth);
+		northPane.add(lblCadastroNorth);
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(null);
@@ -202,7 +202,7 @@ public class TabSingUpStudent {
 		JLabel btnReset = new JLabel("Limpar");
 		btnReset.setForeground(Color.white);
 		btnReset.setOpaque(true);
-		btnReset.setBackground(new Color(64, 130, 240));
+		btnReset.setBackground(new Color(35, 164, 240));
 		btnReset.setHorizontalAlignment(SwingConstants.CENTER);
 		btnReset.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+252, 452, 95, 44);
 		centerPanel.add(btnReset);
@@ -210,12 +210,12 @@ public class TabSingUpStudent {
 		JLabel btnSave = new JLabel("Salvar");
 		btnSave.setForeground(Color.white);
 		btnSave.setOpaque(true);
-		btnSave.setBackground(new Color(64, 130, 240));
+		btnSave.setBackground(new Color(35, 164, 240));
 		btnSave.setHorizontalAlignment(SwingConstants.CENTER);
 		btnSave.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+349, 452, 95, 44);
 		centerPanel.add(btnSave);
 		
-		pane.add(northTabbedPane);
+		pane.add(northPane);
 		pane.add(centerPanel);
 		pane.setVisible(true);
 

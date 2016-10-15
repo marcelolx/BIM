@@ -156,7 +156,7 @@ public class FrmMain extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO
-				TabTeste.tabAluno(tabbedPane);
+				TabGroupsRegister.tabAluno(tabbedPane);
 				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
 			}
 		});

@@ -15,6 +15,8 @@ import br.edu.unoesc.edi.bim.actions.ActionJlabelReports;
 /**
  * 
  * @author Marcelo
+ * TODO 
+ * 	Classe que precisa ser refeita para trabalhar com a base de dados, no momento só para exemplo
  *
  */
 public class JScrollBarAdder {
@@ -22,13 +24,19 @@ public class JScrollBarAdder {
 	private static JScrollPane scrollPaneGroups;
 	private static JScrollPane scrollPaneReports;
 	private static JScrollPane scrollPaneGroupsRadioButton;
+	private static JScrollPane scrollPaneStudents;
+	private static JScrollPane scrollPaneStudentsNewGroup;
 	private static JPanel panelGroups;
 	private static JPanel panelReports;
 	private static JPanel panelGroupsRadioButton;
-
+	private static JPanel panelStudents;
+	private static JPanel panelStudentsNewGroup;
+	
 	private static JLabel[] group = new JLabel[100];
 	private static JLabel[] reports = new JLabel[100];
 	private static JRadioButton[] groupList = new JRadioButton[100];
+	private static JRadioButton[] students = new JRadioButton[100];
+	private static JRadioButton[] newGroupStudents = new JRadioButton[100];
 
 	public static JScrollPane getScrollPaneGroups() {
 		if (scrollPaneGroups == null) {
@@ -81,9 +89,43 @@ public class JScrollBarAdder {
 		return panelGroupsRadioButton;
 	}
 
+	public static JScrollPane getScrollPaneStudents() {
+		if (scrollPaneStudents == null) {
+			scrollPaneStudents = new JScrollPane();
+			scrollPaneStudents.setViewportView(getPanelStudents());
+		}
+		return scrollPaneStudents;
+	}
+
+	private static JPanel getPanelStudents() {
+		if (panelStudents == null) {
+			panelStudents = new JPanel();
+			panelStudents.setLayout(new BoxLayout(panelStudents, BoxLayout.Y_AXIS));
+			panelStudents.setBackground(Color.white);
+		}
+		return panelStudents;
+	}
+	
+	public static JScrollPane getScrollPaneStudentsNewGroup() {
+		if (scrollPaneStudentsNewGroup == null) {
+			scrollPaneStudentsNewGroup = new JScrollPane();
+			scrollPaneStudentsNewGroup.setViewportView(getPanelStudentsNewGroup());
+		}
+		return scrollPaneStudentsNewGroup;
+	}
+
+	private static JPanel getPanelStudentsNewGroup() {
+		if (panelStudentsNewGroup == null) {
+			panelStudentsNewGroup= new JPanel();
+			panelStudentsNewGroup.setLayout(new BoxLayout(panelStudentsNewGroup, BoxLayout.Y_AXIS));
+			panelStudentsNewGroup.setBackground(Color.white);
+		}
+		return panelStudentsNewGroup;
+	}
+	
 	/*
-	 * Método para listar todos os grupos de alunos cadastrados TODO Necessário
-	 * pegar todos os grupos do DB ainda e listar.
+	 * Método para listar todos os grupos de alunos cadastrados 
+	 * TODO Necessário pegar todos os grupos do DB ainda e listar.
 	 */
 	public static void listGroupsLabels() {
 		for (int i = 0; i < 50; i++) {
@@ -124,6 +166,34 @@ public class JScrollBarAdder {
 			panelReports.updateUI();
 			panelReports.repaint();
 			panelReports.revalidate();
+		}
+	}
+	
+	public static void listStudents() {
+		for (int i = 0; i < 50; i++) {
+			students[i] = new JRadioButton();
+			students[i].setForeground(Color.gray);
+			students[i].setBackground(Color.white);
+			students[i].setFont(new Font("Sans Serif", Font.PLAIN, 13));
+			students[i].setText("Report " + i);
+			panelStudents.add(students[i]);
+			panelStudents.updateUI();
+			panelStudents.repaint();
+			panelStudents.revalidate();
+		}
+	}
+	
+	public static void listStudentsNewGroup() {
+		for (int i = 0; i < 50; i++) {
+			newGroupStudents[i] = new JRadioButton();
+			newGroupStudents[i].setForeground(Color.gray);
+			newGroupStudents[i].setBackground(Color.white);
+			newGroupStudents[i].setFont(new Font("Sans Serif", Font.PLAIN, 13));
+			newGroupStudents[i].setText("Report " + i);
+			panelStudentsNewGroup.add(newGroupStudents[i]);
+			panelStudentsNewGroup.updateUI();
+			panelStudentsNewGroup.repaint();
+			panelStudentsNewGroup.revalidate();
 		}
 	}
 
