@@ -198,7 +198,6 @@ public class FrmLogin extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 			}
 		});
 	}

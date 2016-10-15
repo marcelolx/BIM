@@ -133,7 +133,7 @@ public class FrmMain extends JFrame {
 		listGroupsOfStudentsPanel.setBackground(Color.white);
 		listGroupsOfStudentsPanel.setLayout(new BorderLayout(0, 0));
 		listGroupsOfStudentsPanel.setVisible(true);
-		listGroupsOfStudentsPanel.add(JScrollBarAdder.getScrollPane(), BorderLayout.CENTER);
+		listGroupsOfStudentsPanel.add(JScrollBarAdder.getScrollPaneGroups(), BorderLayout.CENTER);
 		panelLeftSideStudents.add(listGroupsOfStudentsPanel);
 		
 		JButton btnAddStudents = new JButton();
@@ -142,6 +142,7 @@ public class FrmMain extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TabSingUpStudent.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
 			}
 		});
 		btnAddStudents.setContentAreaFilled(false);
@@ -156,6 +157,7 @@ public class FrmMain extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO
 				TabTeste.tabAluno(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
 			}
 		});
 		btnCreateNewGroup.setContentAreaFilled(false);
@@ -170,7 +172,7 @@ public class FrmMain extends JFrame {
 		panelLeftSideReports.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideReports.setLayout(new BorderLayout(0, 0));
 		panelLeftSideReports.setVisible(false);
-		panelLeftSideReports.add(JScrollBarAdder.getScrollPane2(), BorderLayout.CENTER);
+		panelLeftSideReports.add(JScrollBarAdder.getScrollPaneReports(), BorderLayout.CENTER);
 
 		// panel of procedures
 		panelLeftSideProcedures = new JPanel();
@@ -205,7 +207,7 @@ public class FrmMain extends JFrame {
 					panelLeftSideStudents.setVisible(true);
 					leftSidePanel.add(panelLeftSideStudents);
 					//call method to list groups of students on database
-					JScrollBarAdder.listGroups();
+					JScrollBarAdder.listGroupsLabels();
 					leftSidePanel.repaint();
 					leftSidePanel.revalidate();
 				} else {

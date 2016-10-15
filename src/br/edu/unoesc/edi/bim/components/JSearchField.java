@@ -1,5 +1,6 @@
 package br.edu.unoesc.edi.bim.components;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ public class JSearchField extends JTextField {
         this.emptyTextLabel = new JLabel();
         this.iconImage = new JImage();
         this.setLayout(new BorderLayout());
+        this.setForeground(Color.gray);
         this.add(emptyTextLabel, BorderLayout.WEST);
         this.add(iconImage, BorderLayout.EAST);
         DocumentListener listener = new DocumentListener() {

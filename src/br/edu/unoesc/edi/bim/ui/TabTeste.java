@@ -53,6 +53,6 @@ public class TabTeste {
 		pane.add(centralTabbedPane);
 		
 		pane.setVisible(true);
-		mainPane.addTab("Adicionar Grupo", pane);
+		mainPane.addTab("Novo Grupo", pane);
 	}
 }
