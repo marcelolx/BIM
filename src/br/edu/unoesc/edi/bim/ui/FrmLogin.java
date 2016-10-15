@@ -29,8 +29,6 @@ import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Users;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 /***
  * @author Jonathan Cestari / Marcelo Lauxen Form da tela de login para usuários
