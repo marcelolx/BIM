@@ -237,7 +237,7 @@ public class FrmMain extends JFrame {
 					btnProcedures.setBounds(10, 536, 210, 44);
 					btnMethodologies.setBounds(10, 586, 210, 44);
 					//Method called list types of reports
-					JScrollBarAdder.listTypeOfReports();
+					JScrollBarAdder.listReportsLabels();
 					panelLeftSideReports.setVisible(true);
 					leftSidePanel.add(panelLeftSideReports);
 					leftSidePanel.repaint();

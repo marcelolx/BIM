@@ -21,6 +21,7 @@ import javax.swing.border.TitledBorder;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Students;
+import br.edu.unoesc.edi.bim.util.StringReturner;
 
 /**
  * 
@@ -249,7 +250,9 @@ public class TabSingUpStudent {
 					JOptionPane.showMessageDialog(null, "Selecione o gênero");
 				students.setWeight(Float.parseFloat(txtWeight.getText()));
 				students.setHeight(Float.parseFloat(txtHeight.getText()));
-
+				String groups = StringReturner.returnSelectedGroups();
+				groups = groups.substring(0, groups.length()-1);
+				students.setGroups(groups);
 				try {
 					int t = DAOManager.studentsDAO.create(students);
 					if(t==1){

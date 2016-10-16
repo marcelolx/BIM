@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 
 import br.edu.unoesc.edi.bim.actions.ActionJlabelGroups;
 import br.edu.unoesc.edi.bim.actions.ActionJlabelReports;
+import br.edu.unoesc.edi.bim.util.StringReturner;
 
 /**
  * 
@@ -32,11 +33,11 @@ public class JScrollBarAdder {
 	private static JPanel panelStudents;
 	private static JPanel panelStudentsNewGroup;
 	
-	private static JLabel[] group = new JLabel[100];
-	private static JLabel[] reports = new JLabel[100];
-	private static JRadioButton[] groupList = new JRadioButton[100];
-	private static JRadioButton[] students = new JRadioButton[100];
-	private static JRadioButton[] newGroupStudents = new JRadioButton[100];
+	private static JLabel[] group = new JLabel[50];
+	private static JLabel[] reports = new JLabel[50];
+	private static JRadioButton[] groupList = new JRadioButton[50];
+	private static JRadioButton[] students = new JRadioButton[50];
+	private static JRadioButton[] newGroupStudents = new JRadioButton[50];
 
 	public static JScrollPane getScrollPaneGroups() {
 		if (scrollPaneGroups == null) {
@@ -153,9 +154,10 @@ public class JScrollBarAdder {
 			panelGroupsRadioButton.repaint();
 			panelGroupsRadioButton.revalidate();
 		}
+		StringReturner.getGroups(groupList);
 	}
 
-	public static void listTypeOfReports() {
+	public static void listReportsLabels() {
 		for (int i = 0; i < 50; i++) {
 			reports[i] = new JLabel();
 			reports[i].setForeground(Color.black);
