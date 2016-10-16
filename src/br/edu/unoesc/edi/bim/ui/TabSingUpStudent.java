@@ -18,8 +18,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import com.j256.ormlite.stmt.UpdateBuilder;
-
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Students;
@@ -238,8 +236,8 @@ public class TabSingUpStudent {
 				Students students = new Students();
 				students.setName(txtName.getText());
 				students.setEmail(txtMail.getText());
-				students.setPhone(Integer.parseInt(txtPhone.getText()));
-				students.setBirthday(Integer.parseInt(txtName.getText()));
+				students.setPhone(Long.parseLong(txtPhone.getText()));
+				students.setBirthday(Integer.parseInt(txtBirthday.getText()));
 				students.setAge(Integer.parseInt(txtAge.getText()));
 				if (rbGenreFemale.isSelected() && rbGenreMale.isSelected())
 					JOptionPane.showMessageDialog(null, "Só selecione um gênero.");
@@ -251,13 +249,18 @@ public class TabSingUpStudent {
 					JOptionPane.showMessageDialog(null, "Selecione o gênero");
 				students.setWeight(Float.parseFloat(txtWeight.getText()));
 				students.setHeight(Float.parseFloat(txtHeight.getText()));
-				
+
 				try {
 					int t = DAOManager.studentsDAO.create(students);
-					System.out.println(t);
+					if(t==1){
+						JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+						resetInputFields();
+					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
+					
 				}
 			}
 		});
