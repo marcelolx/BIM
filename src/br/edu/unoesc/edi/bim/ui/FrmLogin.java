@@ -1,12 +1,17 @@
 package br.edu.unoesc.edi.bim.ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,10 +30,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Users;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
 
 /***
  * @author Jonathan Cestari / Marcelo Lauxen Form da tela de login para usuários
@@ -45,6 +50,7 @@ public class FrmLogin extends JFrame {
 	public static void main(String[] args) {
 		frmLogin = new FrmLogin();
 		frmLogin.setVisible(true);
+
 	}
 
 	public FrmLogin() {
@@ -76,6 +82,50 @@ public class FrmLogin extends JFrame {
 		contentPane.add(ConfigPanel);
 
 		JTextField txtUserField = new JTextField();
+		JPasswordField passwordField = new JPasswordField();
+		JCheckBox chckbxLembrarme = new JCheckBox("Lembrar-me");
+		JButton btnEntrar = new JButton("ENTRAR");
+
+		/**
+		 * Funções da txtUserField
+		 * 
+		 * @Jonathan
+		 */
+
+		txtUserField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				txtUserField.selectAll();
+			}
+		});
+		txtUserField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					passwordField.requestFocusInWindow();
+			}
+		});
+
+		/**
+		 * Funções da passwordField
+		 * 
+		 * @Jonathan
+		 */
+
+		passwordField.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				passwordField.selectAll();
+			}
+		});
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					btnEntrar.doClick();
+			}
+		});
+
 		txtUserField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtUserField.setText("admin");
 		txtUserField.setMargin(new Insets(2, 5, 2, 2));
@@ -85,7 +135,6 @@ public class FrmLogin extends JFrame {
 		txtUserField.setColumns(10);
 		ConfigPanel.add(txtUserField);
 
-		JPasswordField passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		passwordField.setText("admin");
 		passwordField.setMargin(new Insets(2, 5, 2, 2));
@@ -99,14 +148,13 @@ public class FrmLogin extends JFrame {
 		lblLogin.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
 		lblLogin.setBounds(10, 12, 99, 29);
 		ConfigPanel.add(lblLogin);
-		
+
 		JLabel lblLogin2 = new JLabel("USU\u00C1RIO");
 		lblLogin2.setForeground(Color.BLACK);
 		lblLogin2.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
 		lblLogin2.setBounds(11, 13, 99, 29);
 		ConfigPanel.add(lblLogin2);
 
-		JButton btnEntrar = new JButton("ENTRAR");
 		btnEntrar.setFocusTraversalPolicyProvider(true);
 		btnEntrar.setFocusCycleRoot(true);
 		btnEntrar.setFocusable(false);
@@ -124,26 +172,21 @@ public class FrmLogin extends JFrame {
 		lblSenha.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
 		lblSenha.setBounds(10, 54, 99, 28);
 		ConfigPanel.add(lblSenha);
-		
+
 		JLabel lblSenha2 = new JLabel("SENHA");
 		lblSenha2.setForeground(Color.BLACK);
 		lblSenha2.setFont(new Font("BankGothic Md BT", Font.PLAIN, 18));
 		lblSenha2.setBounds(11, 55, 99, 28);
 		ConfigPanel.add(lblSenha2);
 
-		JCheckBox chckbxLembrarme = new JCheckBox("");
-		chckbxLembrarme.setHideActionText(true);
-		chckbxLembrarme.setBackground(new Color(30, 30, 30));
-		chckbxLembrarme.setBounds(10, 98, 21, 33);
+		chckbxLembrarme.setBackground(new Color(22, 22, 22));
+		chckbxLembrarme.setForeground(Color.WHITE);
+		chckbxLembrarme.setBounds(10, 101, 83, 26);
 		ConfigPanel.add(chckbxLembrarme);
 		chckbxLembrarme.repaint();
 		chckbxLembrarme.revalidate();
-
-		JLabel lblLembrarme = new JLabel("Lembrar-me");
-		lblLembrarme.setForeground(Color.WHITE);
-		lblLembrarme.setBounds(31, 97, 78, 34);
-		ConfigPanel.add(lblLembrarme);
-		ConfigPanel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtUserField, passwordField, btnEntrar, chckbxLembrarme}));
+		ConfigPanel.setFocusTraversalPolicy(
+				new FocusTraversalOnArray(new Component[] { txtUserField, passwordField, chckbxLembrarme, btnEntrar }));
 
 		JLabel lblEntrarNoSistema = new JLabel("BIM - BODY IN MOVEMENT");
 		lblEntrarNoSistema.setForeground(Color.BLACK);
@@ -152,7 +195,7 @@ public class FrmLogin extends JFrame {
 		lblEntrarNoSistema.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEntrarNoSistema.setBounds(36, 23, 327, 29);
 		contentPane.add(lblEntrarNoSistema);
-		
+
 		JLabel lblEntrarNoSistema2 = new JLabel("BIM - BODY IN MOVEMENT");
 		lblEntrarNoSistema2.setForeground(Color.WHITE);
 		lblEntrarNoSistema2.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -160,7 +203,7 @@ public class FrmLogin extends JFrame {
 		lblEntrarNoSistema2.setFont(new Font("BankGothic Lt BT", Font.PLAIN, 22));
 		lblEntrarNoSistema2.setBounds(38, 25, 327, 29);
 		contentPane.add(lblEntrarNoSistema2);
-		
+
 		JPanel Transparency = new JPanel();
 		Transparency.setBackground(new Color(255, 255, 255, 100));
 		Transparency.setForeground(Color.WHITE);
@@ -171,7 +214,7 @@ public class FrmLogin extends JFrame {
 		lblEntrarSistema.setIcon(new ImageIcon(FrmLogin.class.getResource("/images/bim_logo_414x285.png")));
 		lblEntrarSistema.setBounds(0, 0, 394, 221);
 		contentPane.add(lblEntrarSistema);
-		
+
 		contentPane.repaint();
 		contentPane.revalidate();
 
@@ -183,12 +226,11 @@ public class FrmLogin extends JFrame {
 				try {
 					List<Users> users = DAOManager.usersDAO.queryForAll();
 					for (int i = 0; i < users.size(); i++) {
-						if ((users.get(i).getUserName().equals(user))
-								&& (users.get(i).getUserPass().equals(pass))) {
+						if ((users.get(i).getUserName().equals(user)) && (users.get(i).getUserPass().equals(pass))) {
 							new FrmMain(user).setVisible(true);
 							frmLogin.dispose();
 							break;
-						}else{
+						} else {
 							JOptionPane.showMessageDialog(null, "Inválid user/password.");
 						}
 					}
