@@ -185,8 +185,6 @@ public class FrmLogin extends JFrame {
 		ConfigPanel.add(chckbxLembrarme);
 		chckbxLembrarme.repaint();
 		chckbxLembrarme.revalidate();
-		ConfigPanel.setFocusTraversalPolicy(
-				new FocusTraversalOnArray(new Component[] { txtUserField, passwordField, chckbxLembrarme, btnEntrar }));
 
 		JLabel lblEntrarNoSistema = new JLabel("BIM - BODY IN MOVEMENT");
 		lblEntrarNoSistema.setForeground(Color.BLACK);
@@ -214,6 +212,7 @@ public class FrmLogin extends JFrame {
 		lblEntrarSistema.setIcon(new ImageIcon(FrmLogin.class.getResource("/images/bim_logo_414x285.png")));
 		lblEntrarSistema.setBounds(0, 0, 394, 221);
 		contentPane.add(lblEntrarSistema);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtUserField, passwordField, chckbxLembrarme, btnEntrar}));
 
 		contentPane.repaint();
 		contentPane.revalidate();

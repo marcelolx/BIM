@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.edu.unoesc.edi.bim.util;
 
 import javax.swing.JRadioButton;
