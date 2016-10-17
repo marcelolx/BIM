@@ -201,9 +201,9 @@ public class FrmMain extends JFrame {
 						setVisibilityProceduresPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnReports.setBounds(10, 486, 210, 44);
-					btnProcedures.setBounds(10, 536, 210, 44);
-					btnMethodologies.setBounds(10, 586, 210, 44);
+					btnReports.setBounds(10, leftInerPanelsHeight()+56, 210, 44);
+					btnProcedures.setBounds(10, leftInerPanelsHeight()+105, 210, 44);
+					btnMethodologies.setBounds(10, leftInerPanelsHeight()+154, 210, 44);
 					panelLeftSideStudents.setVisible(true);
 					leftSidePanel.add(panelLeftSideStudents);
 					//call method to list groups of students on database
@@ -234,8 +234,8 @@ public class FrmMain extends JFrame {
 						setVisibilityStudentsPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnProcedures.setBounds(10, 536, 210, 44);
-					btnMethodologies.setBounds(10, 586, 210, 44);
+					btnProcedures.setBounds(10, leftInerPanelsHeight()+109, 210, 44);
+					btnMethodologies.setBounds(10, leftInerPanelsHeight()+158, 210, 44);
 					//Method called list types of reports
 					JScrollBarAdder.listReportsLabels();
 					panelLeftSideReports.setVisible(true);
@@ -266,7 +266,7 @@ public class FrmMain extends JFrame {
 						setVisibilityStudentsPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnMethodologies.setBounds(10, 586, 210, 44);
+					btnMethodologies.setBounds(10, leftInerPanelsHeight() + 158, 210, 44);
 					panelLeftSideProcedures.setVisible(true);
 					leftSidePanel.add(panelLeftSideProcedures);
 					leftSidePanel.repaint();
