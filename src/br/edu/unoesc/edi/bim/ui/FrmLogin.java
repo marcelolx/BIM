@@ -73,7 +73,7 @@ public class FrmLogin extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel ConfigPanel = new JPanel();
-		ConfigPanel.setBackground(new Color(0, 0, 0, 225));
+		ConfigPanel.setBackground(new Color(22, 22, 22));
 		ConfigPanel.setBounds(33, 63, 330, 140);
 		ConfigPanel.setForeground(SystemColor.textHighlight);
 		ConfigPanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
