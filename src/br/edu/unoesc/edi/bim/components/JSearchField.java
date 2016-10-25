@@ -21,7 +21,7 @@ public class JSearchField extends JTextField {
         this.emptyTextLabel = new JLabel();
         this.iconImage = new JImage();
         this.setLayout(new BorderLayout());
-        this.setForeground(Color.gray);
+        this.setForeground(Color.BLACK);
         this.add(emptyTextLabel, BorderLayout.WEST);
         this.add(iconImage, BorderLayout.EAST);
         DocumentListener listener = new DocumentListener() {
