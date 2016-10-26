@@ -46,6 +46,7 @@ public class FrmMain extends JFrame {
 	private JPanel panelLeftSideReports;
 	private JPanel panelLeftSideProcedures;
 	private JPanel panelLeftSideMethodologies;
+	public static FrmLogin frmLogoff;
 
 	/**
 	 * Create the frame.
@@ -78,7 +79,15 @@ public class FrmMain extends JFrame {
 		lblUsernamehere.setBounds(maxBounds.width - 454, 26, 72, 14);
 		panelNorth.add(lblUsernamehere);
 
-		JButton btnSair = new JButton("Sair");
+		JButton btnSair = new JButton("Logoff");
+		btnSair.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frmLogoff = new FrmLogin();
+				frmLogoff.setVisible(true);
+				dispose();
+			}
+		});
 		btnSair.setBounds(maxBounds.width - 115, 11, 105, 35);
 		btnSair.setContentAreaFilled(false);
 		btnSair.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Cancel Filled-50.png")));

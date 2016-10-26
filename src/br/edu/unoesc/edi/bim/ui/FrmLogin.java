@@ -50,9 +50,8 @@ public class FrmLogin extends JFrame {
 	public static void main(String[] args) {
 		frmLogin = new FrmLogin();
 		frmLogin.setVisible(true);
-
 	}
-
+	
 	public FrmLogin() {
 
 		lookAndFeel();
@@ -227,7 +226,7 @@ public class FrmLogin extends JFrame {
 					for (int i = 0; i < users.size(); i++) {
 						if ((users.get(i).getUserName().equals(user)) && (users.get(i).getUserPass().equals(pass))) {
 							new FrmMain(user).setVisible(true);
-							frmLogin.dispose();
+							dispose();
 							break;
 						} else {
 							JOptionPane.showMessageDialog(null, "Inválid user/password.");
