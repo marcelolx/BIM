@@ -3,16 +3,12 @@ package br.edu.unoesc.edi.bim.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
 
@@ -27,12 +23,7 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  */
 public class TabStudent {
 
-	private static JList<String> txtStudentslist;
-	private static JScrollPane StudentListScrollPane;
 
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public static void init(JTabbedPane mainPane) {
 
 		Rectangle maxBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();

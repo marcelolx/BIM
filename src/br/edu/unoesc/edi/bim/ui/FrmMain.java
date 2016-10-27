@@ -190,7 +190,16 @@ public class FrmMain extends JFrame {
 		panelLeftSideProcedures.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideProcedures.setLayout(null);
 		panelLeftSideProcedures.setVisible(false);
-
+		
+		JLabel GuedesHomensEspecifica = new JLabel();
+		GuedesHomensEspecifica.setText("  Guedes Homens Especifica");
+		GuedesHomensEspecifica.setBounds(3, 2, panelLeftSideStudents.getWidth()-6, 55);
+		GuedesHomensEspecifica.setOpaque(true);
+		GuedesHomensEspecifica.setBackground(Color.lightGray);
+		GuedesHomensEspecifica.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GuedesHomensEspecifica.setVisible(true);
+		panelLeftSideProcedures.add(GuedesHomensEspecifica);
+		
 		// panel of Methodologies
 		panelLeftSideMethodologies = new JPanel();
 		panelLeftSideMethodologies.setBounds(10, 221, 210, leftInerPanelsHeight()-18);
