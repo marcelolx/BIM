@@ -21,6 +21,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.LayerUI;
 
+import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
+
 /**
  * @author Marcelo
  *
@@ -99,7 +101,8 @@ public class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
 				int y = rect.y + (rect.height - d.height) / 2;
 				Rectangle r = new Rectangle(x, y, d.width, d.height);
 				if (r.contains(pt)) {
-					tabbedPane.removeTabAt(index);
+					tabbedPane.removeTabAt(index);//remove tab
+					JScrollBarAdder.removeGroupsRadioButtons();//remove jradiobuttons da tela cadastro alunos
 				}
 			}
 			l.getView().repaint();

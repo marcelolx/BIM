@@ -58,8 +58,9 @@ public class TabStudent {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//TODO
 				JScrollBarAdder.removePanels();
-				JScrollBarAdder.listStudentsAtTabStudents(maxBounds);
+				JScrollBarAdder.listStudentsAtTabStudents(maxBounds, mainPane);
 				
 			}
 		});
@@ -74,7 +75,7 @@ public class TabStudent {
 		centralTabbedPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		centralTabbedPane.setLayout(new BorderLayout(0, 0));
 		centralTabbedPane.add(JScrollBarAdder.getScrollPaneTabStudents(), BorderLayout.CENTER);
-		JScrollBarAdder.listStudentsAtTabStudents(maxBounds);
+		JScrollBarAdder.listStudentsAtTabStudents(maxBounds, mainPane);
 
 		pane.add(northTabbedPane, BorderLayout.NORTH);
 		pane.add(centralTabbedPane, BorderLayout.CENTER);

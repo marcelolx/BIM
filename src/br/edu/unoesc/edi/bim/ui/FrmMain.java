@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
+
 /**
  * 
  * @author Marcelo/Jonathan
@@ -47,7 +48,9 @@ public class FrmMain extends JFrame {
 	private JPanel panelLeftSideProcedures;
 	private JPanel panelLeftSideMethodologies;
 	public static FrmLogin frmLogoff;
-
+	public static boolean firstOpenedStudents = false;//contador para verificar se a tela de cadastro já foi aberta uma vez
+	public static boolean firstOpenedGroups = false;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -60,7 +63,7 @@ public class FrmMain extends JFrame {
 		setTitle("BIM - Body In Movement");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmMain.class.getResource("/images/bim_logo_32x22.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, maxBounds.width, maxBounds.height - 5);
+		setBounds(0, 0, maxBounds.width, maxBounds.height);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -115,10 +118,10 @@ public class FrmMain extends JFrame {
 		lbllogomain.setBounds(10, 5, 72, 41);
 		panelNorth.add(lbllogomain);
 
-		UIManager.put("TabbedPane.tabInsets", new Insets(2, 2, 2, 50));
+		UIManager.put("TabbedPane.tabInsets", new Insets(2, 2, 2, 60));
 		final JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.setBounds(232, 57, maxBounds.width - 238, maxBounds.height - 78);
-		
+
 		//
 		// All side Panels below //
 		//
@@ -131,52 +134,69 @@ public class FrmMain extends JFrame {
 
 		// panel para listar alunos, adicionar alunos/grupos de alunos
 		panelLeftSideStudents = new JPanel();
-		panelLeftSideStudents.setBounds(10, 56, 210, setleftInerPanelsHeight()-4);
+		panelLeftSideStudents.setBounds(10, 56, 210, setleftInerPanelsHeight() - 4);
 		panelLeftSideStudents.setBackground(Color.white);
 		panelLeftSideStudents.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideStudents.setLayout(null);
 		panelLeftSideStudents.setVisible(false);
 
 		JPanel listGroupsOfStudentsPanel = new JPanel();
-		listGroupsOfStudentsPanel.setBounds(1, 0, panelLeftSideStudents.getWidth()-2, (panelLeftSideStudents.getHeight()-64));
+		listGroupsOfStudentsPanel.setBounds(1, 0, panelLeftSideStudents.getWidth() - 2,
+				(panelLeftSideStudents.getHeight() - 64));
 		listGroupsOfStudentsPanel.setBackground(Color.white);
 		listGroupsOfStudentsPanel.setLayout(new BorderLayout(0, 0));
 		listGroupsOfStudentsPanel.setVisible(true);
 		listGroupsOfStudentsPanel.add(JScrollBarAdder.getScrollPaneGroups(), BorderLayout.CENTER);
 		panelLeftSideStudents.add(listGroupsOfStudentsPanel);
-		
+
 		JButton btnAddStudents = new JButton();
 		btnAddStudents.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TabSingUpStudent.init(tabbedPane);
-				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+				if (!firstOpenedStudents) {
+					firstOpenedStudents = true;
+					TabSingUpStudent.init(tabbedPane);
+					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+				}else{
+					JScrollBarAdder.removeGroupsRadioButtons();
+					TabSingUpStudent.init(tabbedPane);
+					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+				}
 			}
 		});
 		btnAddStudents.setContentAreaFilled(false);
 		btnAddStudents.setIcon(new ImageIcon(FrmMain.class.getResource("/images/addSingleStudent-icon.png")));
-		btnAddStudents.setBounds(2, panelLeftSideStudents.getHeight()-62, (panelLeftSideStudents.getWidth()/2)-4, 60);
+		btnAddStudents.setBounds(2, panelLeftSideStudents.getHeight() - 62, (panelLeftSideStudents.getWidth() / 2) - 4,
+				60);
 		panelLeftSideStudents.add(btnAddStudents);
-		
+
 		JButton btnCreateNewGroup = new JButton();
 		btnCreateNewGroup.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO
-				TabGroupsRegister.tabAluno(tabbedPane);
-				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+				if (!firstOpenedGroups) {
+					firstOpenedGroups = true;
+					TabGroupsRegister.tabAluno(tabbedPane);
+					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+				}else{
+					JScrollBarAdder.removeStudentsRadioButtons();
+					TabGroupsRegister.tabAluno(tabbedPane);
+					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+				}
+				
 			}
 		});
 		btnCreateNewGroup.setContentAreaFilled(false);
 		btnCreateNewGroup.setIcon(new ImageIcon(FrmMain.class.getResource("/images/addNewGroupOfStudens-icon.png")));
-		btnCreateNewGroup.setBounds((panelLeftSideStudents.getWidth()/2)+2, panelLeftSideStudents.getHeight()-62, (panelLeftSideStudents.getWidth()/2)-4, 60);
+		btnCreateNewGroup.setBounds((panelLeftSideStudents.getWidth() / 2) + 2, panelLeftSideStudents.getHeight() - 62,
+				(panelLeftSideStudents.getWidth() / 2) - 4, 60);
 		panelLeftSideStudents.add(btnCreateNewGroup);
-		
+
 		// panel of reports
 		panelLeftSideReports = new JPanel();
-		panelLeftSideReports.setBounds(10, 111, 210, setleftInerPanelsHeight()-8);
+		panelLeftSideReports.setBounds(10, 111, 210, setleftInerPanelsHeight() - 8);
 		panelLeftSideReports.setBackground(Color.white);
 		panelLeftSideReports.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideReports.setLayout(new BorderLayout(0, 0));
@@ -185,20 +205,22 @@ public class FrmMain extends JFrame {
 
 		// panel of procedures
 		panelLeftSideProcedures = new JPanel();
-		panelLeftSideProcedures.setBounds(10, 166, 210, setleftInerPanelsHeight()-12);
+		panelLeftSideProcedures.setBounds(10, 166, 210, setleftInerPanelsHeight() - 12);
 		panelLeftSideProcedures.setBackground(Color.white);
-		panelLeftSideProcedures.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelLeftSideProcedures
+				.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideProcedures.setLayout(null);
 		panelLeftSideProcedures.setVisible(false);
-		
+
 		InnerProceduresButtonsUI.init(panelLeftSideProcedures);
-		//TODO
-		
+		// TODO
+
 		// panel of Methodologies
 		panelLeftSideMethodologies = new JPanel();
-		panelLeftSideMethodologies.setBounds(10, 221, 210, setleftInerPanelsHeight()-18);
+		panelLeftSideMethodologies.setBounds(10, 221, 210, setleftInerPanelsHeight() - 18);
 		panelLeftSideMethodologies.setBackground(Color.white);
-		panelLeftSideMethodologies.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelLeftSideMethodologies
+				.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideMethodologies.setLayout(null);
 		panelLeftSideMethodologies.setVisible(false);
 
@@ -213,12 +235,12 @@ public class FrmMain extends JFrame {
 						setVisibilityProceduresPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnReports.setBounds(10, setleftInerPanelsHeight()+56, 210, 44);
-					btnProcedures.setBounds(10, setleftInerPanelsHeight()+105, 210, 44);
-					btnMethodologies.setBounds(10, setleftInerPanelsHeight()+154, 210, 44);
+					btnReports.setBounds(10, setleftInerPanelsHeight() + 56, 210, 44);
+					btnProcedures.setBounds(10, setleftInerPanelsHeight() + 105, 210, 44);
+					btnMethodologies.setBounds(10, setleftInerPanelsHeight() + 154, 210, 44);
 					panelLeftSideStudents.setVisible(true);
 					leftSidePanel.add(panelLeftSideStudents);
-					//call method to list groups of students on database
+					// call method to list groups of students on database
 					JScrollBarAdder.listGroupsLabels();
 					leftSidePanel.repaint();
 					leftSidePanel.revalidate();
@@ -246,9 +268,9 @@ public class FrmMain extends JFrame {
 						setVisibilityStudentsPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnProcedures.setBounds(10, setleftInerPanelsHeight()+109, 210, 44);
-					btnMethodologies.setBounds(10, setleftInerPanelsHeight()+158, 210, 44);
-					//Method called list types of reports
+					btnProcedures.setBounds(10, setleftInerPanelsHeight() + 109, 210, 44);
+					btnMethodologies.setBounds(10, setleftInerPanelsHeight() + 158, 210, 44);
+					// Method called list types of reports
 					JScrollBarAdder.listReportsLabels();
 					panelLeftSideReports.setVisible(true);
 					leftSidePanel.add(panelLeftSideReports);
@@ -325,7 +347,7 @@ public class FrmMain extends JFrame {
 		btnMethodologies.setBounds(10, 176, 210, 44);
 		leftSidePanel.add(btnMethodologies);
 
-		//adiciona jtabbedpane com botão de fechar
+		// adiciona jtabbedpane com botão de fechar
 		contentPane.add(new CloseableTabbedPane().makeUI(maxBounds, tabbedPane));
 		TabStudent.init(tabbedPane);
 	}
@@ -363,15 +385,16 @@ public class FrmMain extends JFrame {
 		leftSidePanel.repaint();
 		leftSidePanel.revalidate();
 	}
-	
+
 	/**
-	 * Calculate the height to the left inner panels (Students, reports, procedures, Methodologies).
+	 * Calculate the height to the left inner panels (Students, reports,
+	 * procedures, Methodologies).
+	 * 
 	 * @return height to panel
 	 */
-	private int setleftInerPanelsHeight(){
+	private int setleftInerPanelsHeight() {
 		int height = leftSidePanel.getHeight();
 		return height -= 209;
 	}
-	
-	
+
 }

@@ -251,19 +251,19 @@ public class TabSingUpStudent {
 				students.setWeight(Float.parseFloat(txtWeight.getText()));
 				students.setHeight(Float.parseFloat(txtHeight.getText()));
 				String groups = StringReturner.returnSelectedGroups();
-				groups = groups.substring(0, groups.length()-1);
+				groups = groups.substring(0, groups.length() - 1);
 				students.setGroups(groups);
 				try {
 					int t = DAOManager.studentsDAO.create(students);
-					if(t==1){
+					if (t == 1) {
 						JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
 						resetInputFields();
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					
+
 					e.printStackTrace();
-					
+
 				}
 			}
 		});
@@ -277,8 +277,17 @@ public class TabSingUpStudent {
 		pane.add(northPane);
 		pane.add(centerPanel);
 		pane.setVisible(true);
-
-		mainPane.addTab("Novo Aluno", pane);
+		
+		System.out.println(FrmMain.firstOpenedStudents);
+		if(!FrmMain.firstOpenedStudents){
+			FrmMain.firstOpenedStudents = true;
+			mainPane.addTab("Novo Aluno", pane);
+		}else if(mainPane.getTabCount() == 2) {
+			mainPane.removeTabAt(mainPane.getTabCount()-1);
+			mainPane.addTab("Novo Aluno", pane);
+		}else{
+			mainPane.addTab("Novo Aluno", pane);
+		}
 	}
 
 	private static int calcPaneWidthSizeToSetComponents(JTabbedPane mainPane) {
@@ -297,19 +306,27 @@ public class TabSingUpStudent {
 		rbGenreFemale.setSelected(false);
 		rbGenreMale.setSelected(false);
 	}
-	
+
 	public static void fillInputFields(Integer id) {
 		try {
 			Students student = DAOManager.studentsDAO.queryForId(id);
 			lblStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/UserFilled-165.png")));
 			txtName.setText(student.getName());
 			txtMail.setText(student.getEmail());
+			txtPhone.setText(student.getPhone().toString());
+			txtBirthday.setText(student.getBirthday().toString());
+			txtAge.setText(student.getAge().toString());
+			txtWeight.setText(student.getWeight().toString());
+			txtHeight.setText(student.getHeight().toString());
 			
+			String[] grupos = StringReturner.breakString(student.getGroups());
+			StringReturner.setGroups(grupos);
+
 			char sex = student.getGenre();
-			if(sex == 'F'){
+			if (sex == 'F') {
 				rbGenreFemale.setSelected(true);
 				rbGenreMale.setSelected(false);
-			}else{
+			} else {
 				rbGenreFemale.setSelected(false);
 				rbGenreMale.setSelected(true);
 			}
