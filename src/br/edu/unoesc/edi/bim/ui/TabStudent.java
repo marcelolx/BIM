@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -52,6 +54,15 @@ public class TabStudent {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JButton clearSearchStudents = new JButton();
+		clearSearchStudents.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JScrollBarAdder.removePanels();
+				JScrollBarAdder.listStudentsAtTabStudents(maxBounds);
+				
+			}
+		});
 		panel.add(clearSearchStudents, BorderLayout.WEST);
 		clearSearchStudents.setPreferredSize(new Dimension(50, 50));
 		clearSearchStudents.setContentAreaFilled(false);
@@ -64,23 +75,7 @@ public class TabStudent {
 		centralTabbedPane.setLayout(new BorderLayout(0, 0));
 		centralTabbedPane.add(JScrollBarAdder.getScrollPaneTabStudents(), BorderLayout.CENTER);
 		JScrollBarAdder.listStudentsAtTabStudents(maxBounds);
-		/*JLabel[] teste = new JLabel[50];
 
-		for (int i = 0; i < 20; i++) {
-			teste[i] = new JLabel("  Ana Clara");
-			teste[i].setFont(new Font("Tahoma", Font.PLAIN, 24));
-			teste[i].setBounds(0, i * 55, maxBounds.width - 247, 55);
-			teste[i].setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			teste[i].setPreferredSize(new Dimension(5, 5));
-			if (i % 2 == 0) {
-				teste[i].setBackground(Color.WHITE);
-			}
-			teste[i].setForeground(Color.BLACK);
-			teste[i].setOpaque(true);
-			centralTabbedPane.add(teste[i]);
-		}
-		
-		*/
 		pane.add(northTabbedPane, BorderLayout.NORTH);
 		pane.add(centralTabbedPane, BorderLayout.CENTER);
 		mainPane.addTab("Alunos", pane);

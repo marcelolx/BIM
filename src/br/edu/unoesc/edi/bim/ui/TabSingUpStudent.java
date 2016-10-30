@@ -297,4 +297,25 @@ public class TabSingUpStudent {
 		rbGenreFemale.setSelected(false);
 		rbGenreMale.setSelected(false);
 	}
+	
+	public static void fillInputFields(Integer id) {
+		try {
+			Students student = DAOManager.studentsDAO.queryForId(id);
+			lblStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/UserFilled-165.png")));
+			txtName.setText(student.getName());
+			txtMail.setText(student.getEmail());
+			
+			char sex = student.getGenre();
+			if(sex == 'F'){
+				rbGenreFemale.setSelected(true);
+				rbGenreMale.setSelected(false);
+			}else{
+				rbGenreFemale.setSelected(false);
+				rbGenreMale.setSelected(true);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

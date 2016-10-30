@@ -131,7 +131,7 @@ public class FrmMain extends JFrame {
 
 		// panel para listar alunos, adicionar alunos/grupos de alunos
 		panelLeftSideStudents = new JPanel();
-		panelLeftSideStudents.setBounds(10, 56, 210, leftInerPanelsHeight()-4);
+		panelLeftSideStudents.setBounds(10, 56, 210, setleftInerPanelsHeight()-4);
 		panelLeftSideStudents.setBackground(Color.white);
 		panelLeftSideStudents.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideStudents.setLayout(null);
@@ -176,7 +176,7 @@ public class FrmMain extends JFrame {
 		
 		// panel of reports
 		panelLeftSideReports = new JPanel();
-		panelLeftSideReports.setBounds(10, 111, 210, leftInerPanelsHeight()-8);
+		panelLeftSideReports.setBounds(10, 111, 210, setleftInerPanelsHeight()-8);
 		panelLeftSideReports.setBackground(Color.white);
 		panelLeftSideReports.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideReports.setLayout(new BorderLayout(0, 0));
@@ -185,24 +185,18 @@ public class FrmMain extends JFrame {
 
 		// panel of procedures
 		panelLeftSideProcedures = new JPanel();
-		panelLeftSideProcedures.setBounds(10, 166, 210, leftInerPanelsHeight()-12);
+		panelLeftSideProcedures.setBounds(10, 166, 210, setleftInerPanelsHeight()-12);
 		panelLeftSideProcedures.setBackground(Color.white);
 		panelLeftSideProcedures.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideProcedures.setLayout(null);
 		panelLeftSideProcedures.setVisible(false);
 		
-		JLabel GuedesHomensEspecifica = new JLabel();
-		GuedesHomensEspecifica.setText("  Guedes Homens Especifica");
-		GuedesHomensEspecifica.setBounds(3, 2, panelLeftSideStudents.getWidth()-6, 55);
-		GuedesHomensEspecifica.setOpaque(true);
-		GuedesHomensEspecifica.setBackground(Color.lightGray);
-		GuedesHomensEspecifica.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		GuedesHomensEspecifica.setVisible(true);
-		panelLeftSideProcedures.add(GuedesHomensEspecifica);
+		InnerProceduresButtonsUI.init(panelLeftSideProcedures);
+		//TODO
 		
 		// panel of Methodologies
 		panelLeftSideMethodologies = new JPanel();
-		panelLeftSideMethodologies.setBounds(10, 221, 210, leftInerPanelsHeight()-18);
+		panelLeftSideMethodologies.setBounds(10, 221, 210, setleftInerPanelsHeight()-18);
 		panelLeftSideMethodologies.setBackground(Color.white);
 		panelLeftSideMethodologies.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLeftSideMethodologies.setLayout(null);
@@ -219,9 +213,9 @@ public class FrmMain extends JFrame {
 						setVisibilityProceduresPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnReports.setBounds(10, leftInerPanelsHeight()+56, 210, 44);
-					btnProcedures.setBounds(10, leftInerPanelsHeight()+105, 210, 44);
-					btnMethodologies.setBounds(10, leftInerPanelsHeight()+154, 210, 44);
+					btnReports.setBounds(10, setleftInerPanelsHeight()+56, 210, 44);
+					btnProcedures.setBounds(10, setleftInerPanelsHeight()+105, 210, 44);
+					btnMethodologies.setBounds(10, setleftInerPanelsHeight()+154, 210, 44);
 					panelLeftSideStudents.setVisible(true);
 					leftSidePanel.add(panelLeftSideStudents);
 					//call method to list groups of students on database
@@ -252,8 +246,8 @@ public class FrmMain extends JFrame {
 						setVisibilityStudentsPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnProcedures.setBounds(10, leftInerPanelsHeight()+109, 210, 44);
-					btnMethodologies.setBounds(10, leftInerPanelsHeight()+158, 210, 44);
+					btnProcedures.setBounds(10, setleftInerPanelsHeight()+109, 210, 44);
+					btnMethodologies.setBounds(10, setleftInerPanelsHeight()+158, 210, 44);
 					//Method called list types of reports
 					JScrollBarAdder.listReportsLabels();
 					panelLeftSideReports.setVisible(true);
@@ -284,7 +278,7 @@ public class FrmMain extends JFrame {
 						setVisibilityStudentsPanelFalse();
 						setVisibilityMethodologiesPanelFalse();
 					}
-					btnMethodologies.setBounds(10, leftInerPanelsHeight() + 158, 210, 44);
+					btnMethodologies.setBounds(10, setleftInerPanelsHeight() + 158, 210, 44);
 					panelLeftSideProcedures.setVisible(true);
 					leftSidePanel.add(panelLeftSideProcedures);
 					leftSidePanel.repaint();
@@ -374,8 +368,10 @@ public class FrmMain extends JFrame {
 	 * Calculate the height to the left inner panels (Students, reports, procedures, Methodologies).
 	 * @return height to panel
 	 */
-	private int leftInerPanelsHeight(){
+	private int setleftInerPanelsHeight(){
 		int height = leftSidePanel.getHeight();
 		return height -= 209;
 	}
+	
+	
 }
