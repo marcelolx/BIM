@@ -60,7 +60,7 @@ public class TabStudent {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//TODO
-				JScrollBarAdder.removePanels();
+				JScrollBarAdder.removeTabStudentsPanels();
 				JScrollBarAdder.listStudentsAtTabStudents(maxBounds, mainPane);
 				
 			}

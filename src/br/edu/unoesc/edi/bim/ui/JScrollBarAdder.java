@@ -167,6 +167,7 @@ public class JScrollBarAdder {
 	 * pegar todos os grupos do DB ainda e listar.
 	 */
 	public static void listGroupsLabels() {
+		removeListGroupsLabels();
 		try {
 			List<Groups> listOfGroups = DAOManager.groupsDAO.queryForAll();
 			group = new JLabel[listOfGroups.size()];
@@ -339,10 +340,17 @@ public class JScrollBarAdder {
 
 	}
 
-	public static void removePanels() {
+	public static void removeTabStudentsPanels() {
 		panelTabStudents.removeAll();
 		panelTabStudents.updateUI();
 		panelTabStudents.repaint();
 		panelTabStudents.revalidate();
+	}
+	
+	public static void removeListGroupsLabels() {
+		panelGroups.removeAll();
+		panelGroups.updateUI();
+		panelGroups.repaint();
+		panelGroups.revalidate();
 	}
 }
