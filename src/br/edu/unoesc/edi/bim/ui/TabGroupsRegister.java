@@ -7,8 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,9 +15,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
-import br.edu.unoesc.edi.bim.components.JImage;
-import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Groups;
 

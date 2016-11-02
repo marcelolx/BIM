@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
+
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Students;
@@ -31,6 +33,7 @@ import br.edu.unoesc.edi.bim.util.StringReturner;
 public class TabSingUpStudent {
 
 	private static JLabel lblStudentPhoto;
+	private static JLabel lblStudentId;
 	private static JSearchField txtName;
 	private static JTextField txtMail;
 	private static JSearchField txtPhone;
@@ -85,6 +88,20 @@ public class TabSingUpStudent {
 		removeStudentPhoto.setBounds(137, 232, 85, 44);
 		removeStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/Delete Filled-32.png")));
 		centerPanel.add(removeStudentPhoto);
+
+		JLabel lblid = new JLabel("ID ");
+		lblid.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 28, 20, 30, 22);
+		lblid.setHorizontalAlignment(SwingConstants.CENTER);
+		lblid.setForeground(Color.gray);
+		lblid.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblid);
+
+		lblStudentId = new JLabel("0");
+		lblStudentId.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 20, 90, 22);
+		lblStudentId.setHorizontalAlignment(SwingConstants.LEFT);
+		lblStudentId.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		lblStudentId.setForeground(Color.gray);
+		centerPanel.add(lblStudentId);
 
 		JLabel lblName = new JLabel("Nome *");
 		lblName.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 1, 50, 60, 22);
@@ -235,6 +252,7 @@ public class TabSingUpStudent {
 		btnSave.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				Students students = new Students();
+				students.setStudentId(Integer.parseInt(lblStudentId.getText()));
 				students.setName(txtName.getText());
 				students.setEmail(txtMail.getText());
 				students.setPhone(Long.parseLong(txtPhone.getText()));
@@ -250,15 +268,25 @@ public class TabSingUpStudent {
 					JOptionPane.showMessageDialog(null, "Selecione o gênero");
 				students.setWeight(Float.parseFloat(txtWeight.getText()));
 				students.setHeight(Float.parseFloat(txtHeight.getText()));
-				String groups = StringReturner.returnSelectedGroups();
-				groups = groups.substring(0, groups.length() - 1);
-				students.setGroups(groups);
+				students.setGroups("");
+				// students.setGroups(groups);
 				try {
-					int t = DAOManager.studentsDAO.create(students);
-					if (t == 1) {
+					CreateOrUpdateStatus statusAuxiliar = DAOManager.studentsDAO.createOrUpdate(students);
+					if (statusAuxiliar.isCreated()) {
 						JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+						StringReturner.setSelectedGroupsOff();
 						resetInputFields();
 					}
+					if (statusAuxiliar.isUpdated()) {
+						JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso!");
+					}
+					String groups = null;
+					groups = StringReturner.returnSelectedGroups();
+					if (!groups.isEmpty()) {
+						groups = groups.substring(0, groups.length() - 1);
+						students.setGroups(groups);
+					}
+					CreateOrUpdateStatus status = DAOManager.studentsDAO.createOrUpdate(students);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 
@@ -277,15 +305,15 @@ public class TabSingUpStudent {
 		pane.add(northPane);
 		pane.add(centerPanel);
 		pane.setVisible(true);
-		
+
 		System.out.println(FrmMain.firstOpenedStudents);
-		if(!FrmMain.firstOpenedStudents){
+		if (!FrmMain.firstOpenedStudents) {
 			FrmMain.firstOpenedStudents = true;
 			mainPane.addTab("Novo Aluno", pane);
-		}else if(mainPane.getTabCount() == 2) {
-			mainPane.removeTabAt(mainPane.getTabCount()-1);
+		} else if (mainPane.getTabCount() == 2) {
+			mainPane.removeTabAt(mainPane.getTabCount() - 1);
 			mainPane.addTab("Novo Aluno", pane);
-		}else{
+		} else {
 			mainPane.addTab("Novo Aluno", pane);
 		}
 	}
@@ -296,6 +324,7 @@ public class TabSingUpStudent {
 
 	private static void resetInputFields() {
 		lblStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/UserFilled-165.png")));
+		lblStudentId.setText("");
 		txtName.setText("");
 		txtMail.setText("");
 		txtPhone.setText("");
@@ -305,12 +334,14 @@ public class TabSingUpStudent {
 		txtHeight.setText("");
 		rbGenreFemale.setSelected(false);
 		rbGenreMale.setSelected(false);
+		StringReturner.setSelectedGroupsOff();
 	}
 
 	public static void fillInputFields(Integer id) {
 		try {
 			Students student = DAOManager.studentsDAO.queryForId(id);
 			lblStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/UserFilled-165.png")));
+			lblStudentId.setText(student.getStudentId().toString());
 			txtName.setText(student.getName());
 			txtMail.setText(student.getEmail());
 			txtPhone.setText(student.getPhone().toString());
@@ -318,7 +349,7 @@ public class TabSingUpStudent {
 			txtAge.setText(student.getAge().toString());
 			txtWeight.setText(student.getWeight().toString());
 			txtHeight.setText(student.getHeight().toString());
-			
+
 			String[] grupos = StringReturner.breakString(student.getGroups());
 			StringReturner.setGroups(grupos);
 

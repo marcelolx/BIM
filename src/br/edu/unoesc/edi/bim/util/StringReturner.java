@@ -16,13 +16,25 @@ public class StringReturner {
 	 * @return
 	 */
 	public static String returnSelectedGroups(){
+		groups = "";
 		for (int i = 0; i < groupList.length; i++) {
 			if(groupList[i].isSelected()){
 				groups += groupList[i].getText() + "-";
-				groupList[i].setSelected(false);
+				//groupList[i].setSelected(false);
 			}
 		}
 		return groups;
+	}
+	
+	/**
+	 * Set selected groups to "not-selected" if new user/student are created.
+	 */
+	public static void setSelectedGroupsOff(){
+		for (int i = 0; i < groupList.length; i++) {
+			if(groupList[i].isSelected()){
+				groupList[i].setSelected(false);
+			}
+		}
 	}
 	
 	/**
