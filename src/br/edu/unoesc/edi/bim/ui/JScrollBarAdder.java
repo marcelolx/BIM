@@ -25,6 +25,7 @@ import br.edu.unoesc.edi.bim.actions.ActionJlabelReports;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Groups;
 import br.edu.unoesc.edi.bim.db.model.Students;
+import br.edu.unoesc.edi.bim.ui.tabs.TabSingUpStudent;
 import br.edu.unoesc.edi.bim.util.StringReturner;
 
 /**

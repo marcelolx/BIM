@@ -1,10 +1,14 @@
 /**
  * 
  */
-package br.edu.unoesc.edi.bim.ui;
+package br.edu.unoesc.edi.bim.ui.tabs;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
@@ -15,8 +19,14 @@ import javax.swing.border.TitledBorder;
  *
  */
 public class InnerProceduresButtonsUI {
-	public static void init(JPanel panelLeftSideProcedures) {
+	public static void init(JPanel panelLeftSideProcedures, JTabbedPane tabbedPane) {
 		JLabel GuedesHomensEspecifica = new JLabel();
+		GuedesHomensEspecifica.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabGuedesHomens.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		GuedesHomensEspecifica.setText("Guedes Homens Especifica");
 		GuedesHomensEspecifica.setBounds(3, 2, panelLeftSideProcedures.getWidth() - 6,
 				getleftProceduresPanelsHeight(panelLeftSideProcedures));

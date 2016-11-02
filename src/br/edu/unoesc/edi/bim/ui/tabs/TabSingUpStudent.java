@@ -1,4 +1,4 @@
-package br.edu.unoesc.edi.bim.ui;
+package br.edu.unoesc.edi.bim.ui.tabs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,6 +23,8 @@ import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Students;
+import br.edu.unoesc.edi.bim.ui.FrmMain;
+import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
 import br.edu.unoesc.edi.bim.util.StringReturner;
 
 /**

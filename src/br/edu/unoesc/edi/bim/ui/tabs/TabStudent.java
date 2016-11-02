@@ -1,4 +1,4 @@
-package br.edu.unoesc.edi.bim.ui;
+package br.edu.unoesc.edi.bim.ui.tabs;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,6 +17,7 @@ import javax.swing.border.TitledBorder;
 import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
 import br.edu.unoesc.edi.bim.components.JImage;
 import br.edu.unoesc.edi.bim.components.JSearchField;
+import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
 
 /**
  * 

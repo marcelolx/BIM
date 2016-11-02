@@ -25,6 +25,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
+import br.edu.unoesc.edi.bim.ui.tabs.InnerProceduresButtonsUI;
+import br.edu.unoesc.edi.bim.ui.tabs.TabGroupsRegister;
+import br.edu.unoesc.edi.bim.ui.tabs.TabSingUpStudent;
+import br.edu.unoesc.edi.bim.ui.tabs.TabStudent;
 
 /**
  * 
@@ -212,7 +216,7 @@ public class FrmMain extends JFrame {
 		panelLeftSideProcedures.setLayout(null);
 		panelLeftSideProcedures.setVisible(false);
 
-		InnerProceduresButtonsUI.init(panelLeftSideProcedures);
+		InnerProceduresButtonsUI.init(panelLeftSideProcedures, tabbedPane);
 		// TODO
 
 		// panel of Methodologies
