@@ -37,6 +37,12 @@ public class InnerProceduresButtonsUI {
 		GuedesHomensEspecifica.setVisible(true);
 
 		JLabel GuedesMulheresEspecifica = new JLabel();
+		GuedesMulheresEspecifica.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabGuedesMulheres.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		GuedesMulheresEspecifica.setText("Guedes Mulheres Especifica");
 		GuedesMulheresEspecifica.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, GuedesHomensEspecifica),
@@ -48,6 +54,12 @@ public class InnerProceduresButtonsUI {
 		GuedesMulheresEspecifica.setVisible(true);
 
 		JLabel DuerenbergHomensIdososGordura = new JLabel();
+		DuerenbergHomensIdososGordura.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabDuerenbergGorduraHomensIdosos.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		DuerenbergHomensIdososGordura.setText("Duerenberg %Gordura Homens Idosos");
 		DuerenbergHomensIdososGordura.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, GuedesMulheresEspecifica),
@@ -59,6 +71,12 @@ public class InnerProceduresButtonsUI {
 		DuerenbergHomensIdososGordura.setVisible(true);
 
 		JLabel DurninEWomersleyHomensIdosos = new JLabel();
+		DurninEWomersleyHomensIdosos.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabDurninWomersleyHomensIdosos.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		DurninEWomersleyHomensIdosos.setText("Durnin e Womersley Homens Idosos");
 		DurninEWomersleyHomensIdosos.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, DuerenbergHomensIdososGordura),
@@ -70,7 +88,13 @@ public class InnerProceduresButtonsUI {
 		DurninEWomersleyHomensIdosos.setVisible(true);
 
 		JLabel DurninEWomersleyMulheresIdosas = new JLabel();
-		DurninEWomersleyMulheresIdosas.setText("Durnin e Womersley Mulheres Idosos");
+		DurninEWomersleyMulheresIdosas.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabDurninWomersleyMulheresIdosas.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
+		DurninEWomersleyMulheresIdosas.setText("Durnin e Womersley Mulheres Idosas");
 		DurninEWomersleyMulheresIdosas.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, DurninEWomersleyHomensIdosos),
 				panelLeftSideProcedures.getWidth() - 6, getleftProceduresPanelsHeight(panelLeftSideProcedures));

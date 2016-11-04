@@ -102,7 +102,6 @@ public class CloseableTabbedPaneLayerUI extends LayerUI<JTabbedPane> {
 				Rectangle r = new Rectangle(x, y, d.width, d.height);
 				if (r.contains(pt)) {
 					tabbedPane.removeTabAt(index);//remove tab
-					JScrollBarAdder.removeGroupsRadioButtons();//remove jradiobuttons da tela cadastro alunos
 				}
 			}
 			l.getView().repaint();

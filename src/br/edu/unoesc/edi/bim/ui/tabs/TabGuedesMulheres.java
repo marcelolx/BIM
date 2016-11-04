@@ -20,7 +20,7 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  * @author Marcelo
  *
  */
-public class TabGuedesHomens {
+public class TabGuedesMulheres {
 
 	private static JLabel lblStudentId;
 	private static JSearchField txtName;
@@ -30,8 +30,8 @@ public class TabGuedesHomens {
 	private static JRadioButton rbGenreFemale;
 	private static JTextField txtWeight;
 	private static JTextField txtHeight;
-	private static JTextField txtTriceps;
-	private static JTextField txtAbdomen;
+	private static JTextField txtSubescapular;
+	private static JTextField txtCoxa;
 	private static JTextField txtSupraIliaca;
 	private static JTextField txtCintura;
 	private static JTextField txtQuadril;
@@ -56,7 +56,7 @@ public class TabGuedesHomens {
 		northPane.setBackground(Color.white);
 		northPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		JLabel lbltabName = new JLabel("Guedes Homens");
+		JLabel lbltabName = new JLabel("Guedes Mulheres");
 		lbltabName.setFont(new Font("Base 02", Font.PLAIN, 22));
 		lbltabName.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltabName.setBounds(1, 1, mainPane.getWidth() - 11, 35);
@@ -185,31 +185,31 @@ public class TabGuedesHomens {
 		lblDobrasCutaneas.setFont(new Font("Base 02", Font.BOLD, 16));
 		centerPanel.add(lblDobrasCutaneas);
 
-		JLabel lblTiceps = new JLabel("Tríceps(mm)*");
-		lblTiceps.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7), 40, 90, 22);
-		lblTiceps.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTiceps.setForeground(Color.gray);
-		lblTiceps.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblTiceps);
+		JLabel lblSubescapular = new JLabel("Subescapular(mm)*");
+		lblSubescapular.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7), 40, 125, 22);
+		lblSubescapular.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSubescapular.setForeground(Color.gray);
+		lblSubescapular.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblSubescapular);
 
-		txtTriceps = new JTextField();
-		txtTriceps.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+100+calcMid(mainPane, 7), 40, 45, 22);
-		txtTriceps.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtTriceps.setForeground(Color.gray);
-		centerPanel.add(txtTriceps);
+		txtSubescapular = new JTextField();
+		txtSubescapular.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+130+calcMid(mainPane, 7), 40, 45, 22);
+		txtSubescapular.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSubescapular.setForeground(Color.gray);
+		centerPanel.add(txtSubescapular);
 		
-		JLabel lblAbdomen = new JLabel("Abdomen(mm)*");
-		lblAbdomen.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+160+calcMid(mainPane, 7), 40, 110, 22);
-		lblAbdomen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAbdomen.setForeground(Color.gray);
-		lblAbdomen.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblAbdomen);
+		JLabel lblCoxa = new JLabel("Coxa(mm)*");
+		lblCoxa.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+170+calcMid(mainPane, 7), 40, 110, 22);
+		lblCoxa.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCoxa.setForeground(Color.gray);
+		lblCoxa.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblCoxa);
 
-		txtAbdomen = new JTextField();
-		txtAbdomen.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+275+calcMid(mainPane, 7), 40, 45, 22);
-		txtAbdomen.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtAbdomen.setForeground(Color.gray);
-		centerPanel.add(txtAbdomen);
+		txtCoxa = new JTextField();
+		txtCoxa.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+270+calcMid(mainPane, 7), 40, 45, 22);
+		txtCoxa.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtCoxa.setForeground(Color.gray);
+		centerPanel.add(txtCoxa);
 
 		JLabel lblSupraIliaca = new JLabel("Supra Ilíaca(mm)*");
 		lblSupraIliaca.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 4), 72, 120, 22);
@@ -332,7 +332,7 @@ public class TabGuedesHomens {
 		lblPesoIdeal.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPesoIdeal);
 
-		txtPesoIdeal = new JTextField();
+		txtPesoIdeal= new JTextField();
 		txtPesoIdeal.setBounds(calcMid(mainPane, 2)+15, 290, 45, 22);
 		txtPesoIdeal.setEditable(false);
 		txtPesoIdeal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
@@ -412,9 +412,9 @@ public class TabGuedesHomens {
 		
 		if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
-			mainPane.addTab("GUEDES Homens Específica", pane);
+			mainPane.addTab("GUEDES Mulheres Específica", pane);
 		} else {
-			mainPane.addTab("GUEDES Homens Específica", pane);
+			mainPane.addTab("GUEDES Mulheres Específica", pane);
 		}
 	}
 	/**

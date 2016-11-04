@@ -20,7 +20,7 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  * @author Marcelo
  *
  */
-public class TabGuedesHomens {
+public class TabDurninWomersleyHomensIdosos {
 
 	private static JLabel lblStudentId;
 	private static JSearchField txtName;
@@ -30,9 +30,10 @@ public class TabGuedesHomens {
 	private static JRadioButton rbGenreFemale;
 	private static JTextField txtWeight;
 	private static JTextField txtHeight;
-	private static JTextField txtTriceps;
-	private static JTextField txtAbdomen;
+	private static JTextField txtTiciptal;
+	private static JTextField txtBiciptal;
 	private static JTextField txtSupraIliaca;
+	private static JTextField txtSubescapular;
 	private static JTextField txtCintura;
 	private static JTextField txtQuadril;
 	private static JTextField txtDensidadeCorporal;
@@ -56,7 +57,7 @@ public class TabGuedesHomens {
 		northPane.setBackground(Color.white);
 		northPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		JLabel lbltabName = new JLabel("Guedes Homens");
+		JLabel lbltabName = new JLabel("Durnin e Womersley Homens Idosos");
 		lbltabName.setFont(new Font("Base 02", Font.PLAIN, 22));
 		lbltabName.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltabName.setBounds(1, 1, mainPane.getWidth() - 11, 35);
@@ -185,41 +186,54 @@ public class TabGuedesHomens {
 		lblDobrasCutaneas.setFont(new Font("Base 02", Font.BOLD, 16));
 		centerPanel.add(lblDobrasCutaneas);
 
-		JLabel lblTiceps = new JLabel("Tríceps(mm)*");
-		lblTiceps.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7), 40, 90, 22);
-		lblTiceps.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTiceps.setForeground(Color.gray);
-		lblTiceps.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblTiceps);
+		JLabel lblTiciptal = new JLabel("Ticiptal(mm)*");
+		lblTiciptal.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7), 40, 90, 22);
+		lblTiciptal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTiciptal.setForeground(Color.gray);
+		lblTiciptal.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblTiciptal);
 
-		txtTriceps = new JTextField();
-		txtTriceps.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+100+calcMid(mainPane, 7), 40, 45, 22);
-		txtTriceps.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtTriceps.setForeground(Color.gray);
-		centerPanel.add(txtTriceps);
+		txtTiciptal = new JTextField();
+		txtTiciptal.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+100+calcMid(mainPane, 7), 40, 45, 22);
+		txtTiciptal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtTiciptal.setForeground(Color.gray);
+		centerPanel.add(txtTiciptal);
 		
-		JLabel lblAbdomen = new JLabel("Abdomen(mm)*");
-		lblAbdomen.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+160+calcMid(mainPane, 7), 40, 110, 22);
-		lblAbdomen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAbdomen.setForeground(Color.gray);
-		lblAbdomen.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblAbdomen);
+		JLabel lblBiciptal = new JLabel("Biciptal(mm)*");
+		lblBiciptal.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+160+calcMid(mainPane, 7), 40, 110, 22);
+		lblBiciptal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBiciptal.setForeground(Color.gray);
+		lblBiciptal.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblBiciptal);
 
-		txtAbdomen = new JTextField();
-		txtAbdomen.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+275+calcMid(mainPane, 7), 40, 45, 22);
-		txtAbdomen.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtAbdomen.setForeground(Color.gray);
-		centerPanel.add(txtAbdomen);
+		txtBiciptal = new JTextField();
+		txtBiciptal.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+275+calcMid(mainPane, 7), 40, 45, 22);
+		txtBiciptal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtBiciptal.setForeground(Color.gray);
+		centerPanel.add(txtBiciptal);
 
+		JLabel lblSubescapular = new JLabel("Subescapular(mm)*");
+		lblSubescapular.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7)-35, 72, 124, 22);
+		lblSubescapular.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSubescapular.setForeground(Color.gray);
+		lblSubescapular.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblSubescapular);
+
+		txtSubescapular = new JTextField();
+		txtSubescapular.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+100+calcMid(mainPane, 7), 72, 45, 22);
+		txtSubescapular.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSubescapular.setForeground(Color.gray);
+		centerPanel.add(txtSubescapular);
+		
 		JLabel lblSupraIliaca = new JLabel("Supra Ilíaca(mm)*");
-		lblSupraIliaca.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 4), 72, 120, 22);
+		lblSupraIliaca.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7)+150, 72, 120, 22);
 		lblSupraIliaca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSupraIliaca.setForeground(Color.gray);
 		lblSupraIliaca.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblSupraIliaca);
 
 		txtSupraIliaca = new JTextField();
-		txtSupraIliaca.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+125+calcMid(mainPane, 4), 72, 45, 22);
+		txtSupraIliaca.setBounds(calcPaneWidthSizeToSetComponents(mainPane)+calcMid(mainPane, 7)+275, 72, 45, 22);
 		txtSupraIliaca.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtSupraIliaca.setForeground(Color.gray);
 		centerPanel.add(txtSupraIliaca);
@@ -412,9 +426,9 @@ public class TabGuedesHomens {
 		
 		if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
-			mainPane.addTab("GUEDES Homens Específica", pane);
+			mainPane.addTab("Durnin e Womersley Homens Idosos", pane);
 		} else {
-			mainPane.addTab("GUEDES Homens Específica", pane);
+			mainPane.addTab("Durnin e Womersley Homens Idosos", pane);
 		}
 	}
 	/**
