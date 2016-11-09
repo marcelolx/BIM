@@ -105,7 +105,7 @@ public class TabSingUpStudent {
 		lblid.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblid);
 
-		lblStudentId = new JLabel("NOVO");
+		lblStudentId = new JLabel("0");
 		lblStudentId.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 20, 90, 22);
 		lblStudentId.setHorizontalAlignment(SwingConstants.LEFT);
 		lblStudentId.setFont(new Font("Sans Serif", Font.PLAIN, 12));
