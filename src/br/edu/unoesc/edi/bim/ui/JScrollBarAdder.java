@@ -31,7 +31,7 @@ import br.edu.unoesc.edi.bim.util.StringReturner;
 /**
  * 
  * @author Marcelo TODO Classe que precisa ser refeita para trabalhar com a base
- *         de dados, no momento só para exemplo
+ *         de dados, no momento sï¿½ para exemplo
  *
  */
 public class JScrollBarAdder {
@@ -163,7 +163,7 @@ public class JScrollBarAdder {
 	}
 
 	/*
-	 * Método para listar todos os grupos de alunos cadastrados TODO Necessário
+	 * Mï¿½todo para listar todos os grupos de alunos cadastrados TODO Necessï¿½rio
 	 * pegar todos os grupos do DB ainda e listar.
 	 */
 	public static void listGroupsLabels() {
@@ -303,25 +303,26 @@ public class JScrollBarAdder {
 				age.setBounds((maxBounds.width - 247) / 2, 4, (maxBounds.width - 255) / 2, 23);
 				age.setFont(new Font("Tahoma", Font.PLAIN, 14));
 				JButton id = new JButton();
-				id.setText(students.get(i).getStudentId().toString());
+				id.setText("Sobre");
+				id.setToolTipText(students.get(i).getStudentId().toString());
 				id.addActionListener(new ActionListener() {
 				
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						if (!FrmMain.firstOpenedStudents) {
 							TabSingUpStudent.init(tabbedPane);
-							TabSingUpStudent.fillInputFields(Integer.parseInt(id.getText()));
+							TabSingUpStudent.fillInputFields(Integer.parseInt(id.getToolTipText()));
 							tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 							FrmMain.firstOpenedStudents = true;
 						} else {
 							JScrollBarAdder.removeGroupsRadioButtons();
 							TabSingUpStudent.init(tabbedPane);
-							TabSingUpStudent.fillInputFields(Integer.parseInt(id.getText()));
+							TabSingUpStudent.fillInputFields(Integer.parseInt(id.getToolTipText()));
 							tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 						}
 					}
 				});
-				id.setBounds((maxBounds.width - 247) / 2, 29, 60, 23);
+				id.setBounds((maxBounds.width - 247) / 2, 29, 80, 23);
 				id.setFont(new Font("Tahoma", Font.PLAIN, 14));
 
 				listaAlunos[i].add(name);
