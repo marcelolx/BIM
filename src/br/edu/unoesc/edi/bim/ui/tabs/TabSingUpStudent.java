@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,7 +27,6 @@ import br.edu.unoesc.edi.bim.db.model.Students;
 import br.edu.unoesc.edi.bim.ui.FrmMain;
 import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
 import br.edu.unoesc.edi.bim.util.StringReturner;
-import javax.swing.ButtonGroup;
 
 /**
  * 
@@ -39,8 +39,8 @@ public class TabSingUpStudent {
 	private static JLabel lblStudentId;
 	private static JSearchField txtName;
 	private static JTextField txtMail;
-	private static JSearchField txtPhone;
-	private static JSearchField txtBirthday;
+	private static JTextField txtPhone;
+	private static JTextField txtBirthday;
 	private static JTextField txtAge;
 	private static JRadioButton rbGenreMale;
 	private static JRadioButton rbGenreFemale;
@@ -144,25 +144,42 @@ public class TabSingUpStudent {
 		lblPhone.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPhone);
 
-		txtPhone = new JSearchField();
+		/**
+		 * @author 298073
+		 * Máscara para telefone
+		 */
+		txtPhone = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter telefone = new javax.swing.text.MaskFormatter("(##) ####-####");
+			txtPhone = new javax.swing.JFormattedTextField(telefone);
+		} catch (Exception e) {
+		}
 		txtPhone.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 130, 200, 22);
-		txtPhone.setEmptyText("+55 (00) 0000-00000");
 		txtPhone.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtPhone.setForeground(Color.gray);
+		txtPhone.setForeground(Color.BLACK);
 		centerPanel.add(txtPhone);
 
 		JLabel lblBirthday = new JLabel("Data Nascimento*");
+		
 		lblBirthday.setBounds(calcPaneWidthSizeToSetComponents(mainPane) - 60, 174, 120, 22);
 		lblBirthday.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBirthday.setForeground(Color.gray);
 		lblBirthday.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblBirthday);
 
-		txtBirthday = new JSearchField();
+		/**
+		 * @author 298073
+		 * Máscara para aniversário
+		 */
+		txtBirthday = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter birthday = new javax.swing.text.MaskFormatter("##/##/####");
+			txtBirthday = new javax.swing.JFormattedTextField(birthday);
+		} catch (Exception e) {
+		}
 		txtBirthday.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 172, 170, 22);
-		txtBirthday.setEmptyText("00/00/0000");
 		txtBirthday.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtBirthday.setForeground(Color.gray);
+		txtBirthday.setForeground(Color.BLACK);
 		centerPanel.add(txtBirthday);
 
 		JLabel lblAge = new JLabel("Idade*");
