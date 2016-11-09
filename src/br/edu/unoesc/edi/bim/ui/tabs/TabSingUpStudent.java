@@ -26,6 +26,7 @@ import br.edu.unoesc.edi.bim.db.model.Students;
 import br.edu.unoesc.edi.bim.ui.FrmMain;
 import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
 import br.edu.unoesc.edi.bim.util.StringReturner;
+import javax.swing.ButtonGroup;
 
 /**
  * 
@@ -45,8 +46,12 @@ public class TabSingUpStudent {
 	private static JRadioButton rbGenreFemale;
 	private static JTextField txtWeight;
 	private static JTextField txtHeight;
+	private static final ButtonGroup buttonGroup = new ButtonGroup();
 
 	// TODO
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public static void init(JTabbedPane mainPane) {
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
@@ -181,6 +186,7 @@ public class TabSingUpStudent {
 		centerPanel.add(lblGenre);
 
 		rbGenreMale = new JRadioButton("Masculino");
+		buttonGroup.add(rbGenreMale);
 		rbGenreMale.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 214, 109, 22);
 		rbGenreMale.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		rbGenreMale.setBackground(Color.white);
@@ -188,6 +194,7 @@ public class TabSingUpStudent {
 		centerPanel.add(rbGenreMale);
 
 		rbGenreFemale = new JRadioButton("Feminino");
+		buttonGroup.add(rbGenreFemale);
 		rbGenreFemale.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 173, 214, 109, 22);
 		rbGenreFemale.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		rbGenreFemale.setBackground(Color.white);
@@ -261,8 +268,6 @@ public class TabSingUpStudent {
 				students.setBirthday(Integer.parseInt(txtBirthday.getText()));
 				students.setAge(Integer.parseInt(txtAge.getText()));
 				if (rbGenreFemale.isSelected() && rbGenreMale.isSelected())
-					JOptionPane.showMessageDialog(null, "Só selecione um gênero.");
-				else if (rbGenreFemale.isSelected())
 					students.setGenre(rbGenreFemale.getText().charAt(0));
 				else if (rbGenreMale.isSelected())
 					students.setGenre(rbGenreMale.getText().charAt(0));
