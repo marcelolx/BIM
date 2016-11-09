@@ -121,7 +121,7 @@ public class TabSingUpStudent {
 
 		txtName = new JSearchField();
 		txtName.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 50, 380, 22);
-		txtName.setEmptyText("Nome completo sem abreviações");
+		txtName.setEmptyText("Nome completo sem abreviaï¿½ï¿½es");
 		txtName.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtName.setForeground(Color.GRAY);
 		txtName.addFocusListener(new FocusAdapter() {
@@ -134,7 +134,7 @@ public class TabSingUpStudent {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				txtName.setEmptyText("Nome completo sem abreviações");
+				txtName.setEmptyText("Nome completo sem abreviaï¿½ï¿½es");
 				txtName.setForeground(Color.GRAY);
 			}
 		});
@@ -161,7 +161,7 @@ public class TabSingUpStudent {
 		centerPanel.add(lblPhone);
 
 		/**
-		 * @author 298073 Máscara para telefone
+		 * @author 298073 Mï¿½scara para telefone
 		 */
 		txtPhone = new JTextField();
 		try {
@@ -182,7 +182,7 @@ public class TabSingUpStudent {
 		centerPanel.add(lblBirthday);
 
 		/**
-		 * @author 298073 Máscara para aniversário
+		 * @author 298073 Mï¿½scara para aniversï¿½rio
 		 */
 		txtBirthday = new JTextField();
 		try {
@@ -208,7 +208,7 @@ public class TabSingUpStudent {
 		txtAge.setForeground(Color.gray);
 		centerPanel.add(txtAge);
 
-		JLabel lblGenre = new JLabel("Gênero*");
+		JLabel lblGenre = new JLabel("Gï¿½nero*");
 		lblGenre.setBounds(calcPaneWidthSizeToSetComponents(mainPane), 214, 60, 22);
 		lblGenre.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGenre.setForeground(Color.gray);
@@ -274,6 +274,26 @@ public class TabSingUpStudent {
 		centerPanel.add(listGroupsPanel);
 		JScrollBarAdder.listGroupsRadioButtons();
 
+		JLabel btnRemove = new JLabel("Excluir");
+		btnRemove.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evet0) {
+				try {
+					//exclui estudante da base de dados
+					DAOManager.studentsDAO.deleteById(Integer.parseInt(lblStudentId.getText()));
+					resetInputFields();
+				} catch (NumberFormatException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnRemove.setForeground(Color.white);
+		btnRemove.setOpaque(true);
+		btnRemove.setBackground(new Color(35, 164, 240));
+		btnRemove.setHorizontalAlignment(SwingConstants.CENTER);
+		btnRemove.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 155, 452, 95, 44);
+		centerPanel.add(btnRemove);
+		
 		JLabel btnReset = new JLabel("Limpar");
 		btnReset.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
@@ -302,7 +322,7 @@ public class TabSingUpStudent {
 				else if (rbGenreMale.isSelected())
 					students.setGenre(rbGenreMale.getText().charAt(0));
 				else
-					JOptionPane.showMessageDialog(null, "Selecione o gênero");
+					JOptionPane.showMessageDialog(null, "Selecione o gï¿½nero");
 				students.setWeight(Float.parseFloat(txtWeight.getText()));
 				students.setHeight(Float.parseFloat(txtHeight.getText()));
 				students.setGroups("");
