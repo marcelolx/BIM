@@ -30,9 +30,9 @@ public class Students {
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_EMAIL)
 	private String email;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PHONE)
-	private Long phone;
+	private String phone;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_BIRTHDAY)
-	private Integer birthday;
+	private String birthday;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_AGE)
 	private Integer age;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_GENRE)
@@ -72,20 +72,20 @@ public class Students {
 		this.email = email;
 	}
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public Integer getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Integer birthday) {
-		this.birthday = birthday;
+	public void setBirthday(String string) {
+		this.birthday = string;
 	}
 
 	public Integer getAge() {

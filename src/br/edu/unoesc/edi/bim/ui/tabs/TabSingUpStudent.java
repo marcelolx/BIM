@@ -3,6 +3,8 @@ package br.edu.unoesc.edi.bim.ui.tabs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -103,11 +105,11 @@ public class TabSingUpStudent {
 		lblid.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblid);
 
-		lblStudentId = new JLabel("0");
+		lblStudentId = new JLabel("NOVO");
 		lblStudentId.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 20, 90, 22);
 		lblStudentId.setHorizontalAlignment(SwingConstants.LEFT);
 		lblStudentId.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		lblStudentId.setForeground(Color.gray);
+		lblStudentId.setForeground(Color.BLACK);
 		centerPanel.add(lblStudentId);
 
 		JLabel lblName = new JLabel("Nome *");
@@ -121,7 +123,21 @@ public class TabSingUpStudent {
 		txtName.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 50, 380, 22);
 		txtName.setEmptyText("Nome completo sem abreviações");
 		txtName.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtName.setForeground(Color.gray);
+		txtName.setForeground(Color.GRAY);
+		txtName.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				txtName.setEmptyText("");
+				txtName.selectAll();
+				txtName.setForeground(Color.BLACK);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				txtName.setEmptyText("Nome completo sem abreviações");
+				txtName.setForeground(Color.GRAY);
+			}
+		});
 		centerPanel.add(txtName);
 
 		JLabel lblMail = new JLabel("E-mail *");
@@ -145,8 +161,7 @@ public class TabSingUpStudent {
 		centerPanel.add(lblPhone);
 
 		/**
-		 * @author 298073
-		 * Máscara para telefone
+		 * @author 298073 Máscara para telefone
 		 */
 		txtPhone = new JTextField();
 		try {
@@ -160,7 +175,6 @@ public class TabSingUpStudent {
 		centerPanel.add(txtPhone);
 
 		JLabel lblBirthday = new JLabel("Data Nascimento*");
-		
 		lblBirthday.setBounds(calcPaneWidthSizeToSetComponents(mainPane) - 60, 174, 120, 22);
 		lblBirthday.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBirthday.setForeground(Color.gray);
@@ -168,8 +182,7 @@ public class TabSingUpStudent {
 		centerPanel.add(lblBirthday);
 
 		/**
-		 * @author 298073
-		 * Máscara para aniversário
+		 * @author 298073 Máscara para aniversário
 		 */
 		txtBirthday = new JTextField();
 		try {
@@ -281,8 +294,8 @@ public class TabSingUpStudent {
 				students.setStudentId(Integer.parseInt(lblStudentId.getText()));
 				students.setName(txtName.getText());
 				students.setEmail(txtMail.getText());
-				students.setPhone(Long.parseLong(txtPhone.getText()));
-				students.setBirthday(Integer.parseInt(txtBirthday.getText()));
+				students.setPhone(txtPhone.getText());
+				students.setBirthday(txtBirthday.getText());
 				students.setAge(Integer.parseInt(txtAge.getText()));
 				if (rbGenreFemale.isSelected() && rbGenreMale.isSelected())
 					students.setGenre(rbGenreFemale.getText().charAt(0));
