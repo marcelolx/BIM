@@ -326,29 +326,32 @@ public class TabSingUpStudent {
 				students.setWeight(Float.parseFloat(txtWeight.getText()));
 				students.setHeight(Float.parseFloat(txtHeight.getText()));
 				students.setGroups("");
-				// students.setGroups(groups);
-				try {
-					CreateOrUpdateStatus statusAuxiliar = DAOManager.studentsDAO.createOrUpdate(students);
-					if (statusAuxiliar.isCreated()) {
-						JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
-						StringReturner.setSelectedGroupsOff();
-						resetInputFields();
+				if(txtName.equals("")){
+					try {
+						CreateOrUpdateStatus statusAuxiliar = DAOManager.studentsDAO.createOrUpdate(students);
+						if (statusAuxiliar.isCreated()) {
+							JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+							StringReturner.setSelectedGroupsOff();
+							resetInputFields();
+						}
+						if (statusAuxiliar.isUpdated()) {
+							JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso!");
+						}
+						String groups = null;
+						groups = StringReturner.returnSelectedGroups();
+						if (!groups.isEmpty()) {
+							groups = groups.substring(0, groups.length() - 1);
+							students.setGroups(groups);
+						}
+						CreateOrUpdateStatus status = DAOManager.studentsDAO.createOrUpdate(students);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+	
+						e.printStackTrace();
+	
 					}
-					if (statusAuxiliar.isUpdated()) {
-						JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso!");
-					}
-					String groups = null;
-					groups = StringReturner.returnSelectedGroups();
-					if (!groups.isEmpty()) {
-						groups = groups.substring(0, groups.length() - 1);
-						students.setGroups(groups);
-					}
-					CreateOrUpdateStatus status = DAOManager.studentsDAO.createOrUpdate(students);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-
-					e.printStackTrace();
-
+				}else{
+					
 				}
 			}
 		});
