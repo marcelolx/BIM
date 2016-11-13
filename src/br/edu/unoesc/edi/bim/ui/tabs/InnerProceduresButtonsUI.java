@@ -105,6 +105,12 @@ public class InnerProceduresButtonsUI {
 		DurninEWomersleyMulheresIdosas.setVisible(true);
 
 		JLabel JacksonPollockHomensAtletas = new JLabel();
+		JacksonPollockHomensAtletas.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabJacksonPollockHomensAtletas.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		JacksonPollockHomensAtletas.setText("Jackson Pollock Homens atletas 7 DC");
 		JacksonPollockHomensAtletas.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, DurninEWomersleyMulheresIdosas),
@@ -116,6 +122,12 @@ public class InnerProceduresButtonsUI {
 		JacksonPollockHomensAtletas.setVisible(true);
 
 		JLabel JacksonPollockMulheresAtletas = new JLabel();
+		JacksonPollockMulheresAtletas.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabJacksonPollockMulheresAtletas.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		JacksonPollockMulheresAtletas.setText("Jackson Pollock Mulheres atletas 4 DC");
 		JacksonPollockMulheresAtletas.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, JacksonPollockHomensAtletas),
@@ -127,6 +139,12 @@ public class InnerProceduresButtonsUI {
 		JacksonPollockMulheresAtletas.setVisible(true);
 
 		JLabel GoncalvesMulheresIdosasGordura = new JLabel();
+		GoncalvesMulheresIdosasGordura.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabGoncalvesMulheresIdosas.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		GoncalvesMulheresIdosasGordura.setText("Gonçalves Mulheres Idosas %Gordura Perimetria");
 		GoncalvesMulheresIdosasGordura.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, JacksonPollockMulheresAtletas),

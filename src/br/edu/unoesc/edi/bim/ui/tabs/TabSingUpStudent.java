@@ -121,7 +121,7 @@ public class TabSingUpStudent {
 
 		txtName = new JSearchField();
 		txtName.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 50, 380, 22);
-		txtName.setEmptyText("Nome completo sem abreviaï¿½ï¿½es");
+		txtName.setEmptyText("Nome completo sem abreviações");
 		txtName.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtName.setForeground(Color.GRAY);
 		txtName.addFocusListener(new FocusAdapter() {
@@ -134,7 +134,7 @@ public class TabSingUpStudent {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				txtName.setEmptyText("Nome completo sem abreviaï¿½ï¿½es");
+				txtName.setEmptyText("Nome completo sem abreviações");
 				txtName.setForeground(Color.GRAY);
 			}
 		});
@@ -208,7 +208,7 @@ public class TabSingUpStudent {
 		txtAge.setForeground(Color.gray);
 		centerPanel.add(txtAge);
 
-		JLabel lblGenre = new JLabel("Gï¿½nero*");
+		JLabel lblGenre = new JLabel("Gênero*");
 		lblGenre.setBounds(calcPaneWidthSizeToSetComponents(mainPane), 214, 60, 22);
 		lblGenre.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGenre.setForeground(Color.gray);
@@ -278,7 +278,7 @@ public class TabSingUpStudent {
 		btnRemove.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
 				try {
-					//exclui estudante da base de dados
+					// exclui estudante da base de dados
 					DAOManager.studentsDAO.deleteById(Integer.parseInt(lblStudentId.getText()));
 					resetInputFields();
 				} catch (NumberFormatException | SQLException e) {
@@ -293,7 +293,7 @@ public class TabSingUpStudent {
 		btnRemove.setHorizontalAlignment(SwingConstants.CENTER);
 		btnRemove.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 155, 452, 95, 44);
 		centerPanel.add(btnRemove);
-		
+
 		JLabel btnReset = new JLabel("Limpar");
 		btnReset.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
@@ -310,23 +310,35 @@ public class TabSingUpStudent {
 		JLabel btnSave = new JLabel("Salvar");
 		btnSave.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				Students students = new Students();
-				students.setStudentId(Integer.parseInt(lblStudentId.getText()));
-				students.setName(txtName.getText());
-				students.setEmail(txtMail.getText());
-				students.setPhone(txtPhone.getText());
-				students.setBirthday(txtBirthday.getText());
-				students.setAge(Integer.parseInt(txtAge.getText()));
-				if (rbGenreFemale.isSelected() && rbGenreMale.isSelected())
-					students.setGenre(rbGenreFemale.getText().charAt(0));
-				else if (rbGenreMale.isSelected())
-					students.setGenre(rbGenreMale.getText().charAt(0));
-				else
-					JOptionPane.showMessageDialog(null, "Selecione o gï¿½nero");
-				students.setWeight(Float.parseFloat(txtWeight.getText()));
-				students.setHeight(Float.parseFloat(txtHeight.getText()));
-				students.setGroups("");
-				if(txtName.equals("")){
+				if ((txtName.getText().trim().equals("")) && (txtMail.getText().trim().equals(""))
+						&& (txtPhone.getText().trim().equals("")) && (txtBirthday.getText().trim().equals(""))
+						&& (txtAge.getText().trim().equals("")) && (txtWeight.getText().trim().equals("")) && (txtHeight.getText().trim().equals(""))) {
+					Students students = new Students();
+					students.setStudentId(Integer.parseInt(lblStudentId.getText()));
+					students.setName(txtName.getText());
+					students.setEmail(txtMail.getText());
+					students.setPhone(txtPhone.getText());
+					students.setBirthday(txtBirthday.getText());
+					students.setAge(Integer.parseInt(txtAge.getText()));
+					if (rbGenreMale.isSelected())
+						students.setGenre(rbGenreMale.getText().charAt(0));
+					else if (rbGenreMale.isSelected())
+						students.setGenre(rbGenreFemale.getText().charAt(0));
+					else
+						JOptionPane.showMessageDialog(null, "Selecione o gênero");
+					students.setWeight(Float.parseFloat(txtWeight.getText()));
+					students.setHeight(Float.parseFloat(txtHeight.getText()));
+					students.setGroups("");
+					/*
+					 * Seta-se os Grupos como null, para que o nome dos grupos na base de dados não se repita toda vez
+					 * que um dado sobre X aluno for atualizado.
+					 * 
+					 * Tem-se statusAuxiliar, que a principio faz a gravação ou atualização dos dados na base.
+					 * E depois status que faz a mesma coisa novamente, mas com os grupos de X aluno.
+					 * 
+					 * Uma outra solução, seria pegar esse aluno X da base, e veríficar se ouve alguma modificação nesse campo, 
+					 * então atualizar esse campo, só chamando uma vez o createOrUpdate.
+					 */
 					try {
 						CreateOrUpdateStatus statusAuxiliar = DAOManager.studentsDAO.createOrUpdate(students);
 						if (statusAuxiliar.isCreated()) {
@@ -346,12 +358,12 @@ public class TabSingUpStudent {
 						CreateOrUpdateStatus status = DAOManager.studentsDAO.createOrUpdate(students);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
-	
+
 						e.printStackTrace();
-	
+
 					}
-				}else{
-					
+				} else {
+					JOptionPane.showMessageDialog(null, "Você esqueceu de preencher alguns campos!");
 				}
 			}
 		});
