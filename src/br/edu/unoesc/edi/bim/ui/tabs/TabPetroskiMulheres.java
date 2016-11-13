@@ -19,7 +19,7 @@ import br.edu.unoesc.edi.bim.ui.ForTabs;
  * @author Marcelo
  *
  */
-public class TabJacksonPollockMulheresAtletas {
+public class TabPetroskiMulheres {
 
 	private static JLabel lblStudentId;
 	private static JSearchField txtName;
@@ -29,16 +29,19 @@ public class TabJacksonPollockMulheresAtletas {
 	private static JRadioButton rbGenreFemale;
 	private static JTextField txtWeight;
 	private static JTextField txtHeight;
-	private static JTextField txtTriceps;
-	private static JTextField txtAbdomen;
-	private static JTextField txtCoxa;
+	private static JTextField txtAxilarMedia;
+	private static JTextField txtPanturrilha;
 	private static JTextField txtSupraIliaca;
+	private static JTextField txtCoxa;
 	private static JTextField txtCintura;
 	private static JTextField txtQuadril;
 	private static JTextField txtDensidadeCorporal;
 	private static JTextField txtPorcentagemGordura;
 	private static JTextField txtPesoGordura;
 	private static JTextField txtPesoMagro;
+	private static JTextField txtPesoIdeal;
+	private static JTextField txtIndiceMassaCorporal;
+	private static JTextField txtRazaoCinturaQuadril;
 	private static JTextField txtNivel;
 
 	// TODO
@@ -53,7 +56,7 @@ public class TabJacksonPollockMulheresAtletas {
 		northPane.setBackground(Color.white);
 		northPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		JLabel lbltabName = new JLabel("Jackson Pollock Mulheres Atletas");
+		JLabel lbltabName = new JLabel("Petroski Mulheres");
 		lbltabName.setFont(new Font("Base 02", Font.PLAIN, 22));
 		lbltabName.setHorizontalAlignment(SwingConstants.CENTER);
 		lbltabName.setBounds(1, 1, mainPane.getWidth() - 11, 35);
@@ -73,97 +76,112 @@ public class TabJacksonPollockMulheresAtletas {
 		centerPanel.setBackground(Color.white);
 		centerPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
+		// TODO
 		ForTabs.componentsForStudentInfos(mainPane, centerPanel, lblStudentId, txtName, txtBirthday, txtAge,
 				rbGenreMale, rbGenreFemale, txtWeight, txtHeight);
 
 		JLabel lblDobrasCutaneas = new JLabel("DOBRAS CUTANEAS");
-		lblDobrasCutaneas.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 10, 180, 22);
+		lblDobrasCutaneas.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4),
+				10, 180, 22);
 		lblDobrasCutaneas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDobrasCutaneas.setForeground(Color.black);
 		lblDobrasCutaneas.setFont(new Font("Base 02", Font.BOLD, 16));
 		centerPanel.add(lblDobrasCutaneas);
 
-		JLabel lblTriceps = new JLabel("Tríceps(mm)*");
-		lblTriceps.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 40, 90, 22);
-		lblTriceps.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTriceps.setForeground(Color.gray);
-		lblTriceps.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblTriceps);
+		JLabel lblAxilarMedia = new JLabel("Axilar Média(mm)*");
+		lblAxilarMedia.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) - 25,
+				40, 120, 22);
+		lblAxilarMedia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAxilarMedia.setForeground(Color.gray);
+		lblAxilarMedia.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblAxilarMedia);
 
-		txtTriceps = new JTextField();
-		txtTriceps.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
-		txtTriceps.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtTriceps.setForeground(Color.gray);
-		centerPanel.add(txtTriceps);
+		txtAxilarMedia = new JTextField();
+		txtAxilarMedia.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
+		txtAxilarMedia.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtAxilarMedia.setForeground(Color.gray);
+		centerPanel.add(txtAxilarMedia);
 
-		JLabel lblAbdomen = new JLabel("Abdômen(mm)*");
-		lblAbdomen.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 40, 110, 22);
-		lblAbdomen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAbdomen.setForeground(Color.gray);
-		lblAbdomen.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblAbdomen);
+		JLabel lblPanturrilha = new JLabel("Panturrilha(mm)*");
+		lblPanturrilha.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 40, 110, 22);
+		lblPanturrilha.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPanturrilha.setForeground(Color.gray);
+		lblPanturrilha.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblPanturrilha);
 
-		txtAbdomen = new JTextField();
-		txtAbdomen.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
-		txtAbdomen.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtAbdomen.setForeground(Color.gray);
-		centerPanel.add(txtAbdomen);
-
-		JLabel lblSupraIliaca = new JLabel("Supra Ilíaca(mm)*");
-		lblSupraIliaca.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) - 35, 82, 120, 22);
-		lblSupraIliaca.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSupraIliaca.setForeground(Color.gray);
-		lblSupraIliaca.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblSupraIliaca);
-
-		txtSupraIliaca = new JTextField();
-		txtSupraIliaca.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 82, 45, 22);
-		txtSupraIliaca.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtSupraIliaca.setForeground(Color.gray);
-		centerPanel.add(txtSupraIliaca);
+		txtPanturrilha = new JTextField();
+		txtPanturrilha.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
+		txtPanturrilha.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtPanturrilha.setForeground(Color.gray);
+		centerPanel.add(txtPanturrilha);
 
 		JLabel lblCoxa = new JLabel("Coxa(mm)*");
-		lblCoxa.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) + 150, 82, 120, 22);
+		lblCoxa.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) - 2, 72,
+				124, 22);
 		lblCoxa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCoxa.setForeground(Color.gray);
 		lblCoxa.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblCoxa);
 
 		txtCoxa = new JTextField();
-		txtCoxa.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) + 275, 82, 45, 22);
+		txtCoxa.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 72,
+				45, 22);
 		txtCoxa.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtCoxa.setForeground(Color.gray);
 		centerPanel.add(txtCoxa);
 
+		JLabel lblSupraIliaca = new JLabel("Supra Ilíaca(mm)*");
+		lblSupraIliaca.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) + 150, 72, 120, 22);
+		lblSupraIliaca.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSupraIliaca.setForeground(Color.gray);
+		lblSupraIliaca.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblSupraIliaca);
+
+		txtSupraIliaca = new JTextField();
+		txtSupraIliaca.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7) + 275, 72, 45, 22);
+		txtSupraIliaca.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSupraIliaca.setForeground(Color.gray);
+		centerPanel.add(txtSupraIliaca);
+
 		JLabel lblCircunferencias = new JLabel("CIRCUNFERENCIAS");
-		lblCircunferencias.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 130, 190, 30);
+		lblCircunferencias.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4),
+				130, 190, 30);
 		lblCircunferencias.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCircunferencias.setForeground(Color.black);
 		lblCircunferencias.setFont(new Font("Base 02", Font.BOLD, 18));
 		centerPanel.add(lblCircunferencias);
 
 		JLabel lblCintura = new JLabel("Cintura(cm)*");
-		lblCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 165, 90, 22);
+		lblCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 165, 90,
+				22);
 		lblCintura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCintura.setForeground(Color.gray);
 		lblCintura.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblCintura);
 
 		txtCintura = new JTextField();
-		txtCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 165, 45, 22);
+		txtCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7),
+				165, 45, 22);
 		txtCintura.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtCintura.setForeground(Color.gray);
 		centerPanel.add(txtCintura);
 
 		JLabel lblQuadril = new JLabel("Quadril(cm)*");
-		lblQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 165, 110, 22);
+		lblQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7),
+				165, 110, 22);
 		lblQuadril.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuadril.setForeground(Color.gray);
 		lblQuadril.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblQuadril);
 
 		txtQuadril = new JTextField();
-		txtQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7), 165, 45, 22);
+		txtQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7),
+				165, 45, 22);
 		txtQuadril.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtQuadril.setForeground(Color.gray);
 		centerPanel.add(txtQuadril);
@@ -181,21 +199,21 @@ public class TabJacksonPollockMulheresAtletas {
 		centerPanel.add(lblResultados);
 
 		JLabel lblDensidadeCorporal = new JLabel("Densidade Corporal");
-		lblDensidadeCorporal.setBounds(ForTabs.calcMid(mainPane, 2) - 100, 275, 130, 22);
+		lblDensidadeCorporal.setBounds(ForTabs.calcMid(mainPane, 2) - 100, 255, 130, 22);
 		lblDensidadeCorporal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDensidadeCorporal.setForeground(Color.gray);
 		lblDensidadeCorporal.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblDensidadeCorporal);
 
 		txtDensidadeCorporal = new JTextField();
-		txtDensidadeCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 35, 275, 45, 22);
+		txtDensidadeCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 35, 255, 45, 22);
 		txtDensidadeCorporal.setEditable(false);
 		txtDensidadeCorporal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtDensidadeCorporal.setForeground(Color.gray);
 		centerPanel.add(txtDensidadeCorporal);
 
 		JLabel lblPorcentagemGordura = new JLabel("Gordura(%)");
-		lblPorcentagemGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 100, 275, 75, 22);
+		lblPorcentagemGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 100, 255, 75, 22);
 		lblPorcentagemGordura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPorcentagemGordura.setForeground(Color.gray);
 		lblPorcentagemGordura.setFont(new Font("Sans Serif", Font.BOLD, 13));
@@ -203,48 +221,90 @@ public class TabJacksonPollockMulheresAtletas {
 
 		txtPorcentagemGordura = new JTextField();
 		txtPorcentagemGordura.setEditable(false);
-		txtPorcentagemGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 180, 275, 45, 22);
+		txtPorcentagemGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 180, 255, 45, 22);
 		txtPorcentagemGordura.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPorcentagemGordura.setForeground(Color.gray);
 		centerPanel.add(txtPorcentagemGordura);
 
 		JLabel lblPesoGordura = new JLabel("Peso Gordura ");
-		lblPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 230, 275, 110, 22);
+		lblPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 230, 255, 110, 22);
 		lblPesoGordura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPesoGordura.setForeground(Color.gray);
 		lblPesoGordura.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPesoGordura);
 
 		txtPesoGordura = new JTextField();
-		txtPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 340, 275, 45, 22);
+		txtPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 340, 255, 45, 22);
 		txtPesoGordura.setEditable(false);
 		txtPesoGordura.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPesoGordura.setForeground(Color.gray);
 		centerPanel.add(txtPesoGordura);
 
 		JLabel lblPesoMagro = new JLabel("Peso Magro");
-		lblPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 390, 275, 90, 22);
+		lblPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 390, 255, 90, 22);
 		lblPesoMagro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPesoMagro.setForeground(Color.gray);
 		lblPesoMagro.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPesoMagro);
 
 		txtPesoMagro = new JTextField();
-		txtPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 480, 275, 45, 22);
+		txtPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 480, 255, 45, 22);
 		txtPesoMagro.setEditable(false);
 		txtPesoMagro.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPesoMagro.setForeground(Color.gray);
 		centerPanel.add(txtPesoMagro);
 
+		JLabel lblPesoIdeal = new JLabel("Peso Ideal");
+		lblPesoIdeal.setBounds(ForTabs.calcMid(mainPane, 2) - 65, 290, 75, 22);
+		lblPesoIdeal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPesoIdeal.setForeground(Color.gray);
+		lblPesoIdeal.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblPesoIdeal);
+
+		txtPesoIdeal = new JTextField();
+		txtPesoIdeal.setBounds(ForTabs.calcMid(mainPane, 2) + 15, 290, 45, 22);
+		txtPesoIdeal.setEditable(false);
+		txtPesoIdeal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtPesoIdeal.setForeground(Color.gray);
+		centerPanel.add(txtPesoIdeal);
+
+		JLabel lblIndiceMassaCorporal = new JLabel("Índice Massa Corporal");
+		lblIndiceMassaCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 65, 290, 160, 22);
+		lblIndiceMassaCorporal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIndiceMassaCorporal.setForeground(Color.gray);
+		lblIndiceMassaCorporal.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblIndiceMassaCorporal);
+
+		txtIndiceMassaCorporal = new JTextField();
+		txtIndiceMassaCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 225, 290, 45, 22);
+		txtIndiceMassaCorporal.setEditable(false);
+		txtIndiceMassaCorporal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtIndiceMassaCorporal.setForeground(Color.gray);
+		centerPanel.add(txtIndiceMassaCorporal);
+
+		JLabel lblRazaoCinturaQuadril = new JLabel("Razão Cintura Quadril");
+		lblRazaoCinturaQuadril.setBounds(ForTabs.calcMid(mainPane, 2) + 275, 290, 160, 22);
+		lblRazaoCinturaQuadril.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRazaoCinturaQuadril.setForeground(Color.gray);
+		lblRazaoCinturaQuadril.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblRazaoCinturaQuadril);
+
+		txtRazaoCinturaQuadril = new JTextField();
+		txtRazaoCinturaQuadril.setBounds(ForTabs.calcMid(mainPane, 2) + 435, 290, 45, 22);
+		txtRazaoCinturaQuadril.setEditable(false);
+		txtRazaoCinturaQuadril.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtRazaoCinturaQuadril.setForeground(Color.gray);
+		centerPanel.add(txtRazaoCinturaQuadril);
+
 		JLabel lblNivel = new JLabel("Nível/Idade: ");
-		lblNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 75, 315, 160, 22);
+		lblNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 75, 335, 160, 22);
 		lblNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNivel.setForeground(Color.gray);
 		lblNivel.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblNivel);
 
 		txtNivel = new JTextField();
-		txtNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 315, 150, 22);
+		txtNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 335, 150, 22);
 		txtNivel.setEditable(false);
 		txtNivel.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtNivel.setForeground(Color.red);

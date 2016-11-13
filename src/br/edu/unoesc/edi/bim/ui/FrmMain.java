@@ -25,7 +25,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import br.edu.unoesc.edi.bim.components.CloseableTabbedPane;
-import br.edu.unoesc.edi.bim.ui.tabs.InnerProceduresButtonsUI;
 import br.edu.unoesc.edi.bim.ui.tabs.TabGroupsRegister;
 import br.edu.unoesc.edi.bim.ui.tabs.TabSingUpStudent;
 import br.edu.unoesc.edi.bim.ui.tabs.TabStudent;

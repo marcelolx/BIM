@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.edu.unoesc.edi.bim.ui.tabs;
+package br.edu.unoesc.edi.bim.ui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,6 +11,17 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+
+import br.edu.unoesc.edi.bim.ui.tabs.TabDuerenbergGorduraHomensIdosos;
+import br.edu.unoesc.edi.bim.ui.tabs.TabDurninWomersleyHomensIdosos;
+import br.edu.unoesc.edi.bim.ui.tabs.TabDurninWomersleyMulheresIdosas;
+import br.edu.unoesc.edi.bim.ui.tabs.TabGoncalvesMulheresIdosas;
+import br.edu.unoesc.edi.bim.ui.tabs.TabGuedesHomens;
+import br.edu.unoesc.edi.bim.ui.tabs.TabGuedesMulheres;
+import br.edu.unoesc.edi.bim.ui.tabs.TabJacksonPollockHomensAtletas;
+import br.edu.unoesc.edi.bim.ui.tabs.TabJacksonPollockMulheresAtletas;
+import br.edu.unoesc.edi.bim.ui.tabs.TabPetroskiHomens;
+import br.edu.unoesc.edi.bim.ui.tabs.TabPetroskiMulheres;
 
 /**
  * Classe que adiciona os JLabel (Botões) no painel de procedimentos.
@@ -156,6 +167,12 @@ public class InnerProceduresButtonsUI {
 		GoncalvesMulheresIdosasGordura.setVisible(true);
 
 		JLabel PetroskiHomens18a66anos = new JLabel();
+		PetroskiHomens18a66anos.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabPetroskiHomens.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		PetroskiHomens18a66anos.setText("Petroski Homens 18 a 66 anos");
 		PetroskiHomens18a66anos.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, GoncalvesMulheresIdosasGordura),
@@ -167,6 +184,12 @@ public class InnerProceduresButtonsUI {
 		PetroskiHomens18a66anos.setVisible(true);
 
 		JLabel PetroskiMulheresGeneralizada = new JLabel();
+		PetroskiMulheresGeneralizada.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				TabPetroskiMulheres.init(tabbedPane);
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
 		PetroskiMulheresGeneralizada.setText("Petroski Mulheres Generalizada");
 		PetroskiMulheresGeneralizada.setBounds(3,
 				setProceduresButtonsPosition(panelLeftSideProcedures, PetroskiHomens18a66anos),
