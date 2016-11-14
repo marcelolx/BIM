@@ -136,7 +136,7 @@ public class TabSingUpStudent {
 			@Override
 			public void focusLost(FocusEvent e) {
 				txtName.setEmptyText("Nome completo sem abreviações");
-				//txtName.setForeground(Color.GRAY);
+				// txtName.setForeground(Color.GRAY);
 			}
 		});
 		centerPanel.add(txtName);
@@ -151,7 +151,6 @@ public class TabSingUpStudent {
 		txtMail = new JTextField();
 		txtMail.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 90, 380, 22);
 		txtMail.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtMail.setForeground(Color.gray);
 		lblMail.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent arg0) {
@@ -161,7 +160,7 @@ public class TabSingUpStudent {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				//txtName.setForeground(Color.GRAY);
+				// txtName.setForeground(Color.GRAY);
 			}
 		});
 		centerPanel.add(txtMail);
@@ -216,14 +215,8 @@ public class TabSingUpStudent {
 		centerPanel.add(lblAge);
 
 		txtAge = new JTextField();
-		try {
-			javax.swing.text.MaskFormatter age = new javax.swing.text.MaskFormatter("###");
-			txtAge = new javax.swing.JFormattedTextField(age);
-		} catch (Exception e) {
-		}
 		txtAge.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 290, 172, 45, 22);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtAge.setForeground(Color.gray);
 		centerPanel.add(txtAge);
 
 		JLabel lblGenre = new JLabel("Gênero*");
@@ -257,14 +250,8 @@ public class TabSingUpStudent {
 		centerPanel.add(lblWeight);
 
 		txtWeight = new JTextField();
-		try {
-			javax.swing.text.MaskFormatter weight = new javax.swing.text.MaskFormatter("####");
-			txtWeight = new javax.swing.JFormattedTextField(weight);
-		} catch (Exception e) {
-		}
 		txtWeight.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 256, 45, 22);
 		txtWeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtWeight.setForeground(Color.gray);
 		centerPanel.add(txtWeight);
 
 		JLabel lblHeight = new JLabel("Altura(cm)*");
@@ -282,7 +269,6 @@ public class TabSingUpStudent {
 		}
 		txtHeight.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 219, 256, 45, 22);
 		txtHeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtHeight.setForeground(Color.gray);
 		centerPanel.add(txtHeight);
 
 		JLabel lblGroups = new JLabel("Grupos");
@@ -301,25 +287,22 @@ public class TabSingUpStudent {
 		listGroupsPanel.add(JScrollBarAdder.getScrollPaneGroupsRadioButton(), BorderLayout.CENTER);
 		centerPanel.add(listGroupsPanel);
 		JScrollBarAdder.listGroupsRadioButtons();
-		
+
 		/*
-		JLabel btnNewProcedure = new JLabel("Procedimentos");
-		btnNewProcedure.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent evt){
-				StudentIdForProcedures.init(mainPane);
-				StudentIdForProcedures.setId(Integer.parseInt(lblStudentId.getText()));
-				mainPane.setSelectedIndex(mainPane.getTabCount()-1);
-			}
-			
-		});
-		btnNewProcedure.setForeground(Color.white);
-		btnNewProcedure.setOpaque(true);
-		btnNewProcedure.setBackground(new Color(35, 164, 240));
-		btnNewProcedure.setHorizontalAlignment(SwingConstants.CENTER);
-		btnNewProcedure.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 58, 452, 95, 44);
-		centerPanel.add(btnNewProcedure);
-		*/
-		
+		 * JLabel btnNewProcedure = new JLabel("Procedimentos");
+		 * btnNewProcedure.addMouseListener(new MouseAdapter() { public void
+		 * mouseClicked(MouseEvent evt){ StudentIdForProcedures.init(mainPane);
+		 * StudentIdForProcedures.setId(Integer.parseInt(lblStudentId.getText())
+		 * ); mainPane.setSelectedIndex(mainPane.getTabCount()-1); }
+		 * 
+		 * }); btnNewProcedure.setForeground(Color.white);
+		 * btnNewProcedure.setOpaque(true); btnNewProcedure.setBackground(new
+		 * Color(35, 164, 240));
+		 * btnNewProcedure.setHorizontalAlignment(SwingConstants.CENTER);
+		 * btnNewProcedure.setBounds(calcPaneWidthSizeToSetComponents(mainPane)
+		 * + 58, 452, 95, 44); centerPanel.add(btnNewProcedure);
+		 */
+
 		JLabel btnRemove = new JLabel("Excluir");
 		btnRemove.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
@@ -356,9 +339,10 @@ public class TabSingUpStudent {
 		JLabel btnSave = new JLabel("Salvar");
 		btnSave.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				if ((txtName.getText().trim().equals("")) && (txtMail.getText().trim().equals(""))
-						&& (txtPhone.getText().trim().equals("")) && (txtBirthday.getText().trim().equals(""))
-						&& (txtAge.getText().trim().equals("")) && (txtWeight.getText().trim().equals("")) && (txtHeight.getText().trim().equals(""))) {
+				if ((!txtName.getText().trim().equals("")) && (!txtMail.getText().trim().equals(""))
+						&& (!txtPhone.getText().trim().equals("")) && (!txtBirthday.getText().trim().equals(""))
+						&& (!txtAge.getText().trim().equals("")) && (!txtWeight.getText().trim().equals(""))
+						&& (!txtHeight.getText().trim().equals("")) && ((rbGenreMale.isSelected()) || (rbGenreFemale.isSelected()))) {
 					Students students = new Students();
 					students.setStudentId(Integer.parseInt(lblStudentId.getText()));
 					students.setName(txtName.getText());
@@ -368,7 +352,7 @@ public class TabSingUpStudent {
 					students.setAge(Integer.parseInt(txtAge.getText()));
 					if (rbGenreMale.isSelected())
 						students.setGenre(rbGenreMale.getText().charAt(0));
-					else if (rbGenreMale.isSelected())
+					else if (rbGenreFemale.isSelected())
 						students.setGenre(rbGenreFemale.getText().charAt(0));
 					else
 						JOptionPane.showMessageDialog(null, "Selecione o gênero");
@@ -376,14 +360,18 @@ public class TabSingUpStudent {
 					students.setHeight(Float.parseFloat(txtHeight.getText()));
 					students.setGroups("");
 					/*
-					 * Seta-se os Grupos como null, para que o nome dos grupos na base de dados não se repita toda vez
-					 * que um dado sobre X aluno for atualizado.
+					 * Seta-se os Grupos como null, para que o nome dos grupos
+					 * na base de dados não se repita toda vez que um dado sobre
+					 * X aluno for atualizado.
 					 * 
-					 * Tem-se statusAuxiliar, que a principio faz a gravação ou atualização dos dados na base.
-					 * E depois status que faz a mesma coisa novamente, mas com os grupos de X aluno.
+					 * Tem-se statusAuxiliar, que a principio faz a gravação ou
+					 * atualização dos dados na base. E depois status que faz a
+					 * mesma coisa novamente, mas com os grupos de X aluno.
 					 * 
-					 * Uma outra solução, seria pegar esse aluno X da base, e veríficar se ouve alguma modificação nesse campo, 
-					 * então atualizar esse campo, só chamando uma vez o createOrUpdate.
+					 * Uma outra solução, seria pegar esse aluno X da base, e
+					 * veríficar se ouve alguma modificação nesse campo, então
+					 * atualizar esse campo, só chamando uma vez o
+					 * createOrUpdate.
 					 */
 					try {
 						CreateOrUpdateStatus statusAuxiliar = DAOManager.studentsDAO.createOrUpdate(students);
@@ -409,7 +397,26 @@ public class TabSingUpStudent {
 
 					}
 				} else {
-					JOptionPane.showMessageDialog(null, "Você esqueceu de preencher alguns campos!");
+					System.out.println("enterred her");
+					// JOptionPane.showMessageDialog(null, "Você esqueceu de
+					// preencher alguns campos!");
+					if (txtName.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Nome!");
+					} else if (txtMail.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo E-mail!");
+					} else if (txtPhone.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Telefone!");
+					} else if (txtBirthday.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Data Nascimento!");
+					} else if (txtAge.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Idade!");
+					} else if (txtWeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Peso!");
+					} else if (txtHeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Altura!");
+					}else if ((!rbGenreMale.isSelected()) && (!rbGenreFemale.isSelected())){
+						JOptionPane.showMessageDialog(null, "Voc~e esqueceu de preencher o campo Gênero");
+					}
 				}
 			}
 		});

@@ -18,7 +18,7 @@ import br.edu.unoesc.edi.bim.db.model.Students;
  */
 public class FillTabInputFields {
 	public static void fillInputFields(Integer id,  JLabel lblStudentId,
-			JSearchField txtName, JSearchField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
+			JSearchField txtName, JTextField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
 			JRadioButton rbGenreFemale, JTextField txtWeight, JTextField txtHeight) {
 		try {
 			

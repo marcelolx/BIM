@@ -6,7 +6,6 @@ package br.edu.unoesc.edi.bim.ui;
 import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -23,14 +22,13 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  *
  */
 public class ForTabs {
-	
+
 	private static JSearchField txtSearch;
-	
+
 	public static void componentsForStudentInfos(JTabbedPane mainPane, JPanel centerPanel, JLabel lblStudentId,
 			JSearchField txtName, JTextField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
 			JRadioButton rbGenreFemale, JTextField txtWeight, JTextField txtHeight) {
-		
-		
+
 		JLabel lblid = new JLabel("ID ");
 		lblid.setBounds(calcPaneWidthSizeToSetComponents(mainPane) / 20, 10, 30, 22);
 		lblid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -44,7 +42,7 @@ public class ForTabs {
 		lblStudentId.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		lblStudentId.setForeground(Color.gray);
 		centerPanel.add(lblStudentId);
-		
+
 		JLabel lblSearch = new JLabel("Search ");
 		lblSearch.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 138, 10, 60, 22);
 		lblSearch.setHorizontalAlignment(SwingConstants.CENTER);
@@ -53,7 +51,7 @@ public class ForTabs {
 		centerPanel.add(lblSearch);
 
 		txtSearch = new JSearchField();
-		txtSearch.setBounds(((calcPaneWidthSizeToSetComponents(mainPane) / 20) ) + 197, 10, 200, 22);
+		txtSearch.setBounds(((calcPaneWidthSizeToSetComponents(mainPane) / 20)) + 197, 10, 200, 22);
 		txtSearch.setEmptyText("Pesquise pelo nome/sobrenome");
 		txtSearch.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtSearch.setForeground(Color.gray);
@@ -100,11 +98,6 @@ public class ForTabs {
 		centerPanel.add(lblAge);
 
 		txtAge = new JTextField();
-		try {
-			javax.swing.text.MaskFormatter age = new javax.swing.text.MaskFormatter("##");
-			txtAge = new javax.swing.JFormattedTextField(age);
-		} catch (Exception e) {
-		}
 		txtAge.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 352, 90, 45, 22);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAge.setForeground(Color.gray);
@@ -141,11 +134,6 @@ public class ForTabs {
 		centerPanel.add(lblWeight);
 
 		txtWeight = new JTextField();
-		try {
-			javax.swing.text.MaskFormatter weight = new javax.swing.text.MaskFormatter("####");
-			txtWeight = new javax.swing.JFormattedTextField(weight);
-		} catch (Exception e) {
-		}
 		txtWeight.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 65, 158, 45, 22);
 		txtWeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtWeight.setForeground(Color.gray);
@@ -169,7 +157,8 @@ public class ForTabs {
 		txtHeight.setForeground(Color.gray);
 		centerPanel.add(txtHeight);
 
-		// Prenche os campos se o usuário abriu pelo tablistProcedures//ou pela menu lateral procedures
+		// Prenche os campos se o usuário abriu pelo tablistProcedures//ou pela
+		// menu lateral procedures
 		Integer id = StudentIdForProcedures.getId();
 		if (!(id == 0)) {
 			FillTabInputFields.fillInputFields(id, lblStudentId, txtName, txtBirthday, txtAge, rbGenreMale,
