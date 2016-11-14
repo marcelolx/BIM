@@ -322,9 +322,9 @@ public class TabJacksonPollockHomensAtletas {
 
 		if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
-			mainPane.addTab("Durnin e Womersley Mulheres Idosas", pane);
+			mainPane.addTab("Jackson Pollock Homens Atletas", pane);
 		} else {
-			mainPane.addTab("Durnin e Womersley Mulheres Idosas", pane);
+			mainPane.addTab("Jackson Pollock Homens Atletas", pane);
 		}
 	}
 }

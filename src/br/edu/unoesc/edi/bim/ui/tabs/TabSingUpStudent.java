@@ -23,6 +23,7 @@ import javax.swing.border.TitledBorder;
 
 import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
 
+import br.edu.unoesc.edi.bim.actions.StudentIdForProcedures;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Students;
@@ -273,7 +274,25 @@ public class TabSingUpStudent {
 		listGroupsPanel.add(JScrollBarAdder.getScrollPaneGroupsRadioButton(), BorderLayout.CENTER);
 		centerPanel.add(listGroupsPanel);
 		JScrollBarAdder.listGroupsRadioButtons();
-
+		
+		/*
+		JLabel btnNewProcedure = new JLabel("Procedimentos");
+		btnNewProcedure.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				StudentIdForProcedures.init(mainPane);
+				StudentIdForProcedures.setId(Integer.parseInt(lblStudentId.getText()));
+				mainPane.setSelectedIndex(mainPane.getTabCount()-1);
+			}
+			
+		});
+		btnNewProcedure.setForeground(Color.white);
+		btnNewProcedure.setOpaque(true);
+		btnNewProcedure.setBackground(new Color(35, 164, 240));
+		btnNewProcedure.setHorizontalAlignment(SwingConstants.CENTER);
+		btnNewProcedure.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 58, 452, 95, 44);
+		centerPanel.add(btnNewProcedure);
+		*/
+		
 		JLabel btnRemove = new JLabel("Excluir");
 		btnRemove.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
@@ -378,11 +397,10 @@ public class TabSingUpStudent {
 		pane.add(centerPanel);
 		pane.setVisible(true);
 
-		System.out.println(FrmMain.firstOpenedStudents);
 		if (!FrmMain.firstOpenedStudents) {
 			FrmMain.firstOpenedStudents = true;
 			mainPane.addTab("Novo Aluno", pane);
-		} else if (mainPane.getTabCount() == 2) {
+		} else if (mainPane.getTabCount() >= 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
 			mainPane.addTab("Novo Aluno", pane);
 		} else {
@@ -433,6 +451,7 @@ public class TabSingUpStudent {
 				rbGenreFemale.setSelected(false);
 				rbGenreMale.setSelected(true);
 			}
+			StudentIdForProcedures.setId(Integer.parseInt(lblStudentId.getText()));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -13,6 +13,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import br.edu.unoesc.edi.bim.actions.FillTabInputFields;
+import br.edu.unoesc.edi.bim.actions.StudentIdForProcedures;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 
 /**
@@ -20,9 +22,14 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
  *
  */
 public class ForTabs {
+	
+	private static JSearchField txtSearch;
+	
 	public static void componentsForStudentInfos(JTabbedPane mainPane, JPanel centerPanel, JLabel lblStudentId,
 			JSearchField txtName, JSearchField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
 			JRadioButton rbGenreFemale, JTextField txtWeight, JTextField txtHeight) {
+		
+		
 		JLabel lblid = new JLabel("ID ");
 		lblid.setBounds(calcPaneWidthSizeToSetComponents(mainPane) / 20, 10, 30, 22);
 		lblid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -31,11 +38,25 @@ public class ForTabs {
 		centerPanel.add(lblid);
 
 		lblStudentId = new JLabel("0");
-		lblStudentId.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 35, 10, 90, 22);
+		lblStudentId.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 35, 10, 25, 22);
 		lblStudentId.setHorizontalAlignment(SwingConstants.LEFT);
 		lblStudentId.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		lblStudentId.setForeground(Color.gray);
 		centerPanel.add(lblStudentId);
+		
+		JLabel lblSearch = new JLabel("Search ");
+		lblSearch.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 138, 10, 60, 22);
+		lblSearch.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSearch.setForeground(Color.gray);
+		lblSearch.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblSearch);
+
+		txtSearch = new JSearchField();
+		txtSearch.setBounds(((calcPaneWidthSizeToSetComponents(mainPane) / 20) ) + 197, 10, 200, 22);
+		txtSearch.setEmptyText("Pesquise pelo nome/sobrenome");
+		txtSearch.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSearch.setForeground(Color.gray);
+		centerPanel.add(txtSearch);
 
 		JLabel lblName = new JLabel("Nome *");
 		lblName.setBounds(calcPaneWidthSizeToSetComponents(mainPane) / 20, 50, 60, 22);
@@ -47,6 +68,7 @@ public class ForTabs {
 		txtName = new JSearchField();
 		txtName.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 57, 50, 340, 22);
 		txtName.setEmptyText("Nome completo sem abreviações");
+		txtName.setEditable(false);
 		txtName.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtName.setForeground(Color.gray);
 		centerPanel.add(txtName);
@@ -59,6 +81,7 @@ public class ForTabs {
 		centerPanel.add(lblBirthday);
 
 		txtBirthday = new JSearchField();
+		txtBirthday.setEditable(false);
 		txtBirthday.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 125, 90, 170, 22);
 		txtBirthday.setEmptyText("00/00/0000");
 		txtBirthday.setFont(new Font("Sans Serif", Font.PLAIN, 12));
@@ -73,6 +96,7 @@ public class ForTabs {
 		centerPanel.add(lblAge);
 
 		txtAge = new JTextField();
+		txtAge.setEditable(false);
 		txtAge.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 352, 90, 45, 22);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAge.setForeground(Color.gray);
@@ -86,6 +110,7 @@ public class ForTabs {
 		centerPanel.add(lblGenre);
 
 		rbGenreMale = new JRadioButton("Masculino");
+		rbGenreMale.setEnabled(false);
 		rbGenreMale.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 62, 124, 109, 22);
 		rbGenreMale.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		rbGenreMale.setBackground(Color.white);
@@ -93,6 +118,7 @@ public class ForTabs {
 		centerPanel.add(rbGenreMale);
 
 		rbGenreFemale = new JRadioButton("Feminino");
+		rbGenreFemale.setEnabled(false);
 		rbGenreFemale.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 173, 124, 109, 22);
 		rbGenreFemale.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		rbGenreFemale.setBackground(Color.white);
@@ -124,6 +150,13 @@ public class ForTabs {
 		txtHeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtHeight.setForeground(Color.gray);
 		centerPanel.add(txtHeight);
+
+		// Prenche os campos se o usuário abriu pelo tablistProcedures//ou pela menu lateral procedures
+		Integer id = StudentIdForProcedures.getId();
+		if (!(id == 0)) {
+			FillTabInputFields.fillInputFields(id, lblStudentId, txtName, txtBirthday, txtAge, rbGenreMale,
+					rbGenreFemale, txtWeight, txtHeight);
+		}
 	}
 
 	/**

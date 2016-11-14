@@ -216,9 +216,9 @@ public class TabGoncalvesMulheresIdosas {
 
 		if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
-			mainPane.addTab("Durnin e Womersley Mulheres Idosas", pane);
+			mainPane.addTab("Gonçalves Mulheres Idosas", pane);
 		} else {
-			mainPane.addTab("Durnin e Womersley Mulheres Idosas", pane);
+			mainPane.addTab("Gonçalves Mulheres Idosas", pane);
 		}
 	}
 

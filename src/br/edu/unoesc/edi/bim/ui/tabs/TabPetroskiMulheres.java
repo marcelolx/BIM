@@ -340,9 +340,9 @@ public class TabPetroskiMulheres {
 
 		if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
-			mainPane.addTab("Durnin e Womersley Mulheres Idosas", pane);
+			mainPane.addTab("Petroski Mulheres", pane);
 		} else {
-			mainPane.addTab("Durnin e Womersley Mulheres Idosas", pane);
+			mainPane.addTab("Petroski Mulheres", pane);
 		}
 	}
 

@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import br.edu.unoesc.edi.bim.actions.FillTabInputFields;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
 
@@ -79,80 +80,92 @@ public class TabGuedesHomens {
 				rbGenreMale, rbGenreFemale, txtWeight, txtHeight);
 
 		JLabel lblDobrasCutaneas = new JLabel("DOBRAS CUTANEAS");
-		lblDobrasCutaneas.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 10, 180, 22);
+		lblDobrasCutaneas.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4),
+				10, 180, 22);
 		lblDobrasCutaneas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDobrasCutaneas.setForeground(Color.black);
 		lblDobrasCutaneas.setFont(new Font("Base 02", Font.BOLD, 16));
 		centerPanel.add(lblDobrasCutaneas);
 
 		JLabel lblTiceps = new JLabel("Tríceps(mm)*");
-		lblTiceps.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 40, 90, 22);
+		lblTiceps.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 40, 90,
+				22);
 		lblTiceps.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTiceps.setForeground(Color.gray);
 		lblTiceps.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblTiceps);
 
 		txtTriceps = new JTextField();
-		txtTriceps.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
+		txtTriceps.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7),
+				40, 45, 22);
 		txtTriceps.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtTriceps.setForeground(Color.gray);
 		centerPanel.add(txtTriceps);
 
 		JLabel lblAbdomen = new JLabel("Abdomen(mm)*");
-		lblAbdomen.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 40, 110, 22);
+		lblAbdomen.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7),
+				40, 110, 22);
 		lblAbdomen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAbdomen.setForeground(Color.gray);
 		lblAbdomen.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblAbdomen);
 
 		txtAbdomen = new JTextField();
-		txtAbdomen.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
+		txtAbdomen.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7),
+				40, 45, 22);
 		txtAbdomen.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAbdomen.setForeground(Color.gray);
 		centerPanel.add(txtAbdomen);
 
 		JLabel lblSupraIliaca = new JLabel("Supra Ilíaca(mm)*");
-		lblSupraIliaca.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 72, 120, 22);
+		lblSupraIliaca.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 72,
+				120, 22);
 		lblSupraIliaca.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSupraIliaca.setForeground(Color.gray);
 		lblSupraIliaca.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblSupraIliaca);
 
 		txtSupraIliaca = new JTextField();
-		txtSupraIliaca.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 125 + ForTabs.calcMid(mainPane, 4), 72, 45, 22);
+		txtSupraIliaca.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 125 + ForTabs.calcMid(mainPane, 4), 72, 45, 22);
 		txtSupraIliaca.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtSupraIliaca.setForeground(Color.gray);
 		centerPanel.add(txtSupraIliaca);
 
 		JLabel lblCircunferencias = new JLabel("CIRCUNFERENCIAS");
-		lblCircunferencias.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 130, 190, 30);
+		lblCircunferencias.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4),
+				130, 190, 30);
 		lblCircunferencias.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCircunferencias.setForeground(Color.black);
 		lblCircunferencias.setFont(new Font("Base 02", Font.BOLD, 18));
 		centerPanel.add(lblCircunferencias);
 
 		JLabel lblCintura = new JLabel("Cintura(cm)*");
-		lblCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 165, 90, 22);
+		lblCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 165, 90,
+				22);
 		lblCintura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCintura.setForeground(Color.gray);
 		lblCintura.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblCintura);
 
 		txtCintura = new JTextField();
-		txtCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 165, 45, 22);
+		txtCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7),
+				165, 45, 22);
 		txtCintura.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtCintura.setForeground(Color.gray);
 		centerPanel.add(txtCintura);
 
 		JLabel lblQuadril = new JLabel("Quadril(cm)*");
-		lblQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 165, 110, 22);
+		lblQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7),
+				165, 110, 22);
 		lblQuadril.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuadril.setForeground(Color.gray);
 		lblQuadril.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblQuadril);
 
 		txtQuadril = new JTextField();
-		txtQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7), 165, 45, 22);
+		txtQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7),
+				165, 45, 22);
 		txtQuadril.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtQuadril.setForeground(Color.gray);
 		centerPanel.add(txtQuadril);
@@ -315,5 +328,6 @@ public class TabGuedesHomens {
 		} else {
 			mainPane.addTab("GUEDES Homens Específica", pane);
 		}
+
 	}
 }
