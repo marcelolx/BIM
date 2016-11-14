@@ -121,9 +121,9 @@ public class TabSingUpStudent {
 
 		txtName = new JSearchField();
 		txtName.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 50, 380, 22);
+		txtName.setForeground(Color.GRAY);
 		txtName.setEmptyText("Nome completo sem abreviações");
 		txtName.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtName.setForeground(Color.GRAY);
 		txtName.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent arg0) {
@@ -135,7 +135,7 @@ public class TabSingUpStudent {
 			@Override
 			public void focusLost(FocusEvent e) {
 				txtName.setEmptyText("Nome completo sem abreviações");
-				txtName.setForeground(Color.GRAY);
+				//txtName.setForeground(Color.GRAY);
 			}
 		});
 		centerPanel.add(txtName);
@@ -151,6 +151,18 @@ public class TabSingUpStudent {
 		txtMail.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 90, 380, 22);
 		txtMail.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtMail.setForeground(Color.gray);
+		lblMail.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				txtMail.selectAll();
+				txtMail.setForeground(Color.BLACK);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				//txtName.setForeground(Color.GRAY);
+			}
+		});
 		centerPanel.add(txtMail);
 
 		JLabel lblPhone = new JLabel("Telefone");
@@ -203,6 +215,11 @@ public class TabSingUpStudent {
 		centerPanel.add(lblAge);
 
 		txtAge = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter age = new javax.swing.text.MaskFormatter("###");
+			txtAge = new javax.swing.JFormattedTextField(age);
+		} catch (Exception e) {
+		}
 		txtAge.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 290, 172, 45, 22);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAge.setForeground(Color.gray);
@@ -239,6 +256,11 @@ public class TabSingUpStudent {
 		centerPanel.add(lblWeight);
 
 		txtWeight = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter weight = new javax.swing.text.MaskFormatter("####");
+			txtWeight = new javax.swing.JFormattedTextField(weight);
+		} catch (Exception e) {
+		}
 		txtWeight.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 62, 256, 45, 22);
 		txtWeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtWeight.setForeground(Color.gray);
@@ -252,6 +274,11 @@ public class TabSingUpStudent {
 		centerPanel.add(lblHeight);
 
 		txtHeight = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter height = new javax.swing.text.MaskFormatter("###");
+			txtHeight = new javax.swing.JFormattedTextField(height);
+		} catch (Exception e) {
+		}
 		txtHeight.setBounds(calcPaneWidthSizeToSetComponents(mainPane) + 219, 256, 45, 22);
 		txtHeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtHeight.setForeground(Color.gray);

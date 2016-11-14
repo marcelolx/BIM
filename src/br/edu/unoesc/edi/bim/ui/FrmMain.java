@@ -82,7 +82,8 @@ public class FrmMain extends JFrame {
 		panelNorth.setLayout(null);
 
 		JLabel lblUsernamehere = new JLabel(userName);
-		lblUsernamehere.setBounds(maxBounds.width - 454, 26, 72, 14);
+		lblUsernamehere.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUsernamehere.setBounds(1040, 20, 72, 14);
 		panelNorth.add(lblUsernamehere);
 
 		JButton btnSair = new JButton("Logoff");
@@ -105,15 +106,9 @@ public class FrmMain extends JFrame {
 		btnAjuda.setBounds(maxBounds.width - 222, 11, 115, 35);
 		panelNorth.add(btnAjuda);
 
-		JButton btnsincronizar = new JButton("Sincronizar");
-		btnsincronizar.setContentAreaFilled(false);
-		btnsincronizar.setIcon(new ImageIcon(FrmMain.class.getResource("/images/Synchronize-48.png")));
-		btnsincronizar.setBounds(maxBounds.width - 340, 11, 121, 35);
-		panelNorth.add(btnsincronizar);
-
 		JLabel lblUserIcon = new JLabel("");
 		lblUserIcon.setIcon(new ImageIcon(FrmMain.class.getResource("/images/userLog.png")));
-		lblUserIcon.setBounds(maxBounds.width - 386, 11, 46, 35);
+		lblUserIcon.setBounds(1003, 11, 46, 35);
 		panelNorth.add(lblUserIcon);
 
 		JLabel lbllogomain = new JLabel("");
