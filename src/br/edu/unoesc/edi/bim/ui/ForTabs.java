@@ -6,6 +6,7 @@ package br.edu.unoesc.edi.bim.ui;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -18,7 +19,7 @@ import br.edu.unoesc.edi.bim.actions.StudentIdForProcedures;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 
 /**
- * @author Marcelo
+ * @author Marcelo/Jonathan
  *
  */
 public class ForTabs {
@@ -26,7 +27,7 @@ public class ForTabs {
 	private static JSearchField txtSearch;
 	
 	public static void componentsForStudentInfos(JTabbedPane mainPane, JPanel centerPanel, JLabel lblStudentId,
-			JSearchField txtName, JSearchField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
+			JSearchField txtName, JTextField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
 			JRadioButton rbGenreFemale, JTextField txtWeight, JTextField txtHeight) {
 		
 		
@@ -80,10 +81,13 @@ public class ForTabs {
 		lblBirthday.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblBirthday);
 
-		txtBirthday = new JSearchField();
-		txtBirthday.setEditable(false);
+		txtBirthday = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter birthday = new javax.swing.text.MaskFormatter("##/##/####");
+			txtBirthday = new javax.swing.JFormattedTextField(birthday);
+		} catch (Exception e) {
+		}
 		txtBirthday.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 125, 90, 170, 22);
-		txtBirthday.setEmptyText("00/00/0000");
 		txtBirthday.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtBirthday.setForeground(Color.gray);
 		centerPanel.add(txtBirthday);
@@ -96,7 +100,11 @@ public class ForTabs {
 		centerPanel.add(lblAge);
 
 		txtAge = new JTextField();
-		txtAge.setEditable(false);
+		try {
+			javax.swing.text.MaskFormatter age = new javax.swing.text.MaskFormatter("##");
+			txtAge = new javax.swing.JFormattedTextField(age);
+		} catch (Exception e) {
+		}
 		txtAge.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 352, 90, 45, 22);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAge.setForeground(Color.gray);
@@ -133,6 +141,11 @@ public class ForTabs {
 		centerPanel.add(lblWeight);
 
 		txtWeight = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter weight = new javax.swing.text.MaskFormatter("####");
+			txtWeight = new javax.swing.JFormattedTextField(weight);
+		} catch (Exception e) {
+		}
 		txtWeight.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 65, 158, 45, 22);
 		txtWeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtWeight.setForeground(Color.gray);
@@ -146,6 +159,11 @@ public class ForTabs {
 		centerPanel.add(lblHeight);
 
 		txtHeight = new JTextField();
+		try {
+			javax.swing.text.MaskFormatter height = new javax.swing.text.MaskFormatter("###");
+			txtHeight = new javax.swing.JFormattedTextField(height);
+		} catch (Exception e) {
+		}
 		txtHeight.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 217, 158, 45, 22);
 		txtHeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtHeight.setForeground(Color.gray);
