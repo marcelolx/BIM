@@ -25,11 +25,13 @@ import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
  *
  */
 public class TabStudent {
-
-
+	
+	private static Rectangle maxBounds;
+	private static JTabbedPane mainTabbedPane;
+	
 	public static void init(JTabbedPane mainPane) {
-
-		Rectangle maxBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+		mainTabbedPane = mainPane;
+		maxBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 
 		JPanel pane = new JPanel();
 		pane.setBackground(Color.white);
@@ -60,9 +62,7 @@ public class TabStudent {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//TODO
-				JScrollBarAdder.removeTabStudentsPanels();
-				JScrollBarAdder.listStudentsAtTabStudents(maxBounds, mainPane);
-				
+				updateTabStudents();
 			}
 		});
 		panel.add(clearSearchStudents, BorderLayout.WEST);
@@ -81,5 +81,10 @@ public class TabStudent {
 		pane.add(northTabbedPane, BorderLayout.NORTH);
 		pane.add(centralTabbedPane, BorderLayout.CENTER);
 		mainPane.addTab("Alunos", pane);
+	}
+	
+	protected static void updateTabStudents(){
+		JScrollBarAdder.removeTabStudentsPanels();
+		JScrollBarAdder.listStudentsAtTabStudents(maxBounds, mainTabbedPane);
 	}
 }

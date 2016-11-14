@@ -23,6 +23,7 @@ import javax.swing.border.TitledBorder;
 
 import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
 
+import br.edu.unoesc.edi.bim.actions.FillTabInputFields;
 import br.edu.unoesc.edi.bim.actions.StudentIdForProcedures;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
@@ -309,6 +310,8 @@ public class TabSingUpStudent {
 				try {
 					// exclui estudante da base de dados
 					DAOManager.studentsDAO.deleteById(Integer.parseInt(lblStudentId.getText()));
+					StudentIdForProcedures.setId(0);
+					TabStudent.updateTabStudents();
 					resetInputFields();
 				} catch (NumberFormatException | SQLException e) {
 					// TODO Auto-generated catch block
