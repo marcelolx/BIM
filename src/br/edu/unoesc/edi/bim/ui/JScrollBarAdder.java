@@ -163,8 +163,8 @@ public class JScrollBarAdder {
 	}
 
 	/*
-	 * Método para listar todos os grupos de alunos cadastrados TODO
-	 * Necessário pegar todos os grupos do DB ainda e listar.
+	 * Método para listar todos os grupos de alunos cadastrados TODO Necessário
+	 * pegar todos os grupos do DB ainda e listar.
 	 */
 	public static void listGroupsLabels() {
 		removeListGroupsLabels();
@@ -272,10 +272,10 @@ public class JScrollBarAdder {
 		}
 		StringReturner.getStudentsAtTabRegisterGroupsForNewGroup(newGroupStudents);
 	}
-	
+
 	/**
-	 * Remove todos os JRadioButtons exibidos no painel de alunos para novos grupos (Tela
-	 * cadastro de grupos)
+	 * Remove todos os JRadioButtons exibidos no painel de alunos para novos
+	 * grupos (Tela cadastro de grupos)
 	 */
 	public static void removeStudentsForNewGroupRadioButtons() {
 		panelStudentsNewGroup.removeAll();

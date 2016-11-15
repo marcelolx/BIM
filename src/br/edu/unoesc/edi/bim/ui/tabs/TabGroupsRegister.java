@@ -6,6 +6,9 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,7 +102,7 @@ public class TabGroupsRegister {
 		btnRemoveFromNewGroup.setBackground(new Color(35, 164, 240));
 		btnRemoveFromNewGroup.setHorizontalAlignment(SwingConstants.CENTER);
 		btnRemoveFromNewGroup.setBounds(calcPaneSize(mainPane, 6) + 304, 219, 48, 48);
-		centerPanel.add(btnRemoveFromNewGroup);
+		//centerPanel.add(btnRemoveFromNewGroup);
 
 		JPanel listNewGroupStudents = new JPanel();
 		listNewGroupStudents.setLayout(new BorderLayout(0, 0));
@@ -113,46 +116,57 @@ public class TabGroupsRegister {
 		JLabel btnRegister = new JLabel("Cadastrar");
 		btnRegister.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
+				List<String> allNames = new ArrayList<String>();
 				if (!txtGroupName.getText().isEmpty()) {
-					int contAux=0;
+					int contAux = 0;
 					Groups group = new Groups();
 
 					Students students = new Students();
 					JRadioButton[] jrb = StringReturner.returnNewGroupForStudents();
 					for (int i = 0; i < jrb.length; i++) {
-						try {
-							// pega o aluno na base de dados
-							Students studentHelper = DAOManager.studentsDAO
-									.queryForId(Integer.parseInt(jrb[i].getToolTipText()));
-							// pega a string dos groupos que esse aluno faz
-							// parte
-							String groups = studentHelper.getGroups();
-							// adiciona-se esse grupo a string
-							groups += "-" + txtGroupName.getText();
-							// setando os novos valores
-							students.setStudentId(Integer.parseInt(jrb[i].getToolTipText()));
-							students.setName(studentHelper.getName());
-							students.setEmail(studentHelper.getEmail());
-							students.setPhone(studentHelper.getPhone());
-							students.setBirthday(studentHelper.getBirthday());
-							students.setAge(studentHelper.getAge());
-							students.setGenre(studentHelper.getGenre());
-							students.setWeight(studentHelper.getWeight());
-							students.setHeight(studentHelper.getHeight());
-							students.setGroups(groups);
-						} catch (NumberFormatException | SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						if (!jrb[i].isSelected()) {
+							try {
+								// pega o aluno na base de dados
+								Students studentHelper = DAOManager.studentsDAO
+										.queryForId(Integer.parseInt(jrb[i].getToolTipText()));
+								// pega a string dos groupos que esse aluno faz
+								// parte
+								String groups = studentHelper.getGroups();
+								// adiciona-se esse grupo a string
+								if (!groups.equals("")) {
+									groups += "-" + txtGroupName.getText();
+								} else {
+									groups += txtGroupName.getText() + "-";
+									groups = groups.substring(0, groups.length() - 1);
+								}
+								// setando os novos valores
 
-						try {
-							CreateOrUpdateStatus groupUp = DAOManager.studentsDAO.createOrUpdate(students);
-							if (groupUp.isUpdated()) {
-								contAux++;
+								students.setStudentId(Integer.parseInt(jrb[i].getToolTipText()));
+								students.setName(studentHelper.getName());
+								students.setEmail(studentHelper.getEmail());
+								students.setPhone(studentHelper.getPhone());
+								students.setBirthday(studentHelper.getBirthday());
+								students.setAge(studentHelper.getAge());
+								students.setGenre(studentHelper.getGenre());
+								students.setWeight(studentHelper.getWeight());
+								students.setHeight(studentHelper.getHeight());
+								students.setGroups(groups);
+							} catch (NumberFormatException | SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
 							}
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+
+							try {
+								CreateOrUpdateStatus groupUp = DAOManager.studentsDAO.createOrUpdate(students);
+								if (groupUp.isUpdated()) {
+									contAux++;
+								}
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						} else {
+							allNames.add(jrb[i].getText());
 						}
 					}
 					group.setName(txtGroupName.getText());
@@ -162,6 +176,15 @@ public class TabGroupsRegister {
 							JOptionPane.showMessageDialog(null, "Grupo cadastrado com sucesso!");
 							txtGroupName.setText("");
 							JScrollBarAdder.removeStudentsForNewGroupRadioButtons();
+							//Diz quais alunos não foram associados ao grupo
+							if(!allNames.isEmpty()){
+								String name="";
+								for (Iterator iterator = allNames.iterator(); iterator.hasNext();) {
+									name += "\n" + (String) iterator.next()+".";
+								}
+								JOptionPane.showMessageDialog(null, "Os seguintes alunos não foram associados ao grupo: \n"
+										+ name );
+							}
 						}
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -183,7 +206,6 @@ public class TabGroupsRegister {
 		pane.add(centerPanel);
 		pane.setVisible(true);
 
-		System.out.println(FrmMain.firstOpenedGroups);
 		if (!FrmMain.firstOpenedGroups) {
 			FrmMain.firstOpenedGroups = true;
 			mainPane.addTab("Novo Grupo", pane);
