@@ -4,8 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
@@ -13,7 +15,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
+
 import br.edu.unoesc.edi.bim.components.JSearchField;
+import br.edu.unoesc.edi.bim.db.dao.DAOManager;
+import br.edu.unoesc.edi.bim.db.model.Procedures;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
 import br.edu.unoesc.edi.bim.ui.tabs.Math.GuedesHomens;
 import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
@@ -52,7 +58,7 @@ public class TabGuedesHomens {
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
 		pane.setBackground(Color.white);
-		
+
 		JPanel northPane = new JPanel();
 		northPane.setLayout(null);
 		northPane.setBounds(1, 0, mainPane.getWidth() - 9, 76);
@@ -333,8 +339,36 @@ public class TabGuedesHomens {
 				float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
 						Float.parseFloat(txtQuadril.getText()));
 				txtRazaoCinturaQuadril.setText(Float.toString(razaoCinturaQuadril));
-				//TODO 
-				//Create a model to save the results at database for reports
+				// TODO
+				// Create a model to save the results at database for reports
+				Procedures procedures = new Procedures();
+				procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+				procedures.setAge(Integer.parseInt(txtAge.getText()));
+				procedures.setWeight(Float.parseFloat(txtWeight.getText()));
+				procedures.setHeight(Float.parseFloat(txtHeight.getText()));
+				procedures.setTriceps(Integer.parseInt(txtTriceps.getText()));
+				procedures.setAbdomen(Integer.parseInt(txtAbdomen.getText()));
+				procedures.setSupraIliaca(Integer.parseInt(txtSupraIliaca.getText()));
+				procedures.setCintura(Float.parseFloat(txtCintura.getText()));
+				procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
+				procedures.setDensidadeCorporal((float) densidadeCorporal);
+				procedures.setPercentualGordura((float) percentualGordura);
+				procedures.setPesoGordura((float) pesoGordura);
+				procedures.setPesoMagro((float) pesoMagro);
+				procedures.setPesoIdeal((float) pesoIdeal);
+				procedures.setImc(imc);
+				procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
+				//procedures.setNivelIdade(Integer.parseInt(txtNivel.getText()));
+				try {
+					int create = DAOManager.proceduresDAO.create(procedures);
+					if (create == 1)
+						JOptionPane.showMessageDialog(null, "Cálculado e salvo com sucesso!");
+					else
+						JOptionPane.showMessageDialog(null, "Houve algum imprevisto, ao salvar os dados.");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnSave.setForeground(Color.white);

@@ -385,9 +385,6 @@ public class TabSingUpStudent {
 
 					}
 				} else {
-					System.out.println("enterred her");
-					// JOptionPane.showMessageDialog(null, "Você esqueceu de
-					// preencher alguns campos!");
 					if (txtName.getText().trim().equals("")) {
 						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Nome!");
 					} else if (txtMail.getText().trim().equals("")) {

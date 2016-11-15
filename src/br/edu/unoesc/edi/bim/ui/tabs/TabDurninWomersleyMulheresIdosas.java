@@ -21,15 +21,15 @@ import br.edu.unoesc.edi.bim.ui.ForTabs;
  */
 public class TabDurninWomersleyMulheresIdosas {
 
-	private static JLabel lblStudentId;
-	private static JSearchField txtName;
-	private static JSearchField txtBirthday;
-	private static JTextField txtAge;
-	private static JRadioButton rbGenreMale;
-	private static JRadioButton rbGenreFemale;
-	private static JTextField txtWeight;
-	private static JTextField txtHeight;
-	private static JTextField txtTiciptal;
+	private static JLabel lblStudentId = new JLabel("0");;
+	private static JSearchField txtName = new JSearchField();;
+	private static JTextField txtBirthday = new JTextField();;
+	private static JTextField txtAge = new JTextField();;
+	private static JRadioButton rbGenreMale = new JRadioButton("Masculino");
+	private static JRadioButton rbGenreFemale = new JRadioButton("Feminino");
+	private static JTextField txtWeight = new JTextField();
+	private static JTextField txtHeight = new JTextField();
+	private static JTextField txtTriciptal;
 	private static JTextField txtBiciptal;
 	private static JTextField txtSupraIliaca;
 	private static JTextField txtSubescapular;
@@ -86,18 +86,18 @@ public class TabDurninWomersleyMulheresIdosas {
 		lblDobrasCutaneas.setFont(new Font("Base 02", Font.BOLD, 16));
 		centerPanel.add(lblDobrasCutaneas);
 
-		JLabel lblTiciptal = new JLabel("Ticiptal(mm)*");
-		lblTiciptal.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 40, 90, 22);
-		lblTiciptal.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTiciptal.setForeground(Color.gray);
-		lblTiciptal.setFont(new Font("Sans Serif", Font.BOLD, 13));
-		centerPanel.add(lblTiciptal);
+		JLabel lblTriciptal = new JLabel("Triciptal(mm)*");
+		lblTriciptal.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 40, 90, 22);
+		lblTriciptal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTriciptal.setForeground(Color.gray);
+		lblTriciptal.setFont(new Font("Sans Serif", Font.BOLD, 13));
+		centerPanel.add(lblTriciptal);
 
-		txtTiciptal = new JTextField();
-		txtTiciptal.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
-		txtTiciptal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtTiciptal.setForeground(Color.gray);
-		centerPanel.add(txtTiciptal);
+		txtTriciptal = new JTextField();
+		txtTriciptal.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 40, 45, 22);
+		txtTriciptal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtTriciptal.setForeground(Color.gray);
+		centerPanel.add(txtTriciptal);
 
 		JLabel lblBiciptal = new JLabel("Biciptal(mm)*");
 		lblBiciptal.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 40, 110, 22);

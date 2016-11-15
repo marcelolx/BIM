@@ -21,14 +21,14 @@ import br.edu.unoesc.edi.bim.ui.ForTabs;
  */
 public class TabJacksonPollockMulheresAtletas {
 
-	private static JLabel lblStudentId;
-	private static JSearchField txtName;
-	private static JSearchField txtBirthday;
-	private static JTextField txtAge;
-	private static JRadioButton rbGenreMale;
-	private static JRadioButton rbGenreFemale;
-	private static JTextField txtWeight;
-	private static JTextField txtHeight;
+	private static JLabel lblStudentId = new JLabel("0");;
+	private static JSearchField txtName = new JSearchField();;
+	private static JTextField txtBirthday = new JTextField();;
+	private static JTextField txtAge = new JTextField();;
+	private static JRadioButton rbGenreMale = new JRadioButton("Masculino");
+	private static JRadioButton rbGenreFemale = new JRadioButton("Feminino");
+	private static JTextField txtWeight = new JTextField();
+	private static JTextField txtHeight = new JTextField();
 	private static JTextField txtTriceps;
 	private static JTextField txtAbdomen;
 	private static JTextField txtCoxa;
