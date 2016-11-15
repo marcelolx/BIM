@@ -176,11 +176,10 @@ public class FrmMain extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!firstOpenedGroups) {
 					firstOpenedGroups = true;
-					TabGroupsRegister.tabAluno(tabbedPane);
+					TabGroupsRegister.init(tabbedPane);
 					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 				}else{
-					JScrollBarAdder.removeStudentsRadioButtons();
-					TabGroupsRegister.tabAluno(tabbedPane);
+					TabGroupsRegister.init(tabbedPane);
 					tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
 				}
 				

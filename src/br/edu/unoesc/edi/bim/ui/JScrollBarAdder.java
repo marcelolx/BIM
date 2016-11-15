@@ -6,9 +6,8 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -53,12 +52,13 @@ public class JScrollBarAdder {
 	private static JLabel[] reports = new JLabel[50];
 	private static JRadioButton[] groupList;
 	private static JRadioButton[] students = new JRadioButton[50];
-	private static JRadioButton[] newGroupStudents = new JRadioButton[50];
+	private static JRadioButton[] newGroupStudents;
 	private static JPanel[] listaAlunos;
 
 	// private static JButton[] buttonViewProfile;
 
 	private static int i = 0;
+	private static List<Students> especificStudents;
 
 	public static JScrollPane getScrollPaneGroups() {
 		if (scrollPaneGroups == null) {
@@ -163,8 +163,8 @@ public class JScrollBarAdder {
 	}
 
 	/*
-	 * Mï¿½todo para listar todos os grupos de alunos cadastrados TODO Necessï¿½rio
-	 * pegar todos os grupos do DB ainda e listar.
+	 * Método para listar todos os grupos de alunos cadastrados TODO
+	 * Necessário pegar todos os grupos do DB ainda e listar.
 	 */
 	public static void listGroupsLabels() {
 		removeListGroupsLabels();
@@ -209,7 +209,7 @@ public class JScrollBarAdder {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		StringReturner.getGroups(groupList);
+		StringReturner.getGroupsAtTabSingUpStudent(groupList);
 	}
 
 	/**
@@ -238,102 +238,70 @@ public class JScrollBarAdder {
 	}
 
 	public static void listStudents() {
-		for (int i = 0; i < 50; i++) {
+		students = new JRadioButton[especificStudents.size()];
+		for (int i = 0; i < especificStudents.size(); i++) {
 			students[i] = new JRadioButton();
 			students[i].setForeground(Color.gray);
 			students[i].setBackground(Color.white);
 			students[i].setFont(new Font("Sans Serif", Font.PLAIN, 13));
-			students[i].setText("Report " + i);
+			students[i].setText(especificStudents.get(i).getName());
+			students[i].setToolTipText(especificStudents.get(i).getStudentId().toString());
 			panelStudents.add(students[i]);
 			panelStudents.updateUI();
 			panelStudents.repaint();
 			panelStudents.revalidate();
 		}
+		StringReturner.getStudentsAtTabRegisterGroups(students);
 	}
 
-	/**
-	 * Remove todos os JRadioButtons exibidos no painel de novos grupos (Tela cadastro
-	 * de grupos)
-	 */
-	public static void removeStudentsRadioButtons() {
-		panelStudents.removeAll();
-		panelStudents.updateUI();
-		panelStudents.repaint();
-		panelStudents.revalidate();
-	}
-	
 	public static void listStudentsNewGroup() {
-		for (int i = 0; i < 50; i++) {
+		JRadioButton[] returnedRadButton = StringReturner.returnSelectedStudents();
+		newGroupStudents = new JRadioButton[returnedRadButton.length];
+		for (int i = 0; i < returnedRadButton.length; i++) {
 			newGroupStudents[i] = new JRadioButton();
 			newGroupStudents[i].setForeground(Color.gray);
 			newGroupStudents[i].setBackground(Color.white);
 			newGroupStudents[i].setFont(new Font("Sans Serif", Font.PLAIN, 13));
-			newGroupStudents[i].setText("Report " + i);
+			newGroupStudents[i].setText(returnedRadButton[i].getText());
+			newGroupStudents[i].setToolTipText(returnedRadButton[i].getToolTipText());
+			newGroupStudents[i].setSelected(false);
 			panelStudentsNewGroup.add(newGroupStudents[i]);
 			panelStudentsNewGroup.updateUI();
 			panelStudentsNewGroup.repaint();
 			panelStudentsNewGroup.revalidate();
 		}
+		StringReturner.getStudentsAtTabRegisterGroupsForNewGroup(newGroupStudents);
+	}
+	
+	/**
+	 * Remove todos os JRadioButtons exibidos no painel de alunos para novos grupos (Tela
+	 * cadastro de grupos)
+	 */
+	public static void removeStudentsForNewGroupRadioButtons() {
+		panelStudentsNewGroup.removeAll();
+		panelStudentsNewGroup.updateUI();
+		panelStudentsNewGroup.repaint();
+		panelStudentsNewGroup.revalidate();
 	}
 
+	/**
+	 * Método que lista todos os estudantes cadastrados na Tab inicial.
+	 * 
+	 * São listados em JPanels, onde suas informações são listadas.
+	 * 
+	 * @param maxBounds
+	 * @param tabbedPane
+	 */
 	public static void listStudentsAtTabStudents(Rectangle maxBounds, JTabbedPane tabbedPane) {
 		try {
 			List<Students> students = DAOManager.studentsDAO.queryForAll();
-			listaAlunos = new JPanel[students.size()];
-			for (i = 0; i < students.size(); i++) {
-				listaAlunos[i] = new JPanel();
-				listaAlunos[i].setLayout(null);
-				listaAlunos[i].setBounds(0, i * 55, maxBounds.width - 247, 55);
-				listaAlunos[i]
-						.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				listaAlunos[i].setPreferredSize(new Dimension(maxBounds.width - 267, 55));
-				if (i % 2 == 0) {
-					listaAlunos[i].setBackground(Color.WHITE);
-				}
-				listaAlunos[i].setForeground(Color.BLACK);
-				listaAlunos[i].setOpaque(true);
+			getListOfStudents(students);// passa a lista para esse método,
+										// para que quando uma pesquisa for
+										// efetuada, já se tenha a lista de
+										// estudantes
+			int sizeList = students.size();
+			abstractPanelsForListStudents(sizeList, students, maxBounds, tabbedPane);
 
-				JLabel name = new JLabel("Nome: " + students.get(i).getName());
-				name.setBounds(2, 4, (maxBounds.width - 255) / 2, 23);
-				name.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				JLabel mail = new JLabel("Email: " + students.get(i).getEmail());
-				mail.setBounds(2, 29, (maxBounds.width - 255) / 2, 23);
-				mail.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				JLabel age = new JLabel("Idade: " + students.get(i).getAge());
-				age.setBounds((maxBounds.width - 247) / 2, 4, (maxBounds.width - 255) / 2, 23);
-				age.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				JButton id = new JButton();
-				id.setText("Sobre");
-				id.setToolTipText(students.get(i).getStudentId().toString());
-				id.addActionListener(new ActionListener() {
-				
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						if (!FrmMain.firstOpenedStudents) {
-							TabSingUpStudent.init(tabbedPane);
-							TabSingUpStudent.fillInputFields(Integer.parseInt(id.getToolTipText()));
-							tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
-							FrmMain.firstOpenedStudents = true;
-						} else {
-							JScrollBarAdder.removeGroupsRadioButtons();
-							TabSingUpStudent.init(tabbedPane);
-							TabSingUpStudent.fillInputFields(Integer.parseInt(id.getToolTipText()));
-							tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
-						}
-					}
-				});
-				id.setBounds((maxBounds.width - 247) / 2, 29, 80, 23);
-				id.setFont(new Font("Tahoma", Font.PLAIN, 14));
-
-				listaAlunos[i].add(name);
-				listaAlunos[i].add(mail);
-				listaAlunos[i].add(age);
-				listaAlunos[i].add(id);
-				panelTabStudents.add(listaAlunos[i]);
-				panelTabStudents.updateUI();
-				panelTabStudents.repaint();
-				panelTabStudents.revalidate();
-			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -341,13 +309,139 @@ public class JScrollBarAdder {
 
 	}
 
+	/**
+	 * Pega a lista de estudantes toda vez que o método
+	 * listStudentsAtTabStudents é chamado, para te-la sempre atualizada e não
+	 * fazer novas chamadas ao banco.
+	 * 
+	 * @param students
+	 */
+	public static void getListOfStudents(List<Students> students) {
+		especificStudents = students;
+	}
+
+	/**
+	 * Faz a pesquisa na base de dados dos estudantes pesquisados na TabStudents
+	 * e chama o método para listar os estudantes em JPanels.
+	 * 
+	 * @param maxBounds
+	 *            Tamanho da tela disponpivel
+	 * @param tabbedPane
+	 *            JTabbed para adicionar os componentes
+	 * @param nameSearched
+	 *            String contendo os caracteres sendo pesquisados
+	 */
+	public static void listSearchedStudents(Rectangle maxBounds, JTabbedPane tabbedPane, String nameSearched) {
+		List<Integer> ids = new ArrayList<Integer>();// para salvar os ids dos
+														// nomes que contem os
+														// caracteres
+														// pesquisados
+		// Percorrimento da lista a procura dos nomes que contem os caracteres
+		// específicos pesquisados e salvando seus ids
+		for (int i = 0; i < especificStudents.size(); i++) {
+			if (especificStudents.get(i).getName().contains(nameSearched)) {
+				ids.add(especificStudents.get(i).getStudentId());
+			}
+		}
+
+		List<Students> studentsFound = new ArrayList<Students>();
+		for (int i = 0; i < ids.size(); i++) {
+			try {
+				studentsFound.add(DAOManager.studentsDAO.queryForId(ids.get(i)));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		int sizeList = studentsFound.size();
+		removeTabStudentsPanels();
+		abstractPanelsForListStudents(sizeList, studentsFound, maxBounds, tabbedPane);
+	}
+
+	/**
+	 * Método com a função de adicionar o número de paineis necessários para
+	 * listar os alunos cadastrados e/ou os procurados
+	 * 
+	 * @param sizeList
+	 *            Tamanho da lista(Consequentemente, número de paineis)
+	 * @param students
+	 *            Lista de estudantes
+	 * @param maxBounds
+	 *            Tamanho disponível da tela
+	 * @param tabbedPane
+	 *            JTabbedPane ao qual os paineis serão adicionados.
+	 */
+	public static void abstractPanelsForListStudents(Integer sizeList, List<Students> students, Rectangle maxBounds,
+			JTabbedPane tabbedPane) {
+		listaAlunos = new JPanel[sizeList];
+		for (i = 0; i < sizeList; i++) {
+			listaAlunos[i] = new JPanel();
+			listaAlunos[i].setLayout(null);
+			listaAlunos[i].setBounds(0, i * 55, maxBounds.width - 247, 55);
+			listaAlunos[i].setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			listaAlunos[i].setPreferredSize(new Dimension(maxBounds.width - 267, 55));
+			if (i % 2 == 0) {
+				listaAlunos[i].setBackground(Color.WHITE);
+			}
+			listaAlunos[i].setForeground(Color.BLACK);
+			listaAlunos[i].setOpaque(true);
+
+			JLabel name = new JLabel("Nome: " + students.get(i).getName());
+			name.setBounds(2, 4, (maxBounds.width - 255) / 2, 23);
+			name.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			JLabel mail = new JLabel("Email: " + students.get(i).getEmail());
+			mail.setBounds(2, 29, (maxBounds.width - 255) / 2, 23);
+			mail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			JLabel age = new JLabel("Idade: " + students.get(i).getAge());
+			age.setBounds((maxBounds.width - 247) / 2, 4, (maxBounds.width - 255) / 2, 23);
+			age.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			JButton id = new JButton();
+			id.setText("Sobre");
+			id.setToolTipText(students.get(i).getStudentId().toString());
+			id.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					if (!FrmMain.firstOpenedStudents) {
+						TabSingUpStudent.init(tabbedPane);
+						TabSingUpStudent.fillInputFields(Integer.parseInt(id.getToolTipText()));
+						tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+						FrmMain.firstOpenedStudents = true;
+					} else {
+						JScrollBarAdder.removeGroupsRadioButtons();
+						TabSingUpStudent.init(tabbedPane);
+						TabSingUpStudent.fillInputFields(Integer.parseInt(id.getToolTipText()));
+						tabbedPane.setSelectedIndex(tabbedPane.getTabCount() - 1);
+					}
+				}
+			});
+			id.setBounds((maxBounds.width - 247) / 2, 29, 80, 23);
+			id.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+			listaAlunos[i].add(name);
+			listaAlunos[i].add(mail);
+			listaAlunos[i].add(age);
+			listaAlunos[i].add(id);
+			panelTabStudents.add(listaAlunos[i]);
+			panelTabStudents.updateUI();
+			panelTabStudents.repaint();
+			panelTabStudents.revalidate();
+		}
+	}
+
+	/**
+	 * Remove todos os paineis do painel que lista os estudantes.
+	 */
 	public static void removeTabStudentsPanels() {
 		panelTabStudents.removeAll();
 		panelTabStudents.updateUI();
 		panelTabStudents.repaint();
 		panelTabStudents.revalidate();
 	}
-	
+
+	/**
+	 * Remove todos os JLabels do painel Groups.
+	 */
 	public static void removeListGroupsLabels() {
 		panelGroups.removeAll();
 		panelGroups.updateUI();

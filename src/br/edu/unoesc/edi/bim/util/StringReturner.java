@@ -10,6 +10,8 @@ public class StringReturner {
 	
 	private static String groups = new String();
 	private static JRadioButton[] groupList; 
+	private static JRadioButton[] studentListForRegisterGroups; 
+	private static JRadioButton[] studentListForRegisterNewGroups;
 
 	/**
 	 * Return String with the name of selected JRadioButton at the groups listed on register students frame.
@@ -38,10 +40,11 @@ public class StringReturner {
 	}
 	
 	/**
-	 * Get list of JRadioButtons added at table of register students frame. 
-	 * @param groupList 
+	 * Get list of JRadioButtons added at table of register students frame.
+	 * 
+	 * @param groupList
 	 */
-	public static void getGroups(JRadioButton[] groupList){
+	public static void getGroupsAtTabSingUpStudent(JRadioButton[] groupList) {
 		StringReturner.groupList = groupList;
 	}
 	/**
@@ -71,4 +74,43 @@ public class StringReturner {
 		return groupsVet;
 	}
 	
+	/**
+	 * Get list of JRadioButtons added at table of register students frame. 
+	 * @param groupList 
+	 */
+	public static void getStudentsAtTabRegisterGroups(JRadioButton[] groupList){
+		studentListForRegisterGroups = groupList;
+	}
+	
+	public static JRadioButton[] returnSelectedStudents(){
+		int cont=0;
+		
+		for (int i = 0; i < studentListForRegisterGroups.length; i++) {
+			if(studentListForRegisterGroups[i].isSelected()){
+				cont++;
+			}
+		}
+		
+		JRadioButton[] selecteds = new JRadioButton[cont];
+		int aux=0;
+		
+		for (int i = 0; i < studentListForRegisterGroups.length; i++) {
+			if(studentListForRegisterGroups[i].isSelected()){
+				selecteds[aux] = new JRadioButton();
+				selecteds[aux].setText(studentListForRegisterGroups[i].getText());
+				selecteds[aux].setToolTipText(studentListForRegisterGroups[i].getToolTipText());
+				aux++;
+				studentListForRegisterGroups[i].setSelected(false);
+			}
+		}
+		return selecteds;
+	}
+	
+	public static void getStudentsAtTabRegisterGroupsForNewGroup(JRadioButton[] groupList){
+		studentListForRegisterNewGroups = groupList;
+	}
+	
+	public static JRadioButton[] returnNewGroupForStudents(){
+		return studentListForRegisterNewGroups;
+	}
 }

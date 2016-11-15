@@ -433,7 +433,7 @@ public class TabSingUpStudent {
 
 	private static void resetInputFields() {
 		lblStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/UserFilled-165.png")));
-		lblStudentId.setText("");
+		lblStudentId.setText("0");
 		txtName.setText("");
 		txtMail.setText("");
 		txtPhone.setText("");
@@ -441,8 +441,8 @@ public class TabSingUpStudent {
 		txtAge.setText("");
 		txtWeight.setText("");
 		txtHeight.setText("");
-		rbGenreFemale.setSelected(false);
 		rbGenreMale.setSelected(false);
+		rbGenreFemale.setSelected(false);
 		StringReturner.setSelectedGroupsOff();
 	}
 

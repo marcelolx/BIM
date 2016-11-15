@@ -10,15 +10,20 @@ import java.sql.SQLException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
+
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Groups;
+import br.edu.unoesc.edi.bim.db.model.Students;
 import br.edu.unoesc.edi.bim.ui.FrmMain;
 import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
+import br.edu.unoesc.edi.bim.util.StringReturner;
 
 /**
  * 
@@ -27,7 +32,7 @@ import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
  */
 public class TabGroupsRegister {
 	// TODO
-	public static void tabAluno(JTabbedPane mainPane) {
+	public static void init(JTabbedPane mainPane) {
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
 		pane.setBackground(Color.white);
@@ -109,19 +114,60 @@ public class TabGroupsRegister {
 		btnRegister.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				if (!txtGroupName.getText().isEmpty()) {
+					int contAux=0;
 					Groups group = new Groups();
+
+					Students students = new Students();
+					JRadioButton[] jrb = StringReturner.returnNewGroupForStudents();
+					for (int i = 0; i < jrb.length; i++) {
+						try {
+							// pega o aluno na base de dados
+							Students studentHelper = DAOManager.studentsDAO
+									.queryForId(Integer.parseInt(jrb[i].getToolTipText()));
+							// pega a string dos groupos que esse aluno faz
+							// parte
+							String groups = studentHelper.getGroups();
+							// adiciona-se esse grupo a string
+							groups += "-" + txtGroupName.getText();
+							// setando os novos valores
+							students.setStudentId(Integer.parseInt(jrb[i].getToolTipText()));
+							students.setName(studentHelper.getName());
+							students.setEmail(studentHelper.getEmail());
+							students.setPhone(studentHelper.getPhone());
+							students.setBirthday(studentHelper.getBirthday());
+							students.setAge(studentHelper.getAge());
+							students.setGenre(studentHelper.getGenre());
+							students.setWeight(studentHelper.getWeight());
+							students.setHeight(studentHelper.getHeight());
+							students.setGroups(groups);
+						} catch (NumberFormatException | SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+						try {
+							CreateOrUpdateStatus groupUp = DAOManager.studentsDAO.createOrUpdate(students);
+							if (groupUp.isUpdated()) {
+								contAux++;
+							}
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 					group.setName(txtGroupName.getText());
 					try {
 						int t = DAOManager.groupsDAO.create(group);
 						if (t == 1) {
 							JOptionPane.showMessageDialog(null, "Grupo cadastrado com sucesso!");
 							txtGroupName.setText("");
+							JScrollBarAdder.removeStudentsForNewGroupRadioButtons();
 						}
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}else{
+				} else {
 					JOptionPane.showMessageDialog(null, "O Campo nome não pode estar vazio");
 				}
 			}
