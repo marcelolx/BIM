@@ -40,7 +40,7 @@ public class Students {
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_WEIGHT)
 	private Float weight;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_HEIGHT)
-	private Float height;
+	private Integer height;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_GROUPS)
 	private String groups;
 
@@ -112,11 +112,11 @@ public class Students {
 		this.weight = weight;
 	}
 
-	public Float getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
-	public void setHeight(Float height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 

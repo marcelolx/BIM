@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.edu.unoesc.edi.bim.actions;
+package br.edu.unoesc.edi.bim.util;
 
 import java.sql.SQLException;
 

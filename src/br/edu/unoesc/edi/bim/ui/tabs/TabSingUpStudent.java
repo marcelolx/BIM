@@ -23,14 +23,13 @@ import javax.swing.border.TitledBorder;
 
 import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
 
-import br.edu.unoesc.edi.bim.actions.FillTabInputFields;
-import br.edu.unoesc.edi.bim.actions.StudentIdForProcedures;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Students;
 import br.edu.unoesc.edi.bim.ui.FrmMain;
 import br.edu.unoesc.edi.bim.ui.JScrollBarAdder;
 import br.edu.unoesc.edi.bim.util.StringReturner;
+import br.edu.unoesc.edi.bim.util.StudentIdForProcedures;
 
 /**
  * 
@@ -289,21 +288,6 @@ public class TabSingUpStudent {
 		centerPanel.add(listGroupsPanel);
 		JScrollBarAdder.listGroupsRadioButtons();
 
-		/*
-		 * JLabel btnNewProcedure = new JLabel("Procedimentos");
-		 * btnNewProcedure.addMouseListener(new MouseAdapter() { public void
-		 * mouseClicked(MouseEvent evt){ StudentIdForProcedures.init(mainPane);
-		 * StudentIdForProcedures.setId(Integer.parseInt(lblStudentId.getText())
-		 * ); mainPane.setSelectedIndex(mainPane.getTabCount()-1); }
-		 * 
-		 * }); btnNewProcedure.setForeground(Color.white);
-		 * btnNewProcedure.setOpaque(true); btnNewProcedure.setBackground(new
-		 * Color(35, 164, 240));
-		 * btnNewProcedure.setHorizontalAlignment(SwingConstants.CENTER);
-		 * btnNewProcedure.setBounds(calcPaneWidthSizeToSetComponents(mainPane)
-		 * + 58, 452, 95, 44); centerPanel.add(btnNewProcedure);
-		 */
-
 		JLabel btnRemove = new JLabel("Excluir");
 		btnRemove.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
@@ -330,6 +314,7 @@ public class TabSingUpStudent {
 		btnReset.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
 				resetInputFields();
+				StudentIdForProcedures.setId(0);//set id for procedures null(0), to not open procedures autor with id
 			}
 		});
 		btnReset.setForeground(Color.white);
@@ -360,7 +345,7 @@ public class TabSingUpStudent {
 					else
 						JOptionPane.showMessageDialog(null, "Selecione o gênero");
 					students.setWeight(Float.parseFloat(txtWeight.getText()));
-					students.setHeight(Float.parseFloat(txtHeight.getText()));
+					students.setHeight(Integer.parseInt(txtHeight.getText()));
 					students.setGroups("");
 					/*
 					 * Seta-se os Grupos como null, para que o nome dos grupos
@@ -437,7 +422,7 @@ public class TabSingUpStudent {
 		if (!FrmMain.firstOpenedStudents) {
 			FrmMain.firstOpenedStudents = true;
 			mainPane.addTab("Novo Aluno", pane);
-		} else if (mainPane.getTabCount() >= 2) {
+		} else if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
 			mainPane.addTab("Novo Aluno", pane);
 		} else {

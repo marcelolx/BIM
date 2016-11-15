@@ -13,9 +13,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import br.edu.unoesc.edi.bim.actions.FillTabInputFields;
-import br.edu.unoesc.edi.bim.actions.StudentIdForProcedures;
 import br.edu.unoesc.edi.bim.components.JSearchField;
+import br.edu.unoesc.edi.bim.util.FillTabInputFields;
+import br.edu.unoesc.edi.bim.util.StudentIdForProcedures;
 
 /**
  * @author Marcelo/Jonathan
@@ -36,7 +36,6 @@ public class ForTabs {
 		lblid.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblid);
 
-		lblStudentId = new JLabel("0");
 		lblStudentId.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 35, 10, 25, 22);
 		lblStudentId.setHorizontalAlignment(SwingConstants.LEFT);
 		lblStudentId.setFont(new Font("Sans Serif", Font.PLAIN, 12));
@@ -64,7 +63,6 @@ public class ForTabs {
 		lblName.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblName);
 
-		txtName = new JSearchField();
 		txtName.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 57, 50, 340, 22);
 		txtName.setEmptyText("Nome completo sem abreviações");
 		txtName.setEditable(false);
@@ -79,7 +77,6 @@ public class ForTabs {
 		lblBirthday.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblBirthday);
 
-		txtBirthday = new JTextField();
 		try {
 			javax.swing.text.MaskFormatter birthday = new javax.swing.text.MaskFormatter("##/##/####");
 			txtBirthday = new javax.swing.JFormattedTextField(birthday);
@@ -97,7 +94,6 @@ public class ForTabs {
 		lblAge.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblAge);
 
-		txtAge = new JTextField();
 		txtAge.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 352, 90, 45, 22);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAge.setForeground(Color.gray);
@@ -110,7 +106,6 @@ public class ForTabs {
 		lblGenre.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblGenre);
 
-		rbGenreMale = new JRadioButton("Masculino");
 		rbGenreMale.setEnabled(false);
 		rbGenreMale.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 62, 124, 109, 22);
 		rbGenreMale.setFont(new Font("Sans Serif", Font.BOLD, 13));
@@ -118,7 +113,6 @@ public class ForTabs {
 		rbGenreMale.setForeground(Color.gray);
 		centerPanel.add(rbGenreMale);
 
-		rbGenreFemale = new JRadioButton("Feminino");
 		rbGenreFemale.setEnabled(false);
 		rbGenreFemale.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 173, 124, 109, 22);
 		rbGenreFemale.setFont(new Font("Sans Serif", Font.BOLD, 13));
@@ -133,7 +127,6 @@ public class ForTabs {
 		lblWeight.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblWeight);
 
-		txtWeight = new JTextField();
 		txtWeight.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 65, 158, 45, 22);
 		txtWeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtWeight.setForeground(Color.gray);
@@ -146,12 +139,12 @@ public class ForTabs {
 		lblHeight.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblHeight);
 
-		txtHeight = new JTextField();
+		/*
 		try {
 			javax.swing.text.MaskFormatter height = new javax.swing.text.MaskFormatter("###");
 			txtHeight = new javax.swing.JFormattedTextField(height);
 		} catch (Exception e) {
-		}
+		}*/
 		txtHeight.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 5) + 217, 158, 45, 22);
 		txtHeight.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtHeight.setForeground(Color.gray);

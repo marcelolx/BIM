@@ -2,6 +2,8 @@ package br.edu.unoesc.edi.bim.ui.tabs;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,9 +13,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import br.edu.unoesc.edi.bim.actions.FillTabInputFields;
+import br.edu.unoesc.edi.bim.Math.GuedesHomens;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
+import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
 
 /**
  * 
@@ -22,14 +25,14 @@ import br.edu.unoesc.edi.bim.ui.ForTabs;
  */
 public class TabGuedesHomens {
 
-	private static JLabel lblStudentId;
-	private static JSearchField txtName;
-	private static JSearchField txtBirthday;
-	private static JTextField txtAge;
-	private static JRadioButton rbGenreMale;
-	private static JRadioButton rbGenreFemale;
-	private static JTextField txtWeight;
-	private static JTextField txtHeight;
+	private static JLabel lblStudentId = new JLabel("0");;
+	private static JSearchField txtName = new JSearchField();;
+	private static JTextField txtBirthday = new JTextField();;
+	private static JTextField txtAge = new JTextField();;
+	private static JRadioButton rbGenreMale = new JRadioButton("Masculino");
+	private static JRadioButton rbGenreFemale = new JRadioButton("Feminino");
+	private static JTextField txtWeight = new JTextField();
+	private static JTextField txtHeight = new JTextField();
 	private static JTextField txtTriceps;
 	private static JTextField txtAbdomen;
 	private static JTextField txtSupraIliaca;
@@ -49,7 +52,7 @@ public class TabGuedesHomens {
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
 		pane.setBackground(Color.white);
-
+		
 		JPanel northPane = new JPanel();
 		northPane.setLayout(null);
 		northPane.setBounds(1, 0, mainPane.getWidth() - 9, 76);
@@ -210,71 +213,71 @@ public class TabGuedesHomens {
 		txtPorcentagemGordura.setForeground(Color.gray);
 		centerPanel.add(txtPorcentagemGordura);
 
-		JLabel lblPesoGordura = new JLabel("Peso Gordura ");
-		lblPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 230, 255, 110, 22);
+		JLabel lblPesoGordura = new JLabel("Peso Gordura(Kg) ");
+		lblPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 230, 255, 120, 22);
 		lblPesoGordura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPesoGordura.setForeground(Color.gray);
 		lblPesoGordura.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPesoGordura);
 
 		txtPesoGordura = new JTextField();
-		txtPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 340, 255, 45, 22);
+		txtPesoGordura.setBounds(ForTabs.calcMid(mainPane, 2) + 350, 255, 45, 22);
 		txtPesoGordura.setEditable(false);
 		txtPesoGordura.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPesoGordura.setForeground(Color.gray);
 		centerPanel.add(txtPesoGordura);
 
-		JLabel lblPesoMagro = new JLabel("Peso Magro");
-		lblPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 390, 255, 90, 22);
+		JLabel lblPesoMagro = new JLabel("Peso Magro(Kg)");
+		lblPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 400, 255, 100, 22);
 		lblPesoMagro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPesoMagro.setForeground(Color.gray);
 		lblPesoMagro.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPesoMagro);
 
 		txtPesoMagro = new JTextField();
-		txtPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 480, 255, 45, 22);
+		txtPesoMagro.setBounds(ForTabs.calcMid(mainPane, 2) + 503, 255, 45, 22);
 		txtPesoMagro.setEditable(false);
 		txtPesoMagro.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPesoMagro.setForeground(Color.gray);
 		centerPanel.add(txtPesoMagro);
 
-		JLabel lblPesoIdeal = new JLabel("Peso Ideal");
-		lblPesoIdeal.setBounds(ForTabs.calcMid(mainPane, 2) - 65, 290, 75, 22);
+		JLabel lblPesoIdeal = new JLabel("Peso Ideal(Kg)");
+		lblPesoIdeal.setBounds(ForTabs.calcMid(mainPane, 2) - 75, 290, 95, 22);
 		lblPesoIdeal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPesoIdeal.setForeground(Color.gray);
 		lblPesoIdeal.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPesoIdeal);
 
 		txtPesoIdeal = new JTextField();
-		txtPesoIdeal.setBounds(ForTabs.calcMid(mainPane, 2) + 15, 290, 45, 22);
+		txtPesoIdeal.setBounds(ForTabs.calcMid(mainPane, 2) + 23, 290, 45, 22);
 		txtPesoIdeal.setEditable(false);
 		txtPesoIdeal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPesoIdeal.setForeground(Color.gray);
 		centerPanel.add(txtPesoIdeal);
 
-		JLabel lblIndiceMassaCorporal = new JLabel("Índice Massa Corporal");
-		lblIndiceMassaCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 65, 290, 160, 22);
+		JLabel lblIndiceMassaCorporal = new JLabel("Índice Massa Corporal(Kg/m²)");
+		lblIndiceMassaCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 75, 290, 190, 22);
 		lblIndiceMassaCorporal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIndiceMassaCorporal.setForeground(Color.gray);
 		lblIndiceMassaCorporal.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblIndiceMassaCorporal);
 
 		txtIndiceMassaCorporal = new JTextField();
-		txtIndiceMassaCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 225, 290, 45, 22);
+		txtIndiceMassaCorporal.setBounds(ForTabs.calcMid(mainPane, 2) + 269, 290, 45, 22);
 		txtIndiceMassaCorporal.setEditable(false);
 		txtIndiceMassaCorporal.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtIndiceMassaCorporal.setForeground(Color.gray);
 		centerPanel.add(txtIndiceMassaCorporal);
 
 		JLabel lblRazaoCinturaQuadril = new JLabel("Razão Cintura Quadril");
-		lblRazaoCinturaQuadril.setBounds(ForTabs.calcMid(mainPane, 2) + 275, 290, 160, 22);
+		lblRazaoCinturaQuadril.setBounds(ForTabs.calcMid(mainPane, 2) + 315, 290, 160, 22);
 		lblRazaoCinturaQuadril.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRazaoCinturaQuadril.setForeground(Color.gray);
 		lblRazaoCinturaQuadril.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblRazaoCinturaQuadril);
 
 		txtRazaoCinturaQuadril = new JTextField();
-		txtRazaoCinturaQuadril.setBounds(ForTabs.calcMid(mainPane, 2) + 435, 290, 45, 22);
+		txtRazaoCinturaQuadril.setBounds(ForTabs.calcMid(mainPane, 2) + 470, 290, 45, 22);
 		txtRazaoCinturaQuadril.setEditable(false);
 		txtRazaoCinturaQuadril.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtRazaoCinturaQuadril.setForeground(Color.gray);
@@ -311,6 +314,27 @@ public class TabGuedesHomens {
 		centerPanel.add(btnReport);
 
 		JLabel btnSave = new JLabel("Calcular/Salvar");
+		btnSave.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				double densidadeCorporal = GuedesHomens.densidadeCorporal(Integer.parseInt(txtTriceps.getText()),
+						Integer.parseInt(txtAbdomen.getText()), Integer.parseInt(txtSupraIliaca.getText()));
+				txtDensidadeCorporal.setText(ProceduresSplitter.split(densidadeCorporal));
+				double percentualGordura = GuedesHomens.percentualGordura(densidadeCorporal);
+				txtPorcentagemGordura.setText(ProceduresSplitter.split(percentualGordura));
+				double pesoGordura = GuedesHomens.pesoGordura(percentualGordura, Float.parseFloat(txtWeight.getText()));
+				txtPesoGordura.setText(ProceduresSplitter.split(pesoGordura));
+				double pesoMagro = GuedesHomens.pesoMagro(Float.parseFloat(txtWeight.getText()), pesoGordura);
+				txtPesoMagro.setText(ProceduresSplitter.split(pesoMagro));
+				double pesoIdeal = GuedesHomens.pesoIdeal(pesoMagro);
+				txtPesoIdeal.setText(ProceduresSplitter.split(pesoIdeal));
+				float imc = GuedesHomens.iMC(Float.parseFloat(txtWeight.getText()),
+						Float.parseFloat(txtHeight.getText()));
+				txtIndiceMassaCorporal.setText(ProceduresSplitter.split(imc));
+				float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
+						Float.parseFloat(txtQuadril.getText()));
+				txtRazaoCinturaQuadril.setText(Float.toString(razaoCinturaQuadril));
+			}
+		});
 		btnSave.setForeground(Color.white);
 		btnSave.setOpaque(true);
 		btnSave.setBackground(new Color(35, 164, 240));
