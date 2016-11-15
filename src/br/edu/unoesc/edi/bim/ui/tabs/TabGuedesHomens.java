@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import br.edu.unoesc.edi.bim.Math.GuedesHomens;
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.GuedesHomens;
 import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
 
 /**
@@ -333,6 +333,8 @@ public class TabGuedesHomens {
 				float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
 						Float.parseFloat(txtQuadril.getText()));
 				txtRazaoCinturaQuadril.setText(Float.toString(razaoCinturaQuadril));
+				//TODO 
+				//Create a model to save the results at database for reports
 			}
 		});
 		btnSave.setForeground(Color.white);

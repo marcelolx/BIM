@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.edu.unoesc.edi.bim.Math;
+package br.edu.unoesc.edi.bim.ui.tabs.Math;
 
 /**
  * @author Marcelo
