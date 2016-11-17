@@ -5,6 +5,8 @@ package br.edu.unoesc.edi.bim.ui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.util.FillTabInputFields;
+import br.edu.unoesc.edi.bim.util.SearchStudent;
 import br.edu.unoesc.edi.bim.util.StudentIdForProcedures;
 
 /**
@@ -24,11 +27,17 @@ import br.edu.unoesc.edi.bim.util.StudentIdForProcedures;
 public class ForTabs {
 
 	private static JSearchField txtSearch;
+	private static JTextField txt;
 
 	public static void componentsForStudentInfos(JTabbedPane mainPane, JPanel centerPanel, JLabel lblStudentId,
 			JSearchField txtName, JTextField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
 			JRadioButton rbGenreFemale, JTextField txtWeight, JTextField txtHeight) {
 
+		
+		txt = new JTextField();
+		txt = txtBirthday;
+		
+		
 		JLabel lblid = new JLabel("ID ");
 		lblid.setBounds(calcPaneWidthSizeToSetComponents(mainPane) / 20, 10, 30, 22);
 		lblid.setHorizontalAlignment(SwingConstants.CENTER);
@@ -50,6 +59,12 @@ public class ForTabs {
 		centerPanel.add(lblSearch);
 
 		txtSearch = new JSearchField();
+		txtSearch.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				SearchStudent.listSearchedStudents(txtSearch.getText(), lblStudentId, txtName, txt, txtAge, rbGenreMale, rbGenreFemale, txtWeight, txtHeight);
+			}
+		});
 		txtSearch.setBounds(((calcPaneWidthSizeToSetComponents(mainPane) / 20)) + 197, 10, 200, 22);
 		txtSearch.setEmptyText("Pesquise pelo nome/sobrenome");
 		txtSearch.setFont(new Font("Sans Serif", Font.PLAIN, 12));

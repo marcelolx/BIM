@@ -319,6 +319,10 @@ public class JScrollBarAdder {
 	public static void getListOfStudents(List<Students> students) {
 		especificStudents = students;
 	}
+	
+	public static List<Students> setListOfStudents(){
+		return especificStudents;
+	}
 
 	/**
 	 * Faz a pesquisa na base de dados dos estudantes pesquisados na TabStudents

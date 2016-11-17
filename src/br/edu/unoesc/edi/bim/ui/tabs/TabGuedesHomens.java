@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -14,8 +15,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
-
-import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
 
 import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
@@ -33,7 +32,7 @@ public class TabGuedesHomens {
 
 	private static JLabel lblStudentId = new JLabel("0");;
 	private static JSearchField txtName = new JSearchField();;
-	private static JTextField txtBirthday = new JTextField();;
+	private static JFormattedTextField txtBirthday = new JFormattedTextField();;
 	private static JTextField txtAge = new JTextField();;
 	private static JRadioButton rbGenreMale = new JRadioButton("Masculino");
 	private static JRadioButton rbGenreFemale = new JRadioButton("Feminino");
