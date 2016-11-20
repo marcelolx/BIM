@@ -27,15 +27,10 @@ import br.edu.unoesc.edi.bim.util.StudentIdForProcedures;
 public class ForTabs {
 
 	private static JSearchField txtSearch;
-	private static JTextField txt;
 
 	public static void componentsForStudentInfos(JTabbedPane mainPane, JPanel centerPanel, JLabel lblStudentId,
 			JSearchField txtName, JTextField txtBirthday, JTextField txtAge, JRadioButton rbGenreMale,
 			JRadioButton rbGenreFemale, JTextField txtWeight, JTextField txtHeight) {
-
-		
-		txt = new JTextField();
-		txt = txtBirthday;
 		
 		
 		JLabel lblid = new JLabel("ID ");
@@ -62,7 +57,7 @@ public class ForTabs {
 		txtSearch.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				SearchStudent.listSearchedStudents(txtSearch.getText(), lblStudentId, txtName, txt, txtAge, rbGenreMale, rbGenreFemale, txtWeight, txtHeight);
+				SearchStudent.listSearchedStudents(txtSearch.getText(), lblStudentId, txtName, txtBirthday, txtAge, rbGenreMale, rbGenreFemale, txtWeight, txtHeight);
 			}
 		});
 		txtSearch.setBounds(((calcPaneWidthSizeToSetComponents(mainPane) / 20)) + 197, 10, 200, 22);
@@ -91,13 +86,14 @@ public class ForTabs {
 		lblBirthday.setForeground(Color.gray);
 		lblBirthday.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblBirthday);
-
+		/*
 		try {
 			javax.swing.text.MaskFormatter birthday = new javax.swing.text.MaskFormatter("##/##/####");
 			txtBirthday = new javax.swing.JFormattedTextField(birthday);
 		} catch (Exception e) {
-		}
+		}*/
 		txtBirthday.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 125, 90, 170, 22);
+		txtBirthday.setEditable(false);
 		txtBirthday.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtBirthday.setForeground(Color.gray);
 		centerPanel.add(txtBirthday);
@@ -110,6 +106,7 @@ public class ForTabs {
 		centerPanel.add(lblAge);
 
 		txtAge.setBounds((calcPaneWidthSizeToSetComponents(mainPane) / 20) + 352, 90, 45, 22);
+		txtAge.setEditable(false);
 		txtAge.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtAge.setForeground(Color.gray);
 		centerPanel.add(txtAge);

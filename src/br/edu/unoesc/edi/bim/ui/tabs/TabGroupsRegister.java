@@ -118,7 +118,6 @@ public class TabGroupsRegister {
 			public void mouseClicked(MouseEvent evt) {
 				List<String> allNames = new ArrayList<String>();
 				if (!txtGroupName.getText().isEmpty()) {
-					int contAux = 0;
 					Groups group = new Groups();
 
 					Students students = new Students();
@@ -158,9 +157,6 @@ public class TabGroupsRegister {
 
 							try {
 								CreateOrUpdateStatus groupUp = DAOManager.studentsDAO.createOrUpdate(students);
-								if (groupUp.isUpdated()) {
-									contAux++;
-								}
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

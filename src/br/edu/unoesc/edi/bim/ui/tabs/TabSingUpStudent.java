@@ -314,7 +314,9 @@ public class TabSingUpStudent {
 		btnReset.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evet0) {
 				resetInputFields();
-				StudentIdForProcedures.setId(0);//set id for procedures null(0), to not open procedures autor with id
+				StudentIdForProcedures.setId(0);// set id for procedures
+												// null(0), to not open
+												// procedures autor with id
 			}
 		});
 		btnReset.setForeground(Color.white);
@@ -330,7 +332,8 @@ public class TabSingUpStudent {
 				if ((!txtName.getText().trim().equals("")) && (!txtMail.getText().trim().equals(""))
 						&& (!txtPhone.getText().trim().equals("")) && (!txtBirthday.getText().trim().equals(""))
 						&& (!txtAge.getText().trim().equals("")) && (!txtWeight.getText().trim().equals(""))
-						&& (!txtHeight.getText().trim().equals("")) && ((rbGenreMale.isSelected()) || (rbGenreFemale.isSelected()))) {
+						&& (!txtHeight.getText().trim().equals(""))
+						&& ((rbGenreMale.isSelected()) || (rbGenreFemale.isSelected()))) {
 					Students students = new Students();
 					students.setStudentId(Integer.parseInt(lblStudentId.getText()));
 					students.setName(txtName.getText());
@@ -399,7 +402,7 @@ public class TabSingUpStudent {
 						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Peso!");
 					} else if (txtHeight.getText().trim().equals("")) {
 						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Altura!");
-					}else if ((!rbGenreMale.isSelected()) && (!rbGenreFemale.isSelected())){
+					} else if ((!rbGenreMale.isSelected()) && (!rbGenreFemale.isSelected())) {
 						JOptionPane.showMessageDialog(null, "Voc~e esqueceu de preencher o campo Gênero");
 					}
 				}
@@ -416,9 +419,17 @@ public class TabSingUpStudent {
 		pane.add(centerPanel);
 		pane.setVisible(true);
 
+		// Verefica se a tabSingUpStudents já foi aberta,
+		// e partir disso faz mais verificações para ver se será necessário
+		// remover uma tab para adicionar outra ou quais ações devem ser tomadas
 		if (!FrmMain.firstOpenedStudents) {
 			FrmMain.firstOpenedStudents = true;
-			mainPane.addTab("Novo Aluno", pane);
+			if (mainPane.getTabCount() == 2) {
+				mainPane.removeTabAt(mainPane.getTabCount() - 1);
+				mainPane.addTab("Novo Aluno", pane);
+			} else {
+				mainPane.addTab("Novo Aluno", pane);
+			}
 		} else if (mainPane.getTabCount() == 2) {
 			mainPane.removeTabAt(mainPane.getTabCount() - 1);
 			mainPane.addTab("Novo Aluno", pane);

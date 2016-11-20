@@ -303,6 +303,23 @@ public class TabGuedesHomens {
 		centerPanel.add(txtNivel);
 
 		JLabel btnReset = new JLabel("Limpar");
+		btnReset.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				txtTriceps.setText("");
+				txtAbdomen.setText("");
+				txtSupraIliaca.setText("");
+				txtCintura.setText("");
+				txtQuadril.setText("");
+				txtDensidadeCorporal.setText("");
+				txtPorcentagemGordura.setText("");
+				txtPesoGordura.setText("");
+				txtPesoMagro.setText("");
+				txtPesoIdeal.setText("");
+				txtIndiceMassaCorporal.setText("");
+				txtRazaoCinturaQuadril.setText("");
+				txtNivel.setText("");
+			}
+		});
 		btnReset.setForeground(Color.white);
 		btnReset.setOpaque(true);
 		btnReset.setBackground(new Color(35, 164, 240));
@@ -321,52 +338,78 @@ public class TabGuedesHomens {
 		JLabel btnSave = new JLabel("Calcular/Salvar");
 		btnSave.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				double densidadeCorporal = GuedesHomens.densidadeCorporal(Integer.parseInt(txtTriceps.getText()),
-						Integer.parseInt(txtAbdomen.getText()), Integer.parseInt(txtSupraIliaca.getText()));
-				txtDensidadeCorporal.setText(ProceduresSplitter.split(densidadeCorporal));
-				double percentualGordura = GuedesHomens.percentualGordura(densidadeCorporal);
-				txtPorcentagemGordura.setText(ProceduresSplitter.split(percentualGordura));
-				double pesoGordura = GuedesHomens.pesoGordura(percentualGordura, Float.parseFloat(txtWeight.getText()));
-				txtPesoGordura.setText(ProceduresSplitter.split(pesoGordura));
-				double pesoMagro = GuedesHomens.pesoMagro(Float.parseFloat(txtWeight.getText()), pesoGordura);
-				txtPesoMagro.setText(ProceduresSplitter.split(pesoMagro));
-				double pesoIdeal = GuedesHomens.pesoIdeal(pesoMagro);
-				txtPesoIdeal.setText(ProceduresSplitter.split(pesoIdeal));
-				float imc = GuedesHomens.iMC(Float.parseFloat(txtWeight.getText()),
-						Float.parseFloat(txtHeight.getText()));
-				txtIndiceMassaCorporal.setText(ProceduresSplitter.split(imc));
-				float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
-						Float.parseFloat(txtQuadril.getText()));
-				txtRazaoCinturaQuadril.setText(Float.toString(razaoCinturaQuadril));
-				// TODO
-				// Create a model to save the results at database for reports
-				Procedures procedures = new Procedures();
-				procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
-				procedures.setAge(Integer.parseInt(txtAge.getText()));
-				procedures.setWeight(Float.parseFloat(txtWeight.getText()));
-				procedures.setHeight(Float.parseFloat(txtHeight.getText()));
-				procedures.setTriceps(Integer.parseInt(txtTriceps.getText()));
-				procedures.setAbdomen(Integer.parseInt(txtAbdomen.getText()));
-				procedures.setSupraIliaca(Integer.parseInt(txtSupraIliaca.getText()));
-				procedures.setCintura(Float.parseFloat(txtCintura.getText()));
-				procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
-				procedures.setDensidadeCorporal((float) densidadeCorporal);
-				procedures.setPercentualGordura((float) percentualGordura);
-				procedures.setPesoGordura((float) pesoGordura);
-				procedures.setPesoMagro((float) pesoMagro);
-				procedures.setPesoIdeal((float) pesoIdeal);
-				procedures.setImc(imc);
-				procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
-				//procedures.setNivelIdade(Integer.parseInt(txtNivel.getText()));
-				try {
-					int create = DAOManager.proceduresDAO.create(procedures);
-					if (create == 1)
-						JOptionPane.showMessageDialog(null, "Cálculado e salvo com sucesso!");
-					else
-						JOptionPane.showMessageDialog(null, "Houve algum imprevisto, ao salvar os dados.");
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if ((!txtTriceps.getText().trim().equals("")) && (!txtAbdomen.getText().trim().equals(""))
+						&& (!txtSupraIliaca.getText().trim().equals("")) && (!txtWeight.getText().trim().equals(""))
+						&& (!txtHeight.getText().trim().equals("")) && (!txtAge.getText().trim().equals(""))
+						&& (!txtCintura.getText().trim().equals("")) && (!txtQuadril.getText().trim().equals(""))) {
+
+					double densidadeCorporal = GuedesHomens.densidadeCorporal(Integer.parseInt(txtTriceps.getText()),
+							Integer.parseInt(txtAbdomen.getText()), Integer.parseInt(txtSupraIliaca.getText()));
+					txtDensidadeCorporal.setText(ProceduresSplitter.split(densidadeCorporal));
+					double percentualGordura = GuedesHomens.percentualGordura(densidadeCorporal);
+					txtPorcentagemGordura.setText(ProceduresSplitter.split(percentualGordura));
+					double pesoGordura = GuedesHomens.pesoGordura(percentualGordura,
+							Float.parseFloat(txtWeight.getText()));
+					txtPesoGordura.setText(ProceduresSplitter.split(pesoGordura));
+					double pesoMagro = GuedesHomens.pesoMagro(Float.parseFloat(txtWeight.getText()), pesoGordura);
+					txtPesoMagro.setText(ProceduresSplitter.split(pesoMagro));
+					double pesoIdeal = GuedesHomens.pesoIdeal(pesoMagro);
+					txtPesoIdeal.setText(ProceduresSplitter.split(pesoIdeal));
+					float imc = GuedesHomens.iMC(Float.parseFloat(txtWeight.getText()),
+							Float.parseFloat(txtHeight.getText()));
+					txtIndiceMassaCorporal.setText(ProceduresSplitter.split(imc));
+					float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
+							Float.parseFloat(txtQuadril.getText()));
+					txtRazaoCinturaQuadril.setText(ProceduresSplitter.split(razaoCinturaQuadril));
+					// TODO
+					// Create a model to save the results at database for
+					// reports
+					Procedures procedures = new Procedures();
+					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+					procedures.setAge(Integer.parseInt(txtAge.getText()));
+					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
+					procedures.setHeight(Float.parseFloat(txtHeight.getText()));
+					procedures.setTriceps(Integer.parseInt(txtTriceps.getText()));
+					procedures.setAbdomen(Integer.parseInt(txtAbdomen.getText()));
+					procedures.setSupraIliaca(Integer.parseInt(txtSupraIliaca.getText()));
+					procedures.setCintura(Float.parseFloat(txtCintura.getText()));
+					procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
+					procedures.setDensidadeCorporal((float) densidadeCorporal);
+					procedures.setPercentualGordura((float) percentualGordura);
+					procedures.setPesoGordura((float) pesoGordura);
+					procedures.setPesoMagro((float) pesoMagro);
+					procedures.setPesoIdeal((float) pesoIdeal);
+					procedures.setImc(imc);
+					procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
+					// procedures.setNivelIdade(Integer.parseInt(txtNivel.getText()));
+					try {
+						int create = DAOManager.proceduresDAO.create(procedures);
+						if (create == 1)
+							JOptionPane.showMessageDialog(null, "Cálculado e salvo com sucesso!");
+						else
+							JOptionPane.showMessageDialog(null, "Houve algum imprevisto, ao salvar os dados.");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else {
+					if (txtTriceps.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Tríceps!");
+					} else if (txtSupraIliaca.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Supra Ilíaca!");
+					} else if (txtAbdomen.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Abdômen!");
+					} else if (txtCintura.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Cintura!");
+					} else if (txtAge.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Idade!");
+					} else if (txtWeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Peso!");
+					} else if (txtHeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Altura!");
+					} else if (txtQuadril.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Quadril!");
+					}
 				}
 			}
 		});
