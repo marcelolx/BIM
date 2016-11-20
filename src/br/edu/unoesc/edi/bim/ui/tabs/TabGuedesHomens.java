@@ -50,7 +50,7 @@ public class TabGuedesHomens {
 	private static JTextField txtPesoIdeal;
 	private static JTextField txtIndiceMassaCorporal;
 	private static JTextField txtRazaoCinturaQuadril;
-	private static JTextField txtNivel;
+	private static JTextField txtSituacao;
 
 	// TODO
 	public static void init(JTabbedPane mainPane) {
@@ -288,19 +288,19 @@ public class TabGuedesHomens {
 		txtRazaoCinturaQuadril.setForeground(Color.gray);
 		centerPanel.add(txtRazaoCinturaQuadril);
 
-		JLabel lblNivel = new JLabel("Nível/Idade: ");
+		JLabel lblNivel = new JLabel("Situação: ");
 		lblNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 75, 335, 160, 22);
 		lblNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNivel.setForeground(Color.gray);
 		lblNivel.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblNivel);
 
-		txtNivel = new JTextField();
-		txtNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 335, 150, 22);
-		txtNivel.setEditable(false);
-		txtNivel.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtNivel.setForeground(Color.red);
-		centerPanel.add(txtNivel);
+		txtSituacao = new JTextField();
+		txtSituacao.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 335, 150, 22);
+		txtSituacao.setEditable(false);
+		txtSituacao.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSituacao.setForeground(Color.red);
+		centerPanel.add(txtSituacao);
 
 		JLabel btnReset = new JLabel("Limpar");
 		btnReset.addMouseListener(new MouseAdapter() {
@@ -317,7 +317,7 @@ public class TabGuedesHomens {
 				txtPesoIdeal.setText("");
 				txtIndiceMassaCorporal.setText("");
 				txtRazaoCinturaQuadril.setText("");
-				txtNivel.setText("");
+				txtSituacao.setText("");
 			}
 		});
 		btnReset.setForeground(Color.white);
@@ -361,7 +361,7 @@ public class TabGuedesHomens {
 					float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
 							Float.parseFloat(txtQuadril.getText()));
 					txtRazaoCinturaQuadril.setText(ProceduresSplitter.split(razaoCinturaQuadril));
-					// TODO
+					//txtSituacao.setText(AllAuthorUse.situacaoGuedesMulheres(percentualGordura, Integer.parseInt(txtAge.getText())));
 					// Create a model to save the results at database for
 					// reports
 					Procedures procedures = new Procedures();
@@ -371,7 +371,7 @@ public class TabGuedesHomens {
 					procedures.setHeight(Float.parseFloat(txtHeight.getText()));
 					procedures.setTriceps(Integer.parseInt(txtTriceps.getText()));
 					procedures.setAbdomen(Integer.parseInt(txtAbdomen.getText()));
-					procedures.setSupraIliaca(Integer.parseInt(txtSupraIliaca.getText()));
+					procedures.setSupraIliaca(Float.parseFloat(txtSupraIliaca.getText()));
 					procedures.setCintura(Float.parseFloat(txtCintura.getText()));
 					procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
 					procedures.setDensidadeCorporal((float) densidadeCorporal);
@@ -381,7 +381,8 @@ public class TabGuedesHomens {
 					procedures.setPesoIdeal((float) pesoIdeal);
 					procedures.setImc(imc);
 					procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
-					// procedures.setNivelIdade(Integer.parseInt(txtNivel.getText()));
+					procedures.setSituacao(txtSituacao.getText());
+					// procedures.setNivelIdade(Integer.parseInt(txtSituacao.getText()));
 					try {
 						int create = DAOManager.proceduresDAO.create(procedures);
 						if (create == 1)

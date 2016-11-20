@@ -41,7 +41,7 @@ public class Procedures {
 	private static final String STUDENT_FIELD_PESOIDEAL = "PESO_IDEAL";
 	private static final String STUDENT_FIELD_IMC = "IMC";
 	private static final String STUDENT_FIELD_RAZAOCINTURALQUADRIL = "RAZAO_CINTURA_QUADRIL";
-	private static final String STUDENT_FIELD_NIVEL = "NIVEL";
+	private static final String STUDENT_FIELD_SITUACAO = "SITUACAO";
 
 	@DatabaseField(generatedId = true, columnName = ID)
 	private Integer id;
@@ -56,19 +56,19 @@ public class Procedures {
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_TRICEPS)
 	private Integer triceps;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_TRICIPTAL)
-	private Integer triciptal;
+	private Float triciptal;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PANTURRILHA)
 	private Integer panturrilha;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_BICIPTAL)
-	private Integer biciptal;
+	private Float biciptal;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_SUBESCAPULAR)
-	private Integer subescapular;
+	private Float subescapular;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_COXA)
 	private Integer coxa;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_ABDOMEN)
 	private Integer abdomen;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_SUPRAILIACA)
-	private Integer supraIliaca;
+	private Float supraIliaca;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PEITORAL)
 	private Integer peitoral;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_AXILARMEDIA)
@@ -93,8 +93,8 @@ public class Procedures {
 	private Float imc;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_RAZAOCINTURALQUADRIL)
 	private Float razaoCinturaQuadril;
-	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_NIVEL)
-	private Integer nivelIdade;
+	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_SITUACAO)
+	private String situacao;
 
 	public Procedures() {
 
@@ -148,11 +148,11 @@ public class Procedures {
 		this.triceps = triceps;
 	}
 
-	public Integer getTriciptal() {
+	public Float getTriciptal() {
 		return triciptal;
 	}
 
-	public void setTriciptal(Integer triciptal) {
+	public void setTriciptal(Float triciptal) {
 		this.triciptal = triciptal;
 	}
 
@@ -164,19 +164,19 @@ public class Procedures {
 		this.panturrilha = panturrilha;
 	}
 
-	public Integer getBiciptal() {
+	public Float getBiciptal() {
 		return biciptal;
 	}
 
-	public void setBiciptal(Integer biciptal) {
+	public void setBiciptal(Float biciptal) {
 		this.biciptal = biciptal;
 	}
 
-	public Integer getSubescapular() {
+	public Float getSubescapular() {
 		return subescapular;
 	}
 
-	public void setSubescapular(Integer subescapular) {
+	public void setSubescapular(Float subescapular) {
 		this.subescapular = subescapular;
 	}
 
@@ -196,11 +196,11 @@ public class Procedures {
 		this.abdomen = abdomen;
 	}
 
-	public Integer getSupraIliaca() {
+	public Float getSupraIliaca() {
 		return supraIliaca;
 	}
 
-	public void setSupraIliaca(Integer supraIliaca) {
+	public void setSupraIliaca(Float supraIliaca) {
 		this.supraIliaca = supraIliaca;
 	}
 
@@ -300,12 +300,12 @@ public class Procedures {
 		this.razaoCinturaQuadril = razaoCinturaQuadril;
 	}
 
-	public Integer getNivelIdade() {
-		return nivelIdade;
+	public String getSituacao() {
+		return situacao;
 	}
 
-	public void setNivelIdade(Integer nivelIdade) {
-		this.nivelIdade = nivelIdade;
+	public void setSituacao(String string) {
+		this.situacao = string;
 	}
 
 }

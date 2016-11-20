@@ -278,7 +278,7 @@ public class TabJacksonPollockHomensAtletas {
 		txtPesoMagro.setForeground(Color.gray);
 		centerPanel.add(txtPesoMagro);
 
-		JLabel lblNivel = new JLabel("Nível/Idade: ");
+		JLabel lblNivel = new JLabel("Situação: ");
 		lblNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 75, 315, 160, 22);
 		lblNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNivel.setForeground(Color.gray);

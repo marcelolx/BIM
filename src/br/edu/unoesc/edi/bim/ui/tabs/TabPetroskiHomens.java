@@ -281,7 +281,7 @@ public class TabPetroskiHomens {
 		txtRazaoCinturaQuadril.setForeground(Color.gray);
 		centerPanel.add(txtRazaoCinturaQuadril);
 
-		JLabel lblNivel = new JLabel("Nível/Idade: ");
+		JLabel lblNivel = new JLabel("Situação: ");
 		lblNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 75, 335, 160, 22);
 		lblNivel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNivel.setForeground(Color.gray);
