@@ -2,8 +2,12 @@ package br.edu.unoesc.edi.bim.ui.tabs;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
@@ -12,7 +16,13 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import br.edu.unoesc.edi.bim.components.JSearchField;
+import br.edu.unoesc.edi.bim.db.dao.DAOManager;
+import br.edu.unoesc.edi.bim.db.model.Procedures;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.AllAuthorUse;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.GoncalvesMulheresIdosas;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.GuedesHomens;
+import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
 
 /**
  * 
@@ -35,7 +45,7 @@ public class TabGoncalvesMulheresIdosas {
 	private static JTextField txtIMC;
 	private static JTextField txtPorcentagemGordura;
 	private static JTextField txtRazaoCinturaQuadril;
-	private static JTextField txtNivel;
+	private static JTextField txtSituacao;
 
 	// TODO
 	public static void init(JTabbedPane mainPane) {
@@ -73,47 +83,55 @@ public class TabGoncalvesMulheresIdosas {
 				rbGenreMale, rbGenreFemale, txtWeight, txtHeight);
 
 		JLabel lblCircunferencias = new JLabel("CIRCUNFERENCIAS");
-		lblCircunferencias.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4), 20, 190, 30);
+		lblCircunferencias.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 4),
+				20, 190, 30);
 		lblCircunferencias.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCircunferencias.setForeground(Color.black);
 		lblCircunferencias.setFont(new Font("Base 02", Font.BOLD, 18));
 		centerPanel.add(lblCircunferencias);
 
 		JLabel lblCintura = new JLabel("Cintura(cm)*");
-		lblCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 85, 90, 22);
+		lblCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + ForTabs.calcMid(mainPane, 7), 85, 90,
+				22);
 		lblCintura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCintura.setForeground(Color.gray);
 		lblCintura.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblCintura);
 
 		txtCintura = new JTextField();
-		txtCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7), 85, 45, 22);
+		txtCintura.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 100 + ForTabs.calcMid(mainPane, 7),
+				85, 45, 22);
 		txtCintura.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtCintura.setForeground(Color.gray);
 		centerPanel.add(txtCintura);
 
 		JLabel lblQuadril = new JLabel("Quadril(cm)*");
-		lblQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7), 85, 110, 22);
+		lblQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 160 + ForTabs.calcMid(mainPane, 7),
+				85, 110, 22);
 		lblQuadril.setHorizontalAlignment(SwingConstants.CENTER);
 		lblQuadril.setForeground(Color.gray);
 		lblQuadril.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblQuadril);
 
 		txtQuadril = new JTextField();
-		txtQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7), 85, 45, 22);
+		txtQuadril.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 275 + ForTabs.calcMid(mainPane, 7),
+				85, 45, 22);
 		txtQuadril.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtQuadril.setForeground(Color.gray);
 		centerPanel.add(txtQuadril);
 
 		JLabel lblPescoco = new JLabel("Pescoço(cm)*");
-		lblPescoco.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 80 + ForTabs.calcMid(mainPane, 7) - 15, 110, 140, 22);
+		lblPescoco.setBounds(
+				ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 80 + ForTabs.calcMid(mainPane, 7) - 15, 110, 140,
+				22);
 		lblPescoco.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPescoco.setForeground(Color.gray);
 		lblPescoco.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblPescoco);
 
 		txtPescoço = new JTextField();
-		txtPescoço.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 190 + ForTabs.calcMid(mainPane, 7), 110, 45, 22);
+		txtPescoço.setBounds(ForTabs.calcPaneWidthSizeToSetComponents(mainPane) + 190 + ForTabs.calcMid(mainPane, 7),
+				110, 45, 22);
 		txtPescoço.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		txtPescoço.setForeground(Color.gray);
 		centerPanel.add(txtPescoço);
@@ -179,14 +197,25 @@ public class TabGoncalvesMulheresIdosas {
 		lblNivel.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblNivel);
 
-		txtNivel = new JTextField();
-		txtNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 315, 150, 22);
-		txtNivel.setEditable(false);
-		txtNivel.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtNivel.setForeground(Color.red);
-		centerPanel.add(txtNivel);
+		txtSituacao = new JTextField();
+		txtSituacao.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 315, 150, 22);
+		txtSituacao.setEditable(false);
+		txtSituacao.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSituacao.setForeground(Color.red);
+		centerPanel.add(txtSituacao);
 
 		JLabel btnReset = new JLabel("Limpar");
+		btnReset.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				txtPescoço.setText("");
+				txtCintura.setText("");
+				txtQuadril.setText("");
+				txtPorcentagemGordura.setText("");
+				txtIMC.setText("");
+				txtRazaoCinturaQuadril.setText("");
+				txtSituacao.setText("");
+			}
+		});
 		btnReset.setForeground(Color.white);
 		btnReset.setOpaque(true);
 		btnReset.setBackground(new Color(35, 164, 240));
@@ -203,6 +232,66 @@ public class TabGoncalvesMulheresIdosas {
 		centerPanel.add(btnReport);
 
 		JLabel btnSave = new JLabel("Calcular/Salvar");
+		btnSave.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				if ((!txtWeight.getText().trim().equals("")) && (!txtPescoço.getText().trim().equals(""))
+						&& (!txtHeight.getText().trim().equals("")) && (!txtAge.getText().trim().equals(""))
+						&& (!txtCintura.getText().trim().equals("")) && (!txtQuadril.getText().trim().equals(""))) {
+
+					double imc = GoncalvesMulheresIdosas.iMC(Float.parseFloat(txtWeight.getText()),
+							Float.parseFloat(txtHeight.getText()));
+					txtIMC.setText(ProceduresSplitter.split(imc));
+					double percentualGordura = GoncalvesMulheresIdosas.percentualGordura(
+							Float.parseFloat(txtWeight.getText()), Float.parseFloat(txtPescoço.getText()),
+							Float.parseFloat(txtCintura.getText()), Float.parseFloat(txtQuadril.getText()));
+					txtPorcentagemGordura.setText(ProceduresSplitter.split(percentualGordura));
+					float razaoCinturaQuadril = GuedesHomens.razaoCinturaQuadril(Float.parseFloat(txtCintura.getText()),
+							Float.parseFloat(txtQuadril.getText()));
+					txtRazaoCinturaQuadril.setText(ProceduresSplitter.split(razaoCinturaQuadril));
+					txtSituacao.setText(
+							AllAuthorUse.situacaoMulheres(percentualGordura, Integer.parseInt(txtAge.getText())));
+					// Create a model to save the results at database for
+					// reports
+					Procedures procedures = new Procedures();
+					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+					procedures.setAge(Integer.parseInt(txtAge.getText()));
+					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
+					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
+					procedures.setCintura(Float.parseFloat(txtCintura.getText()));
+					procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
+					procedures.setPescoco(Float.parseFloat(txtPescoço.getText()));
+					procedures.setImc((float) imc);
+					procedures.setPercentualGordura((float) percentualGordura);
+					procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
+					procedures.setSituacao(txtSituacao.getText());
+					// procedures.setNivelIdade(Integer.parseInt(txtSituacao.getText()));
+					try {
+						int create = DAOManager.proceduresDAO.create(procedures);
+						if (create == 1)
+							JOptionPane.showMessageDialog(null, "Cálculado e salvo com sucesso!");
+						else
+							JOptionPane.showMessageDialog(null, "Houve algum imprevisto, ao salvar os dados.");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else {
+					if (txtPescoço.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Pescoço!");
+					} else if (txtCintura.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Cintura!");
+					} else if (txtAge.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Idade!");
+					} else if (txtWeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Peso!");
+					} else if (txtHeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Altura!");
+					} else if (txtQuadril.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Quadril!");
+					}
+				}
+			}
+		});
 		btnSave.setForeground(Color.white);
 		btnSave.setOpaque(true);
 		btnSave.setBackground(new Color(35, 164, 240));

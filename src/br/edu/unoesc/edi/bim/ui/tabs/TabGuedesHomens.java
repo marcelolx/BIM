@@ -368,9 +368,9 @@ public class TabGuedesHomens {
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
-					procedures.setHeight(Float.parseFloat(txtHeight.getText()));
-					procedures.setTriceps(Integer.parseInt(txtTriceps.getText()));
-					procedures.setAbdomen(Integer.parseInt(txtAbdomen.getText()));
+					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
+					procedures.setTriceps(Float.parseFloat(txtTriceps.getText()));
+					procedures.setAbdomen(Float.parseFloat(txtAbdomen.getText()));
 					procedures.setSupraIliaca(Float.parseFloat(txtSupraIliaca.getText()));
 					procedures.setCintura(Float.parseFloat(txtCintura.getText()));
 					procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));

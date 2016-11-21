@@ -2,8 +2,12 @@ package br.edu.unoesc.edi.bim.ui.tabs;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
@@ -12,7 +16,12 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import br.edu.unoesc.edi.bim.components.JSearchField;
+import br.edu.unoesc.edi.bim.db.dao.DAOManager;
+import br.edu.unoesc.edi.bim.db.model.Procedures;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.AllAuthorUse;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.PetroskiMulheres;
+import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
 
 /**
  * 
@@ -42,7 +51,7 @@ public class TabPetroskiMulheres {
 	private static JTextField txtPesoIdeal;
 	private static JTextField txtIndiceMassaCorporal;
 	private static JTextField txtRazaoCinturaQuadril;
-	private static JTextField txtNivel;
+	private static JTextField txtSituacao;
 
 	// TODO
 	public static void init(JTabbedPane mainPane) {
@@ -303,14 +312,32 @@ public class TabPetroskiMulheres {
 		lblNivel.setFont(new Font("Sans Serif", Font.BOLD, 13));
 		centerPanel.add(lblNivel);
 
-		txtNivel = new JTextField();
-		txtNivel.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 335, 150, 22);
-		txtNivel.setEditable(false);
-		txtNivel.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-		txtNivel.setForeground(Color.red);
-		centerPanel.add(txtNivel);
+		txtSituacao = new JTextField();
+		txtSituacao.setBounds(ForTabs.calcMid(mainPane, 2) + 197, 335, 150, 22);
+		txtSituacao.setEditable(false);
+		txtSituacao.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		txtSituacao.setForeground(Color.red);
+		centerPanel.add(txtSituacao);
 
 		JLabel btnReset = new JLabel("Limpar");
+		btnReset.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				txtAxilarMedia.setText("");
+				txtPanturrilha.setText("");
+				txtCoxa.setText("");
+				txtSupraIliaca.setText("");
+				txtCintura.setText("");
+				txtQuadril.setText("");
+				txtDensidadeCorporal.setText("");
+				txtPorcentagemGordura.setText("");
+				txtPesoGordura.setText("");
+				txtPesoMagro.setText("");
+				txtPesoIdeal.setText("");
+				txtIndiceMassaCorporal.setText("");
+				txtRazaoCinturaQuadril.setText("");
+				txtSituacao.setText("");
+			}
+		});
 		btnReset.setForeground(Color.white);
 		btnReset.setOpaque(true);
 		btnReset.setBackground(new Color(35, 164, 240));
@@ -327,6 +354,89 @@ public class TabPetroskiMulheres {
 		centerPanel.add(btnReport);
 
 		JLabel btnSave = new JLabel("Calcular/Salvar");
+		btnSave.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				if ((!txtAxilarMedia.getText().trim().equals("")) && (!txtCoxa.getText().trim().equals(""))
+						&& (!txtPanturrilha.getText().trim().equals(""))
+						&& (!txtSupraIliaca.getText().trim().equals("")) && (!txtWeight.getText().trim().equals(""))
+						&& (!txtHeight.getText().trim().equals("")) && (!txtAge.getText().trim().equals(""))
+						&& (!txtCintura.getText().trim().equals("")) && (!txtQuadril.getText().trim().equals(""))) {
+
+					double densidadeCorporal = PetroskiMulheres.densidadeCorporal(
+							Float.parseFloat(txtAxilarMedia.getText()), Float.parseFloat(txtPanturrilha.getText()),
+							Integer.parseInt(txtAge.getText()), Float.parseFloat(txtWeight.getText()),
+							Integer.parseInt(txtHeight.getText()));
+					txtDensidadeCorporal.setText(ProceduresSplitter.split(densidadeCorporal));
+					double percentualGordura = PetroskiMulheres.percentualGordura(densidadeCorporal);
+					txtPorcentagemGordura.setText(ProceduresSplitter.split(percentualGordura));
+					double pesoGordura = PetroskiMulheres.pesoGordura(percentualGordura,
+							Float.parseFloat(txtWeight.getText()));
+					txtPesoGordura.setText(ProceduresSplitter.split(pesoGordura));
+					double pesoMagro = PetroskiMulheres.pesoMagro(Float.parseFloat(txtWeight.getText()), pesoGordura);
+					txtPesoMagro.setText(ProceduresSplitter.split(pesoMagro));
+					double pesoIdeal = PetroskiMulheres.pesoIdeal(pesoMagro);
+					txtPesoIdeal.setText(ProceduresSplitter.split(pesoIdeal));
+					float imc = PetroskiMulheres.iMC(Float.parseFloat(txtWeight.getText()),
+							Float.parseFloat(txtHeight.getText()));
+					txtIndiceMassaCorporal.setText(ProceduresSplitter.split(imc));
+					float razaoCinturaQuadril = PetroskiMulheres.razaoCinturaQuadril(
+							Float.parseFloat(txtCintura.getText()), Float.parseFloat(txtQuadril.getText()));
+					txtRazaoCinturaQuadril.setText(ProceduresSplitter.split(razaoCinturaQuadril));
+					txtSituacao.setText(AllAuthorUse.situacaoMulheres(percentualGordura, Integer.parseInt(txtAge.getText())));
+					// Create a model to save the results at database for
+					// reports
+					Procedures procedures = new Procedures();
+					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+					procedures.setAge(Integer.parseInt(txtAge.getText()));
+					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
+					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
+					procedures.setAxilarmedia(Float.parseFloat(txtAxilarMedia.getText()));
+					procedures.setPanturrilha(Float.parseFloat(txtPanturrilha.getText()));
+					procedures.setCoxa(Float.parseFloat(txtCoxa.getText()));
+					procedures.setSupraIliaca(Float.parseFloat(txtSupraIliaca.getText()));
+					procedures.setCintura(Float.parseFloat(txtCintura.getText()));
+					procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
+					procedures.setDensidadeCorporal((float) densidadeCorporal);
+					procedures.setPercentualGordura((float) percentualGordura);
+					procedures.setPesoGordura((float) pesoGordura);
+					procedures.setPesoMagro((float) pesoMagro);
+					procedures.setPesoIdeal((float) pesoIdeal);
+					procedures.setImc(imc);
+					procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
+					procedures.setSituacao(txtSituacao.getText());
+					try {
+						int create = DAOManager.proceduresDAO.create(procedures);
+						if (create == 1)
+							JOptionPane.showMessageDialog(null, "Cálculado e salvo com sucesso!");
+						else
+							JOptionPane.showMessageDialog(null, "Houve algum imprevisto, ao salvar os dados.");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else {
+					if (txtAxilarMedia.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Axilar Média!");
+					} else if (txtSupraIliaca.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Supra Ilíaca!");
+					} else if (txtPanturrilha.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Panturrilha!");
+					} else if (txtCoxa.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Coxa!");
+					} else if (txtCintura.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Cintura!");
+					} else if (txtAge.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Idade!");
+					} else if (txtWeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Peso!");
+					} else if (txtHeight.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Altura!");
+					} else if (txtQuadril.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Você esqueceu de preencher o campo Quadril!");
+					}
+				}
+			}
+		});
 		btnSave.setForeground(Color.white);
 		btnSave.setOpaque(true);
 		btnSave.setBackground(new Color(35, 164, 240));

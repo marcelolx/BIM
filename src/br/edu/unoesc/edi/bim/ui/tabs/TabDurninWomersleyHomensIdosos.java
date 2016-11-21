@@ -386,7 +386,7 @@ public class TabDurninWomersleyHomensIdosos {
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
-					procedures.setHeight(Float.parseFloat(txtHeight.getText()));
+					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
 					procedures.setTriciptal(Float.parseFloat(txtTriciptal.getText()));
 					procedures.setBiciptal(Float.parseFloat(txtBicipital.getText()));
 					procedures.setSupraIliaca(Float.parseFloat(txtSupraIliaca.getText()));

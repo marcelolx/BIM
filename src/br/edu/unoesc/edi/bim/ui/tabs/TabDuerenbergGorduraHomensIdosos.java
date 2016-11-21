@@ -237,7 +237,7 @@ public class TabDuerenbergGorduraHomensIdosos {
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
-					procedures.setHeight(Float.parseFloat(txtHeight.getText()));
+					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
 					procedures.setCintura(Float.parseFloat(txtCintura.getText()));
 					procedures.setQuadril(Float.parseFloat(txtQuadril.getText()));
 					procedures.setPercentualGordura((float) percentualGordura);

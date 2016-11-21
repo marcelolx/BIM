@@ -52,33 +52,33 @@ public class Procedures {
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_WEIGHT)
 	private Float weight;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_HEIGHT)
-	private Float height;
+	private Integer height;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_TRICEPS)
-	private Integer triceps;
+	private Float triceps;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_TRICIPTAL)
 	private Float triciptal;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PANTURRILHA)
-	private Integer panturrilha;
+	private Float panturrilha;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_BICIPTAL)
 	private Float biciptal;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_SUBESCAPULAR)
 	private Float subescapular;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_COXA)
-	private Integer coxa;
+	private Float coxa;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_ABDOMEN)
-	private Integer abdomen;
+	private Float abdomen;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_SUPRAILIACA)
 	private Float supraIliaca;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PEITORAL)
-	private Integer peitoral;
+	private Float peitoral;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_AXILARMEDIA)
-	private Integer axilarmedia;
+	private Float axilarmedia;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_CINTURA)
 	private Float cintura;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_QUADRIL)
 	private Float quadril;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PESCOCO)
-	private Integer pescoco;
+	private Float pescoco;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_DENSIDADECORPORAL)
 	private Float densidadeCorporal;
 	@DatabaseField(canBeNull = true, columnName = STUDENT_FIELD_PERCENTUALGORDURA)
@@ -132,19 +132,19 @@ public class Procedures {
 		this.weight = weight;
 	}
 
-	public Float getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
-	public void setHeight(Float height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 
-	public Integer getTriceps() {
+	public Float getTriceps() {
 		return triceps;
 	}
 
-	public void setTriceps(Integer triceps) {
+	public void setTriceps(Float triceps) {
 		this.triceps = triceps;
 	}
 
@@ -156,11 +156,11 @@ public class Procedures {
 		this.triciptal = triciptal;
 	}
 
-	public Integer getPanturrilha() {
+	public Float getPanturrilha() {
 		return panturrilha;
 	}
 
-	public void setPanturrilha(Integer panturrilha) {
+	public void setPanturrilha(Float panturrilha) {
 		this.panturrilha = panturrilha;
 	}
 
@@ -180,19 +180,19 @@ public class Procedures {
 		this.subescapular = subescapular;
 	}
 
-	public Integer getCoxa() {
+	public Float getCoxa() {
 		return coxa;
 	}
 
-	public void setCoxa(Integer coxa) {
+	public void setCoxa(Float coxa) {
 		this.coxa = coxa;
 	}
 
-	public Integer getAbdomen() {
+	public Float getAbdomen() {
 		return abdomen;
 	}
 
-	public void setAbdomen(Integer abdomen) {
+	public void setAbdomen(Float abdomen) {
 		this.abdomen = abdomen;
 	}
 
@@ -204,19 +204,19 @@ public class Procedures {
 		this.supraIliaca = supraIliaca;
 	}
 
-	public Integer getPeitoral() {
+	public Float getPeitoral() {
 		return peitoral;
 	}
 
-	public void setPeitoral(Integer peitoral) {
+	public void setPeitoral(Float peitoral) {
 		this.peitoral = peitoral;
 	}
 
-	public Integer getAxilarmedia() {
+	public Float getAxilarmedia() {
 		return axilarmedia;
 	}
 
-	public void setAxilarmedia(Integer axilarmedia) {
+	public void setAxilarmedia(Float axilarmedia) {
 		this.axilarmedia = axilarmedia;
 	}
 
@@ -236,11 +236,11 @@ public class Procedures {
 		this.quadril = quadril;
 	}
 
-	public Integer getPescoco() {
+	public Float getPescoco() {
 		return pescoco;
 	}
 
-	public void setPescoco(Integer pescoco) {
+	public void setPescoco(Float pescoco) {
 		this.pescoco = pescoco;
 	}
 
