@@ -369,6 +369,7 @@ public class TabGuedesMulheres {
 					// reports
 					Procedures procedures = new Procedures();
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+					procedures.setTypeOfProcedure(2);
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
 					procedures.setHeight(Integer.parseInt(txtHeight.getText()));

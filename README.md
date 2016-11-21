@@ -15,3 +15,21 @@ BIM - Body In Movement
    * Petroski  
   
  Ser√° capaz de gerar relat√≥rios referentes as avalia√ß√µes dos alunos.  
+ 
+ 
+ DataBase.table[procedures]
+ 	Destacar que, na tabela procedures o campo TYPE_OF_PROCEDURES receber· um 
+ 	inteiro para dizer qual o tipo de procedimento realizado, segue a lista de
+ 	qual inteiro È para qual procedimento.
+ 	
+ 	***************************************************************************
+ 	1 - Guedes Homens
+ 	2 - Guedes Mulheres
+ 	3 - Duerenberg Homens Idosos
+ 	4 - Durnin e Womersley Homens Idosos
+ 	5 - Durnin e Womersley Mulheres Idosas
+ 	6 - Jackson Pollock Homens Atletas
+ 	7 - Jackson Pollock Mulheres Atletas
+ 	8 - GonÁalves mulheres idosas
+ 	9 - Petroski Homens
+ 	10 - Petroski Mulheres

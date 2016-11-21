@@ -18,6 +18,7 @@ public class Procedures {
 
 	private static final String ID = "ID";
 	private static final String STUDENT_FIELD_STUDENTID = "STUDENT_ID";
+	private static final String STUDENT_FIELD_TYPE_OF_PROCEDURE = "TYPE_OF_PROCEDURE";
 	private static final String STUDENT_FIELD_AGE = "AGE";
 	private static final String STUDENT_FIELD_WEIGHT = "WEIGHT";
 	private static final String STUDENT_FIELD_HEIGHT = "HEIGHT";
@@ -48,6 +49,8 @@ public class Procedures {
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_STUDENTID)
 	private Integer idOfStudent;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_AGE)
+	private Integer typeOfProcedure;
+	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_TYPE_OF_PROCEDURE)
 	private Integer age;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_WEIGHT)
 	private Float weight;
@@ -114,6 +117,14 @@ public class Procedures {
 
 	public void setIdOfStudent(Integer idOfStudent) {
 		this.idOfStudent = idOfStudent;
+	}
+
+	public Integer getTypeOfProcedure() {
+		return typeOfProcedure;
+	}
+
+	public void setTypeOfProcedure(Integer typeOfProcedure) {
+		this.typeOfProcedure = typeOfProcedure;
 	}
 
 	public Integer getAge() {

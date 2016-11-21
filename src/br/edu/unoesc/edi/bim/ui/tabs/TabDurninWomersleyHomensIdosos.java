@@ -19,6 +19,7 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Procedures;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
+import br.edu.unoesc.edi.bim.ui.tabs.Math.AllAuthorUse;
 import br.edu.unoesc.edi.bim.ui.tabs.Math.DurninWomersleyHomensIdosos;
 import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
 
@@ -379,11 +380,12 @@ public class TabDurninWomersleyHomensIdosos {
 					float razaoCinturaQuadril = DurninWomersleyHomensIdosos.razaoCinturaQuadril(
 							Float.parseFloat(txtCintura.getText()), Float.parseFloat(txtQuadril.getText()));
 					txtRazaoCinturaQuadril.setText(ProceduresSplitter.split(razaoCinturaQuadril));
-					//txtSituacao.setText(AllAuthorUse.situacaoGuedesMulheres(percentualGordura, Integer.parseInt(txtAge.getText())));
+					txtSituacao.setText(AllAuthorUse.situacaoHomens(percentualGordura, Integer.parseInt(txtAge.getText())));
 					// Create a model to save the results at database for
 					// reports
 					Procedures procedures = new Procedures();
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+					procedures.setTypeOfProcedure(4);
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
 					procedures.setHeight(Integer.parseInt(txtHeight.getText()));

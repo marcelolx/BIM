@@ -371,6 +371,7 @@ public class TabDurninWomersleyMulheresIdosas {
 					// reports
 					Procedures procedures = new Procedures();
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
+					procedures.setTypeOfProcedure(5);
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
 					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
