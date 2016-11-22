@@ -3,15 +3,20 @@ package br.edu.unoesc.edi.bim.ui.tabs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -88,12 +93,33 @@ public class TabSingUpStudent {
 		centerPanel.add(lblStudentPhoto);
 
 		JButton addStudentPhoto = new JButton();
+		addStudentPhoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser file = new JFileChooser();
+				file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				int i = file.showSaveDialog(null);
+				if (i == 1) {
+					lblStudentPhoto.setText("");
+				} else {
+					File arquivo = file.getSelectedFile();
+					ImageIcon studentPhoto = new ImageIcon(arquivo.getPath());
+					Image BufferedImage = studentPhoto.getImage();
+					Image lblImageLogin = BufferedImage.getScaledInstance(170, 180,  java.awt.Image.SCALE_SMOOTH);
+					lblStudentPhoto.setIcon(new ImageIcon(lblImageLogin));
+				}
+			}
+		});
 		addStudentPhoto.setContentAreaFilled(false);
 		addStudentPhoto.setBounds(50, 232, 85, 44);
 		addStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/AddCamera-32.png")));
 		centerPanel.add(addStudentPhoto);
 
 		JButton removeStudentPhoto = new JButton();
+		removeStudentPhoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/UserFilled-165.png")));
+			}
+		});
 		removeStudentPhoto.setContentAreaFilled(false);
 		removeStudentPhoto.setBounds(137, 232, 85, 44);
 		removeStudentPhoto.setIcon(new ImageIcon(TabSingUpStudent.class.getResource("/images/Delete Filled-32.png")));
