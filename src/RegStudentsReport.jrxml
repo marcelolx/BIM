@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-11-27T02:51:17 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RegStudentsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f43e189-7a58-45a2-9e41-07b7880f6a0d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db\DataAdapter.xml"/>
+	<queryString language="SQL">
+		<![CDATA[select  ID,NAME,PHONE from students]]>
+	</queryString>
+	<field name="ID" class="java.lang.Object"/>
+	<field name="NAME" class="java.lang.Object"/>
+	<field name="PHONE" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="30" uuid="82442ef9-ecd4-42ef-b841-7ef92d1fc514">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Relatório de Alunos Cadastrados]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="71" width="100" height="18" uuid="ac162608-6b94-4d0f-84f0-be0417e0b2b1"/>
+				<text><![CDATA[Gerador ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="71" width="105" height="19" uuid="f5a8d93d-e959-4ef0-a96c-bafb52752fac"/>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="71" width="75" height="19" uuid="b55d2497-10d8-423d-ac0f-5d84e12309c8"/>
+				<textFieldExpression><![CDATA[TIME( ) + DATE( )]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
