@@ -1,5 +1,9 @@
 package br.edu.unoesc.edi.bim.util;
-
+/**
+ * 
+ * @author Jonathan
+ *
+ */
 public class JasperViewer {
 
 	public JasperViewer(JasperPrint print, boolean b) {

@@ -1,5 +1,9 @@
 package br.edu.unoesc.edi.bim.util;
 
+/**
+ * @author Jonathan
+ */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

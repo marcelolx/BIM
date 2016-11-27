@@ -1,5 +1,7 @@
 package br.edu.unoesc.edi.bim.util;
-
+/**
+ * @author Jonathan
+ */
 import java.sql.ResultSet;
 
 public class JRResultSetDataSource {
