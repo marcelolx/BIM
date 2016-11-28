@@ -48,9 +48,9 @@ public class Procedures {
 	private Integer id;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_STUDENTID)
 	private Integer idOfStudent;
-	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_AGE)
+	@DatabaseField(canBeNull = false, columnName =  STUDENT_FIELD_TYPE_OF_PROCEDURE)
 	private Integer typeOfProcedure;
-	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_TYPE_OF_PROCEDURE)
+	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_AGE)
 	private Integer age;
 	@DatabaseField(canBeNull = false, columnName = STUDENT_FIELD_WEIGHT)
 	private Float weight;

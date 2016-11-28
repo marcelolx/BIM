@@ -9,9 +9,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.WindowConstants;
+
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -30,7 +33,7 @@ public class ReportGenerator {
 		
 		//estabelece conexão
 		HashMap<String, Object> hm = new HashMap<String, Object>();
-		Class.forName(driver);
+ 		Class.forName(driver);
 		Connection con = (Connection) DriverManager.getConnection(url, login, pwd);
 		Statement stm = con.createStatement();
 		ResultSet rs = stm.executeQuery(query);

@@ -401,7 +401,6 @@ public class TabGuedesHomens {
 					procedures.setImc(imc);
 					procedures.setRazaoCinturaQuadril(razaoCinturaQuadril);
 					procedures.setSituacao(txtSituacao.getText());
-					// procedures.setNivelIdade(Integer.parseInt(txtSituacao.getText()));
 					try {
 						int create = DAOManager.proceduresDAO.create(procedures);
 						if (create == 1)
