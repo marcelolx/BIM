@@ -199,6 +199,8 @@ public class FrmMain extends JFrame {
 		panelLeftSideReports.setLayout(new BorderLayout(0, 0));
 		panelLeftSideReports.setVisible(false);
 		panelLeftSideReports.add(JScrollBarAdder.getScrollPaneReports(), BorderLayout.CENTER);
+		
+		InnerReportsButtonsUI.init(panelLeftSideReports, tabbedPane);
 
 		// panel of procedures
 		panelLeftSideProcedures = new JPanel();
