@@ -20,9 +20,12 @@ import br.edu.unoesc.edi.bim.components.JSearchField;
 import br.edu.unoesc.edi.bim.db.dao.DAOManager;
 import br.edu.unoesc.edi.bim.db.model.Procedures;
 import br.edu.unoesc.edi.bim.ui.ForTabs;
+import br.edu.unoesc.edi.bim.ui.InnerReportsButtonsUI;
 import br.edu.unoesc.edi.bim.ui.tabs.Math.AllAuthorUse;
 import br.edu.unoesc.edi.bim.ui.tabs.Math.GuedesHomens;
 import br.edu.unoesc.edi.bim.util.ProceduresSplitter;
+import br.edu.unoesc.edi.bim.util.ReportGenerator;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  * 
@@ -54,6 +57,9 @@ public class TabGuedesHomens {
 	private static JTextField txtSituacao;
 
 	// TODO
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public static void init(JTabbedPane mainPane) {
 		JPanel pane = new JPanel();
 		pane.setLayout(null);
@@ -329,6 +335,17 @@ public class TabGuedesHomens {
 		centerPanel.add(btnReset);
 
 		JLabel btnReport = new JLabel("Gerar Relatório");
+		btnReport.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				try {
+					ReportGenerator.gerador("GuedesHomensEspecífica.jasper","select procedures.DENSIDADE_CORPORAL, procedures.PERCENTUAL_GORDURA, procedures.PESO_GORDURA,  procedures.PESO_MAGRO,  procedures. PESO_IDEAL,  procedures.IMC,  procedures.RAZAO_CINTURA_QUADRIL,  procedures.SITUACAO from procedures");
+				} catch (ClassNotFoundException | SQLException | JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		btnReport.setForeground(Color.white);
 		btnReport.setOpaque(true);
 		btnReport.setBackground(new Color(35, 164, 240));

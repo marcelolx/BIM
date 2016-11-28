@@ -50,6 +50,32 @@ public class InnerReportsButtonsUI {
 		relatorioAlunos.setVisible(true);
 
 		panelLeftSideReports.add(relatorioAlunos);
+		
+		JLabel RelGuedesHomensEsp = new JLabel();
+		RelGuedesHomensEsp.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				try {
+					ReportGenerator.gerador("GuedesHomensEspecífica.jasper","select procedures.DENSIDADE_CORPORAL, procedures.PERCENTUAL_GORDURA, procedures.PESO_GORDURA,  procedures.PESO_MAGRO,  procedures. PESO_IDEAL,  procedures.IMC,  procedures.RAZAO_CINTURA_QUADRIL,  procedures.SITUACAO from procedures");
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (net.sf.jasperreports.engine.JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
+			}
+		});
+		RelGuedesHomensEsp.setText("Guedes Homens Específica");
+		RelGuedesHomensEsp.setBounds(3, setReportsButtonsPosition(panelLeftSideReports, relatorioAlunos),
+				panelLeftSideReports.getWidth() - 6, getleftReportsPanelsHeight(panelLeftSideReports));
+		RelGuedesHomensEsp.setOpaque(true);
+		RelGuedesHomensEsp.setHorizontalAlignment(SwingConstants.CENTER);
+		RelGuedesHomensEsp
+				.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		RelGuedesHomensEsp.setVisible(true);
+
+		panelLeftSideReports.add(RelGuedesHomensEsp);
 	}
 
 	/**
