@@ -45,7 +45,6 @@ public class ReportGenerator {
 		//executa o relatório
 		try {
 			JasperPrint print = JasperFillManager.fillReport("src/reports/"+layout, hm, jrRS);
-			//System.out.println("Created file: " + outFileName);
 			JasperViewer viewer = new JasperViewer(print, true);
 			viewer.setVisible(true);
 			viewer.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

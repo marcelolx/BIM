@@ -29,7 +29,7 @@ public class InnerReportsButtonsUI {
 		relatorioAlunos.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt){
 				try {
-					ReportGenerator.gerador("Cherry.jasper","select * from students");
+					ReportGenerator.gerador("RegStudentsReport.jasper","select * from students");
 				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
