@@ -339,7 +339,7 @@ public class TabGuedesHomens {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					ReportGenerator.gerador("GuedesHomensEspecífica.jasper","select procedures.DENSIDADE_CORPORAL, procedures.PERCENTUAL_GORDURA, procedures.PESO_GORDURA,  procedures.PESO_MAGRO,  procedures. PESO_IDEAL,  procedures.IMC,  procedures.RAZAO_CINTURA_QUADRIL,  procedures.SITUACAO from procedures");
+					ReportGenerator.gerador("GuedesHomensEspecífica.jasper","SELECT * FROM procedures WHERE STUDENT_ID = "+lblStudentId.getText() + " AND TYPE_OF_PROCEDURE = 1");
 				} catch (ClassNotFoundException | SQLException | JRException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -384,8 +384,8 @@ public class TabGuedesHomens {
 					// reports
 					Procedures procedures = new Procedures();
 					procedures.setIdOfStudent(Integer.parseInt(lblStudentId.getText()));
-					procedures.setTypeOfProcedure(1);
 					procedures.setAge(Integer.parseInt(txtAge.getText()));
+					procedures.setTypeOfProcedure(1);
 					procedures.setWeight(Float.parseFloat(txtWeight.getText()));
 					procedures.setHeight(Integer.parseInt(txtHeight.getText()));
 					procedures.setTriceps(Float.parseFloat(txtTriceps.getText()));

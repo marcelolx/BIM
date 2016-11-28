@@ -55,7 +55,7 @@ public class InnerReportsButtonsUI {
 		RelGuedesHomensEsp.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt){
 				try {
-					ReportGenerator.gerador("GuedesHomensEspecífica.jasper","select procedures.DENSIDADE_CORPORAL, procedures.PERCENTUAL_GORDURA, procedures.PESO_GORDURA,  procedures.PESO_MAGRO,  procedures. PESO_IDEAL,  procedures.IMC,  procedures.RAZAO_CINTURA_QUADRIL,  procedures.SITUACAO from procedures");
+					ReportGenerator.gerador("GuedesHomensEspecífica.jasper","select procedures.DENSIDADE_CORPORAL, procedures.PERCENTUAL_GORDURA, procedures.PESO_GORDURA,  procedures.PESO_MAGRO,  procedures.PESO_IDEAL,  procedures.IMC,  procedures.RAZAO_CINTURA_QUADRIL,  procedures.SITUACAO from procedures");
 				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
