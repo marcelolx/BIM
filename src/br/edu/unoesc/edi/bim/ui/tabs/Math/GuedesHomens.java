@@ -12,9 +12,9 @@ public class GuedesHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Guedes para Homens.
 	 * 
-	 * @param triceps
-	 * @param abdomen
-	 * @param supraIliaca
+	 * @param triceps Medida em mm do Tríceps
+	 * @param abdomen Medida em mm do Abdômen
+	 * @param supraIliaca Medida em mm da Supra ilíaca
 	 * @return Retorna um Double
 	 */
 	public static double densidadeCorporal(Integer triceps, Integer abdomen, Integer supraIliaca) {
@@ -25,7 +25,7 @@ public class GuedesHomens {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Guedes para Homens
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Densidade corporal.
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -36,8 +36,8 @@ public class GuedesHomens {
 	 * Cálcula o peso gordura, baseando se nas metódologias dispostas por Guedes
 	 * para Homens.
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Percentual gordura
+	 * @param peso Peso
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -48,8 +48,8 @@ public class GuedesHomens {
 	 * Cálcula o peso magro, baseando se nas metódologias dispostas por Guedes
 	 * para homens
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso
+	 * @param pesoGordura Peso Gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {
@@ -60,7 +60,7 @@ public class GuedesHomens {
 	 * Cálcula o peso Ideal, baseando se nas metódologias dispostas por Guedes
 	 * para homens.
 	 * 
-	 * @param pesoMagro
+	 * @param pesoMagro Peso Magro
 	 * @return Retorna um Double.
 	 */
 	public static double pesoIdeal(Double pesoMagro) {
@@ -71,8 +71,8 @@ public class GuedesHomens {
 	 * Cálcula o índice de massa corporal, baseando se nas metódologias
 	 * dispostas por Guedes para homens.
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso
+	 * @param height Altura em cm.
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -83,8 +83,8 @@ public class GuedesHomens {
 	 * Cálcula a razão cintura quadril, baseando se nas metódologias dispostas
 	 * por Guedes para homens.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Medida em cm da Cintura
+	 * @param quadril Medida em cm do Quadril
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

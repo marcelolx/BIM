@@ -12,17 +12,17 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param axilarMeida
-	 * @param panturrilha
-	 * @param age
-	 * @param weight
-	 * @param height
+	 * @param axilarMedia Medida em mm da axilar média
+	 * @param panturrilha Medida em mm da panturrilha
+	 * @param age idade
+	 * @param weight Peso
+	 * @param height Altura em cm
 	 * @return Return's a Double.
 	 */
-	public static double densidadeCorporal(Float axilarMeida, Float panturrilha, Integer age, Float weight,
+	public static double densidadeCorporal(Float axilarMedia, Float panturrilha, Integer age, Float weight,
 			Integer height) {
-		return (1.02902361 - 0.00067159 * (axilarMeida + panturrilha)
-				+ 0.00000242 * (axilarMeida + panturrilha) * (axilarMeida + panturrilha) - 0.00026073 * age
+		return (1.02902361 - 0.00067159 * (axilarMedia + panturrilha)
+				+ 0.00000242 * (axilarMedia + panturrilha) * (axilarMedia + panturrilha) - 0.00026073 * age
 				- 0.00056009 * weight + 0.00054649 * height);
 	}
 
@@ -30,7 +30,7 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Densidade corporal
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -41,8 +41,8 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Percentual de gordura
+	 * @param peso Peso
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -53,8 +53,8 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso Peso
+	 * @param pesoGordura Peso Gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {
@@ -65,7 +65,7 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param pesoMagro
+	 * @param pesoMagro Peso magro
 	 * @return Retorna um Double.
 	 */
 	public static double pesoIdeal(Double pesoMagro) {
@@ -76,8 +76,8 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso
+	 * @param height Altura
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -88,8 +88,8 @@ public class PetroskiMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Mulheres.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Medida em cm da cintura
+	 * @param quadril Medida em cm do quadril
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

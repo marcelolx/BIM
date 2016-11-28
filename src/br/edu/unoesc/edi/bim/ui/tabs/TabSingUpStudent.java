@@ -56,9 +56,10 @@ public class TabSingUpStudent {
 	private static JTextField txtHeight;
 	private static final ButtonGroup buttonGroup = new ButtonGroup();
 
-	// TODO
 	/**
-	 * @wbp.parser.entryPoint
+	 * Tab para cadastrar alunos.
+	 * 
+	 * @param mainPane JTabbedPane que receberá os componentes.
 	 */
 	public static void init(JTabbedPane mainPane) {
 		JPanel pane = new JPanel();

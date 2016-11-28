@@ -55,7 +55,9 @@ public class FrmMain extends JFrame {
 	public static boolean firstOpenedGroups = false;
 	
 	/**
-	 * Create the frame.
+	 * Tela principal
+	 * 
+	 * @param userName Usuário
 	 */
 	public FrmMain(String userName) {
 		// pega o tamanho máximo disponível para tela do programa

@@ -289,8 +289,8 @@ public class JScrollBarAdder {
 	 * 
 	 * São listados em JPanels, onde suas informações são listadas.
 	 * 
-	 * @param maxBounds
-	 * @param tabbedPane
+	 * @param maxBounds Pixels da tela
+	 * @param tabbedPane TabbedPane que recebe os componentes
 	 */
 	public static void listStudentsAtTabStudents(Rectangle maxBounds, JTabbedPane tabbedPane) {
 		try {
@@ -314,7 +314,7 @@ public class JScrollBarAdder {
 	 * listStudentsAtTabStudents é chamado, para te-la sempre atualizada e não
 	 * fazer novas chamadas ao banco.
 	 * 
-	 * @param students
+	 * @param students Lista com os estudantes pegos da base de dados.
 	 */
 	public static void getListOfStudents(List<Students> students) {
 		especificStudents = students;

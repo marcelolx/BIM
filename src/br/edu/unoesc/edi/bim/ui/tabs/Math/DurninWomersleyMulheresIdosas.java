@@ -12,8 +12,8 @@ public class DurninWomersleyMulheresIdosas {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Durnin e Womersley para mulheres idosas.
 	 * 
-	 * @param bicipital
-	 * @param supraIliaca
+	 * @param bicipital Medida em mm do Biciptal
+	 * @param supraIliaca Medida em mm da supra ilíaca
 	 * @return Retorna um Double
 	 */
 	public static double densidadeCorporal(Float bicipital, Float supraIliaca) {
@@ -24,7 +24,7 @@ public class DurninWomersleyMulheresIdosas {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Durnin e Womersley para mulheres idosas
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Densidade corporal
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -35,8 +35,8 @@ public class DurninWomersleyMulheresIdosas {
 	 * Cálcula o peso gordura, baseando se nas metódologias dispostas por Durnin
 	 * e Womersley para mulheres idosas
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Percentual gordura
+	 * @param peso Peso
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -47,8 +47,8 @@ public class DurninWomersleyMulheresIdosas {
 	 * Cálcula o peso magro, baseando se nas metódologias dispostas por Durnin e
 	 * Womersley para mulheres idosas
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso
+	 * @param pesoGordura Peso gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {
@@ -59,7 +59,7 @@ public class DurninWomersleyMulheresIdosas {
 	 * Cálcula o peso Ideal, baseando se nas metódologias dispostas por Durnin e
 	 * Womersley para mulheres idosas
 	 * 
-	 * @param pesoMagro
+	 * @param pesoMagro Peso Magro
 	 * @return Retorna um Double.
 	 */
 	public static double pesoIdeal(Double pesoMagro) {
@@ -70,8 +70,8 @@ public class DurninWomersleyMulheresIdosas {
 	 * Cálcula o índice de massa corporal, baseando se nas metódologias
 	 * dispostas por Durnin e Womersley para mulheres idosas
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso
+	 * @param height Altura em cm
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -82,8 +82,8 @@ public class DurninWomersleyMulheresIdosas {
 	 * Cálcula a razão cintura quadril, baseando se nas metódologias dispostas
 	 * por Durnin e Womersley para mulheres idosas.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Cintura
+	 * @param quadril Quadril
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

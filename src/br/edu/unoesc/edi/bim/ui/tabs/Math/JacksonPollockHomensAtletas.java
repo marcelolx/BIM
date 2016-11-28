@@ -12,9 +12,9 @@ public class JacksonPollockHomensAtletas {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Jackson Pollock para Homens atletas.
 	 * 
-	 * @param peitoral
-	 * @param coxa
-	 * @param age
+	 * @param peitoral Medida em mm do Peitoral
+	 * @param coxa Medida em mm da Coxa
+	 * @param age Idade
 	 * @return Retorna um Double.
 	 */
 	public static double densidadeCorporal(Float peitoral, Float coxa, Integer age) {
@@ -26,7 +26,7 @@ public class JacksonPollockHomensAtletas {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Jackson Pollock para Homens atletas.
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Densidade corporal
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -37,8 +37,8 @@ public class JacksonPollockHomensAtletas {
 	 * Cálcula o peso gordura, baseando se nas metódologias dispostas por
 	 * Jackson Pollock para Homens atletas.
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Percentual Gordura
+	 * @param peso Peso
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -49,8 +49,8 @@ public class JacksonPollockHomensAtletas {
 	 * Cálcula o peso magro, baseando se nas metódologias dispostas por Jackson
 	 * Pollock para Homens atletas.
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso
+	 * @param pesoGordura Peso Gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {

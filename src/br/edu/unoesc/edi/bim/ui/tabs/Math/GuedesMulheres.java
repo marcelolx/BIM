@@ -12,9 +12,9 @@ public class GuedesMulheres {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Guedes para Mulheres.
 	 * 
-	 * @param subescapular
-	 * @param coxa
-	 * @param supraIliaca
+	 * @param subescapular Medida em mm do Subescapular
+	 * @param coxa Medida em mm da coxa
+	 * @param supraIliaca Medida em mm da Supra Ilíaca
 	 * @return Retorna um Double
 	 */
 	public static double densidadeCorporal(Integer subescapular, Integer coxa, Integer supraIliaca) {
@@ -25,7 +25,7 @@ public class GuedesMulheres {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Guedes para Mulheres
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Densidade corporal
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -36,8 +36,8 @@ public class GuedesMulheres {
 	 * Cálcula o peso gordura, baseando se nas metódologias dispostas por Guedes
 	 * para Mulheres.
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Percentual Gordura
+	 * @param peso Peso
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -48,8 +48,8 @@ public class GuedesMulheres {
 	 * Cálcula o peso magro, baseando se nas metódologias dispostas por Guedes
 	 * para Mulheres
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso 
+	 * @param pesoGordura Peso Gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {
@@ -60,7 +60,7 @@ public class GuedesMulheres {
 	 * Cálcula o peso Ideal, baseando se nas metódologias dispostas por Guedes
 	 * para Mulheres.
 	 * 
-	 * @param pesoMagro
+	 * @param pesoMagro Peso Magro
 	 * @return Retorna um Double.
 	 */
 	public static double pesoIdeal(Double pesoMagro) {
@@ -71,8 +71,8 @@ public class GuedesMulheres {
 	 * Cálcula o índice de massa corporal, baseando se nas metódologias
 	 * dispostas por Guedes para Mulheres.
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso
+	 * @param height Altura
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -83,8 +83,8 @@ public class GuedesMulheres {
 	 * Cálcula a razão cintura quadril, baseando se nas metódologias dispostas
 	 * por Guedes para Mulheres.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Cintura em cm.
+	 * @param quadril Quadril em cm.
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

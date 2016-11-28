@@ -56,9 +56,10 @@ public class TabGuedesHomens {
 	private static JTextField txtRazaoCinturaQuadril;
 	private static JTextField txtSituacao;
 
-	// TODO
 	/**
-	 * @wbp.parser.entryPoint
+	 * Tab Guedes Homens
+	 * 
+	 * @param mainPane TabbedPane que receberá os componentes
 	 */
 	public static void init(JTabbedPane mainPane) {
 		JPanel pane = new JPanel();

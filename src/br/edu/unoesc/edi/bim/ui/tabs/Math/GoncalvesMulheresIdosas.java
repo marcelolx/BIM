@@ -12,10 +12,10 @@ public class GoncalvesMulheresIdosas {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Gonçalves Mulheres Idosas.
 	 * 
-	 * @param weight
-	 * @param pescoco
-	 * @param cintura
-	 * @param quadril
+	 * @param weight Peso
+	 * @param pescoco Medida em mm do Pescoço
+	 * @param cintura Medida em cm da cintura
+	 * @param quadril Medida em cm do quadril
 	 * @return Retorna um Double.
 	 */
 	public static double percentualGordura(Float weight, Float pescoco, Float cintura, Float quadril) {
@@ -26,8 +26,8 @@ public class GoncalvesMulheresIdosas {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Gonçalves Mulheres Idosas.
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso
+	 * @param height Altura em cm
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -38,8 +38,8 @@ public class GoncalvesMulheresIdosas {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Gonçalves Mulheres Idosas.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Medida em cm da cintura
+	 * @param quadril Medida em cm do quadril
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

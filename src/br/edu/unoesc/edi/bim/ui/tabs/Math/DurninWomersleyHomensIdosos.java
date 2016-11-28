@@ -12,8 +12,8 @@ public class DurninWomersleyHomensIdosos {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Durnin e Womersley para homens idosos.
 	 * 
-	 * @param bicipital
-	 * @param supraIliaca
+	 * @param bicipital Medida em mm do Biciptal
+	 * @param supraIliaca Medida em mm da Supra Ilíaca
 	 * @return Retorna um Double
 	 */
 	public static double densidadeCorporal(Integer bicipital, Integer supraIliaca) {
@@ -24,7 +24,7 @@ public class DurninWomersleyHomensIdosos {
 	 * Cálcula o percentual de gordura, baseando se nas métodologias dispostas
 	 * por Durnin e Womersley para homens idosos
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Medida da Densidade Corporal
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -35,8 +35,8 @@ public class DurninWomersleyHomensIdosos {
 	 * Cálcula o peso gordura, baseando se nas metódologias dispostas por Durnin
 	 * e Womersley para homens idosos
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Medida do percentual de gordura
+	 * @param peso Peso em KG
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -47,8 +47,8 @@ public class DurninWomersleyHomensIdosos {
 	 * Cálcula o peso magro, baseando se nas metódologias dispostas por Durnin e
 	 * Womersley para homens idosos
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso em Kg
+	 * @param pesoGordura Resultado do cálculo de peso gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {
@@ -59,7 +59,7 @@ public class DurninWomersleyHomensIdosos {
 	 * Cálcula o peso Ideal, baseando se nas metódologias dispostas por Durnin e
 	 * Womersley para homens idosos
 	 * 
-	 * @param pesoMagro
+	 * @param pesoMagro Valor do peso Magro.
 	 * @return Retorna um Double.
 	 */
 	public static double pesoIdeal(Double pesoMagro) {
@@ -70,8 +70,8 @@ public class DurninWomersleyHomensIdosos {
 	 * Cálcula o índice de massa corporal, baseando se nas metódologias
 	 * dispostas por Durnin e Womersley para homens idosos
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso em Kg
+	 * @param height Altura em centímetros
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -82,8 +82,8 @@ public class DurninWomersleyHomensIdosos {
 	 * Cálcula a razão cintura quadril, baseando se nas metódologias dispostas
 	 * por Durnin e Womersley para homens idosos.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Medida em cm da Cintura
+	 * @param quadril Medida em cm do Quadril
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

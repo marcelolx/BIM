@@ -21,7 +21,7 @@ public class Connection {
 	}
 	/**
 	 * Create a connection source with database
-	 * @return
+	 * @return Conexão
 	 */
 	public static ConnectionSource getConection(){
 		if(connectionSource == null){

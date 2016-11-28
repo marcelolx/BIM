@@ -15,7 +15,7 @@ public class StringReturner {
 
 	/**
 	 * Return String with the name of selected JRadioButton at the groups listed on register students frame.
-	 * @return
+	 * @return String
 	 */
 	public static String returnSelectedGroups(){
 		groups = "";
@@ -42,7 +42,7 @@ public class StringReturner {
 	/**
 	 * Get list of JRadioButtons added at table of register students frame.
 	 * 
-	 * @param groupList
+	 * @param groupList Lista de JRadioButton com uma lista de grupos 
 	 */
 	public static void getGroupsAtTabSingUpStudent(JRadioButton[] groupList) {
 		StringReturner.groupList = groupList;
@@ -76,7 +76,7 @@ public class StringReturner {
 	
 	/**
 	 * Get list of JRadioButtons added at table of register students frame. 
-	 * @param groupList 
+	 * @param groupList Lista de JRadioButton com os grupos da base da dados.
 	 */
 	public static void getStudentsAtTabRegisterGroups(JRadioButton[] groupList){
 		studentListForRegisterGroups = groupList;

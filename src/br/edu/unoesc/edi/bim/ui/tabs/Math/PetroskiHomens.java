@@ -12,9 +12,9 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param subescapular
-	 * @param panturrilha
-	 * @param age
+	 * @param subescapular Medida em mm do Subescapular
+	 * @param panturrilha Medida em mm da panturrilha
+	 * @param age Idade
 	 * @return Return's Double.
 	 */
 	public static double densidadeCorporal(Float subescapular, Float panturrilha, Integer age) {
@@ -26,7 +26,7 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param densidadeCorporal
+	 * @param densidadeCorporal Densidade corporal
 	 * @return Retorna um Double
 	 */
 	public static double percentualGordura(Double densidadeCorporal) {
@@ -37,8 +37,8 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param percentualGordura
-	 * @param peso
+	 * @param percentualGordura Percentual gordura
+	 * @param peso Peso
 	 * @return Retorna um Double
 	 */
 	public static double pesoGordura(Double percentualGordura, Float peso) {
@@ -49,8 +49,8 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param peso
-	 * @param pesoGordura
+	 * @param peso Peso
+	 * @param pesoGordura Peso gordura
 	 * @return Retorna um Double
 	 */
 	public static double pesoMagro(Float peso, Double pesoGordura) {
@@ -61,7 +61,7 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param pesoMagro
+	 * @param pesoMagro Peso Magro
 	 * @return Retorna um Double.
 	 */
 	public static double pesoIdeal(Double pesoMagro) {
@@ -72,8 +72,8 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param weight
-	 * @param height
+	 * @param weight Peso
+	 * @param height Altura
 	 * @return Retorna um Float.
 	 */
 	public static float iMC(Float weight, Float height) {
@@ -84,8 +84,8 @@ public class PetroskiHomens {
 	 * Calcula a densidade Corporal, se baseando nas métodologias dispostas por
 	 * Petroski para Homens.
 	 * 
-	 * @param cintura
-	 * @param quadril
+	 * @param cintura Cintura em cm.
+	 * @param quadril Quadril em cm.
 	 * @return Retorna um Float.
 	 */
 	public static float razaoCinturaQuadril(float cintura, float quadril) {

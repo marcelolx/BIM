@@ -174,7 +174,7 @@ public class ForTabs {
 	/**
 	 * Cálcula o centro do painel passado.
 	 * 
-	 * @param mainPane
+	 * @param mainPane TabbedPane princípal
 	 * @return retorna o ponto central na horizontal do painel
 	 */
 	public static int calcPaneWidthSizeToSetComponents(JTabbedPane mainPane) {
@@ -185,9 +185,8 @@ public class ForTabs {
 	 * Dívide o ponto central do painel na horizontal o número (mid) de vezes
 	 * que for informado.
 	 * 
-	 * @param mainPane
-	 * @param mid
-	 *            número de vezes a dívidir
+	 * @param mainPane TabbedPane princípal
+	 * @param mid número de vezes a dívidir
 	 * @return retorna o novo ponto central.
 	 */
 	public static int calcMid(JTabbedPane mainPane, int mid) {
