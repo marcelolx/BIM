@@ -14,13 +14,14 @@ BIM - Body In Movement
    * Gonçalves  
    * Petroski  
   
- Será capaz de gerar relatórios referentes as avaliações dos alunos.  
+ Será capaz de gerar relatórios referentes as avaliações dos alunos. 
+
  
  
  DataBase.table[procedures]
- 	Destacar que, na tabela procedures o campo TYPE_OF_PROCEDURES receber� um 
+ 	Destacar que, na tabela procedures o campo TYPE_OF_PROCEDURES receber� um 
  	inteiro para dizer qual o tipo de procedimento realizado, segue a lista de
- 	qual inteiro � para qual procedimento.
+ 	qual inteiro � para qual procedimento.
  	
  	***************************************************************************
  	1 - Guedes Homens
@@ -30,6 +31,6 @@ BIM - Body In Movement
  	5 - Durnin e Womersley Mulheres Idosas
  	6 - Jackson Pollock Homens Atletas
  	7 - Jackson Pollock Mulheres Atletas
- 	8 - Gon�alves mulheres idosas
+ 	8 - Gon�alves mulheres idosas
  	9 - Petroski Homens
  	10 - Petroski Mulheres
