@@ -14,7 +14,8 @@ BIM - Body In Movement
    * Gonçalves  
    * Petroski  
   
- Será capaz de gerar relatórios referentes as avaliações dos alunos. 
+ Será capaz de gerar relatórios referentes as avaliações dos alunos, usando JasperReports.
+ Estrutura de dados utilizadas: Listas.
 
  
  
