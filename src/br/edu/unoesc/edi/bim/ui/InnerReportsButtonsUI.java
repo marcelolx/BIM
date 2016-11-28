@@ -5,6 +5,7 @@ package br.edu.unoesc.edi.bim.ui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,6 +14,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import br.edu.unoesc.edi.bim.ui.tabs.TabStudentsReport;
+import br.edu.unoesc.edi.bim.util.JRException;
+import br.edu.unoesc.edi.bim.util.ReportGenerator;
 
 /**
  * Classe que adiciona os JLabel (Botões) no painel de relatórios.
@@ -25,7 +28,15 @@ public class InnerReportsButtonsUI {
 		JLabel relatorioAlunos = new JLabel();
 		relatorioAlunos.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt){
-				TabStudentsReport.init(tabbedPane);
+				try {
+					ReportGenerator.gerador("Cherry.jasper","select * from students");
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (net.sf.jasperreports.engine.JRException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				tabbedPane.setSelectedIndex(tabbedPane.getTabCount()-1);
 			}
 		});
