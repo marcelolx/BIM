@@ -1,9 +1,0 @@
-br.edu.unoesc.edi.bim.actions
-br.edu.unoesc.edi.bim.components
-br.edu.unoesc.edi.bim.db.dao
-br.edu.unoesc.edi.bim.db.model
-br.edu.unoesc.edi.bim.ui
-br.edu.unoesc.edi.bim.ui.tabs
-br.edu.unoesc.edi.bim.ui.tabs.Math
-br.edu.unoesc.edi.bim.util
-org.eclipse.wb.swing
